@@ -1,0 +1,28 @@
+[debug] [2018-09-24T14:34:27.763Z] ----------------------------------------------------------------------
+[debug] [2018-09-24T14:34:27.765Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jason\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-09-24T14:34:27.765Z] CLI Version:   4.2.1
+[debug] [2018-09-24T14:34:27.765Z] Platform:      win32
+[debug] [2018-09-24T14:34:27.765Z] Node Version:  v8.11.4
+[debug] [2018-09-24T14:34:27.766Z] Time:          Mon Sep 24 2018 10:34:27 GMT-0400 (US Eastern Daylight Time)
+[debug] [2018-09-24T14:34:27.766Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-24T14:34:27.776Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-24T14:34:27.777Z] > authorizing via signed-in user
+[debug] [2018-09-24T14:34:27.779Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-24T14:34:27.779Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-09-24T14:34:28.069Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T14:34:28.075Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/epics-smart-city-website  
+ 
+[debug] [2018-09-24T14:34:28.443Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-24T14:34:28.444Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/epics-smart-city-website  
+ 
+[debug] [2018-09-24T14:34:28.716Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\jason\Downloads\environment'...
+[info] 
+[debug] [2018-09-24T14:34:28.728Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/94986214251/clients/_:getWebAppConfig  
+ 
+[debug] [2018-09-24T14:34:29.167Z] <<< HTTP RESPONSE 200
+[info] i  hosting[epics-smart-city-website]: Serving hosting files from: public
+[info] +  hosting[epics-smart-city-website]: Local server: http://localhost:5000
