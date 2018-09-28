@@ -1,24 +1,28 @@
-[debug] [2018-09-27T20:34:16.626Z] ----------------------------------------------------------------------
-[debug] [2018-09-27T20:34:16.630Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jason\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-09-27T20:34:16.631Z] CLI Version:   4.2.1
-[debug] [2018-09-27T20:34:16.631Z] Platform:      win32
-[debug] [2018-09-27T20:34:16.631Z] Node Version:  v8.11.4
-[debug] [2018-09-27T20:34:16.631Z] Time:          Thu Sep 27 2018 16:34:16 GMT-0400 (US Eastern Daylight Time)
-[debug] [2018-09-27T20:34:16.631Z] ----------------------------------------------------------------------
+[debug] [2018-09-28T03:41:13.371Z] ----------------------------------------------------------------------
+[debug] [2018-09-28T03:41:13.374Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jason\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-09-28T03:41:13.374Z] CLI Version:   4.2.1
+[debug] [2018-09-28T03:41:13.374Z] Platform:      win32
+[debug] [2018-09-28T03:41:13.374Z] Node Version:  v8.11.4
+[debug] [2018-09-28T03:41:13.374Z] Time:          Thu Sep 27 2018 23:41:13 GMT-0400 (US Eastern Daylight Time)
+[debug] [2018-09-28T03:41:13.374Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-09-27T20:34:16.654Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-09-27T20:34:16.655Z] > authorizing via signed-in user
-[debug] [2018-09-27T20:34:16.659Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/epics-smart-city-website  
+[debug] [2018-09-28T03:41:13.383Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-28T03:41:13.384Z] > authorizing via signed-in user
+[debug] [2018-09-28T03:41:13.386Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-28T03:41:13.386Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-09-28T03:41:13.529Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-28T03:41:13.534Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/epics-smart-city-website  
  
-[debug] [2018-09-27T20:34:17.022Z] <<< HTTP RESPONSE 200
-[debug] [2018-09-27T20:34:17.024Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/epics-smart-city-website  
+[debug] [2018-09-28T03:41:13.802Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-28T03:41:13.804Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/epics-smart-city-website  
  
-[debug] [2018-09-27T20:34:17.296Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-28T03:41:14.009Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'C:\Users\jason\Downloads\environment'...
 [info] 
-[debug] [2018-09-27T20:34:17.329Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/94986214251/clients/_:getWebAppConfig  
+[debug] [2018-09-28T03:41:14.024Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/94986214251/clients/_:getWebAppConfig  
  
-[debug] [2018-09-27T20:34:17.826Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-28T03:41:14.305Z] <<< HTTP RESPONSE 200
 [info] i  hosting[epics-smart-city-website]: Serving hosting files from: public
 [info] +  hosting[epics-smart-city-website]: Local server: http://localhost:5000
