@@ -96,14 +96,6 @@
 	<!-- <string name= "google_maps_key" templateMergeStrategy="perserve translatable="false"></string> -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>
 </body>
-<>
-
-
-
-
-
-
-
 
 <!--This is code for a table that will list reports-->
 <style>
@@ -127,21 +119,16 @@ table, th, td {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-	
-	
-	
-	
-	
-	
+}	
 	</style> 
 	
 	</th> -->
     <th style = "width:10%">Status</th>
     <th style = "width:10%">Priority</th> 
-    <th style = "width:08%">
-	<input type="button" id="button" name="Datebtn" value="Date" /th>
-	<th style = "width:12%">
+    <th style = "width:26%">
+	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn">--></button>
+	<!-- <input type="button" id="button" name="Datebtn" value="Date" /th> -->
+	<th style = "width:14%">
 	<input type="button" id="button" name="Issuebtn" value="Issue" /th>
 	<th style = "width:25%">
 	<input type="button" id="button" name="Locationbtn" value="Location" /th>
@@ -157,4 +144,15 @@ table, th, td {
   </tr>
 </table>
 
+<p id = "dateBtn">
+<script src = "">
+function dateButtonFunction()
+{
+
+	document.getElementByID("dateBtn").innerHTML = "Date [by newest]";
+	document.getElementByID("dateBtn").innerHTML = "Date [by oldest]";
+
+}
+</script>
+</p>
 </html>
