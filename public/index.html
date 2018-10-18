@@ -89,7 +89,10 @@
         </div>
     </div>
     <div id="map"></div>
+<!--This is code for the file that contains the database integration.-->
 
+	<object name = "database" type = "text/html" data = "smart_city/epics.html"></object>
+	
     <script>
     </script>
     <script type="text/javascript" src="smart_city/public/smart_city.js"></script>
@@ -120,18 +123,20 @@ table, th, td {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
 }
 	
 	
 	
 	<!-- This next section of code sets up the report reviewing part of the website. A table full of data separated into catagories are filtered by filters in the first row that correspond to the data type. For example, in the issue column, it can be filtered by issue.  -->
-	
-	
+
 	</style> 
 	
 	</th> -->
     <th style = "width:10%">Status</th>
     <th style = "width:10%">Priority</th> 
+
+
     <th style = "width:08%">Date</th>
 	<th style = <div class="container">
             <div class="row">
@@ -160,6 +165,7 @@ table, th, td {
 						<option value="all">Other</option>
                     </select> -->
 	<th style = "width:25%">Location</th>
+
 	<th style = "width:35%%">Description</th>
   </tr>
   <tr>
@@ -170,11 +176,17 @@ table, th, td {
 	<td>Sample text5</td>
 	<td>Sample text6</td>
   </tr>
-  <tr>
-    <td>Eve</td>
-    <td>Jackson</td> 
-    <td>94</td>
-  </tr>
 </table>
 
+<p id = "dateBtn">
+<script src = "">
+function dateButtonFunction()
+{
+
+	document.getElementByID("dateBtn").innerHTML = "Date [by newest]";
+	document.getElementByID("dateBtn").innerHTML = "Date [by oldest]";
+
+}
+</script>
+</p>
 </html>
