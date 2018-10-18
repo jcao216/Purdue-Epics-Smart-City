@@ -742,7 +742,7 @@ function marker_creator(Pothole_data, length, Date_filter, Street_filter, Street
         debugger;
         var icon;
         if (Pothole_data[length - 1].sev == 1) {
-            icon = "CustomMarkers/1.png";
+            icon = "/CustomMarkers/1.png";
         } else if (Pothole_data[length - 1].sev == 2) {
             icon = "CustomMarkers/5.png";//change to 2 if severity changes to 10 again
         } else if (Pothole_data[length - 1].sev == 3) {
