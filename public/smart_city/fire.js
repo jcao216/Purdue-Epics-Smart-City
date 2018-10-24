@@ -28,6 +28,7 @@ async function readAllReports(callbackFunction){
 //callback function example
 function callback1(reportsObject){
 console.log(reportsObject)
+document.write();
 }
 
 //Creates a new report and addes it to the database

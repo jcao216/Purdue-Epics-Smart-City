@@ -4,12 +4,13 @@
     <title>Smart City</title>
     <!--References to the public directory-->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
-    <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+
 </head>
 
-<body onload="refresh(1)">
+
+
+<!--
+<body onload="refresh(1)">-->
 
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
@@ -85,9 +86,8 @@
         </div>
     </div>
     <div id="map"></div>
-<!--This is code for the file that contains the database integration.-->
 
-	<object name = "database" type = "text/html" data = "smart_city/epics.html"></object>
+
 	
     <script>
     </script>
@@ -97,7 +97,33 @@
 	<script type = text/javascript src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>
 </body>
 
-<!--This is code for a table that will list reports-->
+<!--This is code for a table that will list reports and database integration.-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
+    <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	
+	
+	<!--References for database integration-->
+	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
+    authDomain: "epics-smart-city.firebaseapp.com",
+    databaseURL: "https://epics-smart-city.firebaseio.com",
+    projectId: "epics-smart-city",
+    storageBucket: "epics-smart-city.appspot.com",
+    messagingSenderId: "498032615483"
+  };
+  firebase.initializeApp(config);
+</script>
+	<script src="fire.js"></script>
+
+
+
+
 <style>
 table, th, td {
     border: 3px solid black;
@@ -141,6 +167,9 @@ table, th, td {
 	<td>Sample text4</td>
 	<td>Sample text5</td>
 	<td>Sample text6</td>
+	<script>
+	readallReports(callback1)
+	</script>
   </tr>
 </table>
 
