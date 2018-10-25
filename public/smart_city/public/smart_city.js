@@ -824,6 +824,7 @@ function center_location(Pothole_data, Date_filter, Street_filter, Street_names)
 // Dom manipulation
 //Event Listeners for the boxes
 // Severity
+/**
 var selectBox_severity = document.querySelector("#sev");
 var click_count = 0;
 selectBox_severity.addEventListener("click", function() {
@@ -840,7 +841,7 @@ selectBox_severity.addEventListener("click", function() {
 }, false);
 document.querySelector("body").addEventListener("click", function() {
     click_count = 0;
-}, false);
+}, false);**/
 
 //STREET
 var selectBox_street = document.querySelector("#street_select");

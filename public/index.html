@@ -161,7 +161,8 @@ table, th, td {
 	<th style = "width:35%%">Description</th>
   </tr>
   <tr>
-    <td><script></script></td>
+    <td>
+	<p id = "sample">database sample data</p></td>
     <td>Sample text2</td>
     <td>Sample text3</td>
 	<td>Sample text4</td>
@@ -170,12 +171,13 @@ table, th, td {
 	<script>
 function getElementfromDatabase()
 {
-    variableCounter()
+	document.getElementByID("sample").innerHTML = "printed from database function";
+/**     variableCounter()
     var table = document.getElementById("myTable");
     var row = table.insertRow(0);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
-	readallReports(callback1)
+	readallReports(callback1) **/
 }
 	</script>
   </tr>
@@ -191,5 +193,4 @@ function dateButtonFunction()
 
 }
 </script> -->
-</p>
 </html>
