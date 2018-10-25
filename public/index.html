@@ -7,10 +7,7 @@
 
 </head>
 
-
-
-<!--
-<body onload="refresh(1)">-->
+<!-- <body onload="refresh(1)"> -->
 
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
@@ -104,7 +101,7 @@
 	<!-- <string name= "google_maps_key" templateMergeStrategy="perserve translatable="false"></string> -->
 	<script type = text/javascript src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>
 </body>
-
+<br></br>
 <!--This is code for a table that will list reports and database integration.-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
     <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
@@ -162,7 +159,7 @@ table, th, td {
 
 	</style> 
 	
-	</th> -->
+	</th>
 
     <th style = "width:20%">Status</th>
     <!-- <th style = "width:10%">Priority</th> --> 
@@ -192,18 +189,29 @@ table, th, td {
 
   </tr>
   <tr>
-    <td>Sample text1</td>
-    <td>Sample text2</td> 
+    <td>
+	<p id = "sample">database sample data</p></td>
+    <td>Sample text2</td>
     <td>Sample text3</td>
 	<td>Sample text4</td>
 	<td>Sample text5</td>
-
-	<!-- <td>Sample text6</td> -->
+	<script>
+function getElementfromDatabase()
+{
+	document.getElementByID("sample").innerHTML = "printed from database function";
+/**     variableCounter()
+    var table = document.getElementById("myTable");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+	readallReports(callback1) **/
+}
+	</script>
 
   </tr>
 </table>
 
-<p id = "dateBtn">
+<!-- <p id = "dateBtn">
 <script src = "smart_city/public/smart_city.js">
 function dateButtonFunction()
 {
@@ -212,6 +220,5 @@ function dateButtonFunction()
 	document.getElementByID("dateBtn").innerHTML = "Date [by oldest]";
 
 }
-</script>
-</p>
+</script> -->
 </html>
