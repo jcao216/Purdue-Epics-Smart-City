@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>foundation</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/foundation.xmi</canonicalUri>
+        <module>mm_foundation</module>
+        <matlabInterface>mm_foundation_mi</matlabInterface>		
+        <prefix>foundation</prefix>
+        <entryPoint>Simulink_metamodel_foundation_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

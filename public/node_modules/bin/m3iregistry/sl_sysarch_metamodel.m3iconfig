@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>SystemArchitecture</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/SystemArchitecture.xmi</canonicalUri>
+        <module>sl_sysarch_metamodel</module>
+        <matlabInterface>sl_sysarch_metamodel_mi</matlabInterface>		
+        <prefix>SystemArchitecture</prefix>
+        <entryPoint>SystemArchitecture_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

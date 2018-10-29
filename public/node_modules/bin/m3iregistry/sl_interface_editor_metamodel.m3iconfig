@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>InterfaceEditor</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/InterfaceEditor.xmi</canonicalUri>
+        <module>sl_interface_editor_metamodel</module>
+        <matlabInterface>sl_interface_editor_mi</matlabInterface>
+        <prefix>InterfaceEditor</prefix>
+        <entryPoint>InterfaceEditor_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

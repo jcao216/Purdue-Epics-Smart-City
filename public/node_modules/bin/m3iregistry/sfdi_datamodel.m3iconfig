@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>StateflowDI</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/StateflowDI.xmi</canonicalUri>
+        <module>sfdi_datamodel</module>
+        <matlabInterface>sfdi_datamodel_mi</matlabInterface>		
+        <prefix>StateflowDI</prefix>
+        <entryPoint>StateflowDI_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

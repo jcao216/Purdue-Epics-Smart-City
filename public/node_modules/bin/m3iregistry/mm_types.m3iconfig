@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>types</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/types.xmi</canonicalUri>
+        <module>mm_types</module>
+        <matlabInterface>mm_types_mi</matlabInterface>		
+        <prefix>types</prefix>
+        <entryPoint>Simulink_metamodel_types_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

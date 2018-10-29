@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>arplatform</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/arplatform.xmi</canonicalUri>
+        <module>mm_arplatform</module>
+        <matlabInterface>mm_arplatform_mi</matlabInterface>		
+        <prefix>arplatform</prefix>
+        <entryPoint>Simulink_metamodel_arplatform_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

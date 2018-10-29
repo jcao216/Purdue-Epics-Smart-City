@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>GLUE2</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/GLUE2.xmi</canonicalUri>
+        <module>glue2_datamodel</module>
+        <matlabInterface>glue2</matlabInterface>
+        <prefix>GLUE2</prefix>
+        <entryPoint>GLUE2_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

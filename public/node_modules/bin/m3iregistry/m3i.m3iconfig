@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>M3I</name>
+        <canonicalUri>http://schema.omg.org/spec/MOF/2.0</canonicalUri>
+        <compatibleUri>http://schema.omg.org/spec/MOF/2.0/cmof.xml</compatibleUri>
+        <compatibleUri>http://schema.omg.org/spec/MOF/2.0/emof.xml</compatibleUri>
+        <module>m3i</module>
+        <matlabInterface>m3i_mi</matlabInterface>
+        <prefix>M3I</prefix>
+        <entryPoint>M3I_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m3i:Configuration xmlns:m3i="http://schema.mathworks.com/spec/M3I/config">
+    <m3i:Domain>
+        <name>slcomponent</name>
+        <canonicalUri>http://schema.mathworks.com/schemas/slcomponent.xmi</canonicalUri>
+        <module>mm_slcomponent</module>
+        <matlabInterface>mm_slcomponent_mi</matlabInterface>		
+        <prefix>slcomponent</prefix>
+        <entryPoint>Simulink_metamodel_slcomponent_getConfiguration</entryPoint>
+    </m3i:Domain>
+</m3i:Configuration>
