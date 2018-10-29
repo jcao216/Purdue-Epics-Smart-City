@@ -2,13 +2,9 @@
 
 <head>
     <title>Smart City</title>
-    <!--References to the public directory-->
-
-
 </head>
 
-<!-- <body onload="refresh(1)"> -->
-
+<!--<body onload="refresh(1)">-->
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
             <div class="col-sm-2">
@@ -96,10 +92,25 @@
 	
     <script>
     </script>
-    <script type="text/javascript" src="smart_city/public/smart_city.js"></script>
+    <!--<script type="text/javascript" src="smart_city/public/smart_city.js"></script>-->
     <!--Script for the map-->
 	<!-- <string name= "google_maps_key" templateMergeStrategy="perserve translatable="false"></string> -->
-	<script type = text/javascript src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.4237, lng: -86.9212},
+          zoom: 15
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo&callback=initMap"
+    async defer></script>
+	
+
+	
+	<!--
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>-->
 </body>
 <br></br>
 <!--This is code for a table that will list reports and database integration.-->
@@ -108,7 +119,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 	
 	
-	<!--References for database integration-->
+	<!--References for database integration
 	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
 
@@ -126,7 +137,7 @@
 </script>
 	<script src="fire.js"></script>
 
-
+-->
 
 
 <style>
@@ -188,17 +199,18 @@ table, th, td {
 	<th style = "width:20%%">Description</th>
 
   </tr>
-  <tr>
+  	<script type = "text/html" src = "smart_city/epics.html"></script>
+<!--  <tr>
     <td>
+	<script src = "databaseIntegration.html"></script>
 	<p id = "sample">database sample data</p></td>
     <td>Sample text2</td>
     <td>Sample text3</td>
 	<td>Sample text4</td>
 	<td>Sample text5</td>
-	<script type = "text/html" src = "smart_city/epics.html">
-	</script>
 
-  </tr>
+
+  </tr>-->
 </table>
 
 <!-- <p id = "dateBtn">

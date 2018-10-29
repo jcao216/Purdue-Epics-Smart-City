@@ -841,7 +841,7 @@ selectBox_severity.addEventListener("click", function() {
 }, false);
 document.querySelector("body").addEventListener("click", function() {
     click_count = 0;
-}, false);**/
+}, false);
 
 //Issue
 var selectBox_Issue = document.querySelector("#Issue_select");
@@ -860,7 +860,7 @@ selectBox_Issue.addEventListener("click", function() {
 }, false);
 document.querySelector("body").addEventListener("click", function() {
     click_count1 = 0;
-}, false);
+}, false);**/
 
 //DATES From 
 var selectBox_dates_from = document.querySelector("#date_select");
