@@ -824,6 +824,7 @@ function center_location(Pothole_data, Date_filter, Issue_filter, Issue_names) {
 // Dom manipulation
 //Event Listeners for the boxes
 // Severity
+/**
 var selectBox_severity = document.querySelector("#sev");
 var click_count = 0;
 selectBox_severity.addEventListener("click", function() {
@@ -859,7 +860,7 @@ selectBox_Issue.addEventListener("click", function() {
 }, false);
 document.querySelector("body").addEventListener("click", function() {
     click_count1 = 0;
-}, false);
+}, false);**/
 
 //DATES From 
 var selectBox_dates_from = document.querySelector("#date_select");
