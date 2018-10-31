@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-sm-3">
                     <select id="date_select" class="custom-select">
-                        <option disabled selected value="all">From Data: </i>
+                        <option disabled selected value="all">From Date: </i>
                         </option>
                         <option value="all">All Dates</option>
                     </select>
@@ -145,16 +145,35 @@ table, th, td {
 
 	</style> 
 	</th>
-	<!-- This next section of code sets up the report reviewing part of the website. 
-	A table full of data separated into catagories are filtered by filters in the first row that correspond to the data type. 
-	For example, in the issue column, it can be filtered by issue.  -->
-	
-    <th style = "width:20%">Status</th>
+
+
+	<th style = "width:5%">
+	<div class="checkbox">
+                            <label>
+                                <input checked="true" id="App_check" type="checkbox"
+                            </label>
+                        </div>
+    <th style = "width:19%">
+	<select class="custom-select" id="status">
+                        <option selected disabled value="all">Status</i>
+                        </option>
+                        <option value="all">All Statuses</option>
+                        <option style=value="1">Reported</option>
+                        <option style=value="2">Pending Action</option>
+                        <option style=value="3">In Progress</option>
+						<option style=value="4">Resolved</option>
+                    </select>
+
+
+    <!-- <th style = "width:20%">Status</th> -->
+
     <!-- <th style = "width:10%">Priority</th> --> 
-    <th style = "width:20%">
-	<button>Date<!--<p id = "dateBtn">--></button>
+
+    <th style = "width:19%">
+	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn">--></button>
+
 	<!-- <input type="button" id="button" name="Datebtn" value="Date" /th> -->
-	<th style = "width:20%">
+	<th style = "width:19%">
 	<!-- <div class="container"> -->
             <!-- <div class="row"> -->
                 <!-- <div class="col-sm-3"> -->
@@ -168,51 +187,103 @@ table, th, td {
 						<option value="3">Tripping Hazard</option>
 						<option value="4">Other</option>
                     </select>
-	<th style = "width:20%">
-	<input type="button" id="button" name="Locationbtn" value="Location" /th>
-	<th style = "width:20%%">Description</th>
-
-  </tr>
-  <!--This is code for a table that will list reports and database integration.-->
-  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
-<!--
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
-    authDomain: "epics-smart-city.firebaseapp.com",
-    databaseURL: "https://epics-smart-city.firebaseio.com",
-    projectId: "epics-smart-city",
-    storageBucket: "epics-smart-city.appspot.com",
-    messagingSenderId: "498032615483"
-  };
-  firebase.initializeApp(config);
-</script>
-
-<script src="smart_city/fire.js"></script> -->
-
-	
-	<div id = "includedContent"></div>
-	<script>
-	window.alert("Sample Text");
-	</script>
-<!--  	<script type = "html" src = "smart_city/epics.html"></script> 
 
 
-	
+	<th style = "width:19%">Location</th>
+	<!-- <input type="button" id="button" name="Locationbtn" value="Location" /th> -->
+	<th style = "width:19%%">Description</th>
+	<!-- <th style = "width:20%">
+	<input type="button" id="button" name="Locationbtn" value="Location" /th> -->
+	<!-- <th style = "width:20%%">Description</th> -->
 
+  <!-- </tr>
   <tr>
-    <td>
-	<script src = "databaseIntegration.html"></script>
-	<p id = "sample">database sample data</p></td>
-    <td>Sample text2</td>
+    <td>Sample text1</td>
+    <td>Sample text2</td> 
+
     <td>Sample text3</td>
 	<td>Sample text4</td>
 	<td>Sample text5</td>
+	<td>Sample text6</td>
+ -->
+	<!-- <td>Sample text6</td> -->
+	
+<!-- 	<thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead> -->
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Reported</td>
+                <td>System Architect</td>
+                <td>Pothole</td>
+                <td>61</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Resolved</td>
+                <td>Accountant</td>
+                <td>Traffic</td>
+                <td>63</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Pending Action</td>
+                <td>Junior Technical Author</td>
+                <td>Tripping Hazard</td>
+                <td>66</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>In Progress</td>
+                <td>Senior Javascript Developer</td>
+                <td>Other</td>
+                <td>22</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Resolved</td>
+                <td>Accountant</td>
+                <td>Traffic</td>
+                <td>33</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>In Progress</td>
+                <td>Integration Specialist</td>
+                <td>Pothole</td>
+                <td>61</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Reported</td>
+                <td>Sales Assistant</td>
+                <td>Tripping Hazard</td>
+                <td>59</td>
+                <td>$137,500</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Pending Action</td>
+                <td>Integration Specialist</td>
+                <td>Other</td>
+                <td>55</td>
+                <td>$327,900</td>
+  </tr>
 
-
-  </tr>-->
 </table>
 
 <!-- <p id = "dateBtn">

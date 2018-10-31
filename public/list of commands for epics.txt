@@ -2,19 +2,19 @@ List of useful commands for Github and Firebase:
 
 Pre-requisites:
 > Node.js is installed on your computer and can be run from Windows Command Prompt.
-> You have installed Github Desktop (or Git bash, whichever you prefer, though I will not cover commands on Git bash).
+> You have installed Github Desktop.
+> You have installed Git Bash.
 > Firebase CLI is installed on your computer.
 
 Firebase:
 
 > firebase serve = locally deploy website on your machine
+> firebase init = run this at the beginning in order to "tell" Firebase where the files you want to test are.
 -------------------------------------------
 DO NOT USE the "firebase deploy" command! 
 
 (Unless you are the design leader.)
 -------------------------------------------
-
-> firebase init = run this at the beginning in order to "tell" Firebase where the files you want to test are.
 	
 After you have run this command, select the project you are in by hitting the up or down arrow key.  
 So in our case, hit enter on the "epics-smartcity" option when it is highlighted. 
@@ -42,10 +42,20 @@ Github: (terminology)
 ALWAYS MAKE A SEPARATE BRANCH IF YOU WANT TO MAKE CHANGES OR ADD NEW FEATURES!  It is much easier to delete bad branches than to try retrieve lost 
 work on the master branch.
 -------------------------------------------
+Github Desktop features
+
 > commit = saves the changes you made on your computer to your specific branch
 > pull request = asks the repository owner (usually design leader) that the feature or fix is ready to be put onto the master branch
-> fetch origin (button on Github Desktop) = updates your local files with the files on Github master branch (usually not necessary)
+> fetch origin (button on Github Desktop) = (usually not necessary)
 > pull (usually indicated on Github Desktop) = updates your local files with the files on Github master branch (not to be confused with pull requests)
+> push origin (button on Github Desktop) = pushes the changes you previously commited to your branch online 
 
-Make sure that you pull from the origin because that usually means that there are big updates to the repository (I think).
+Github Desktop is a good tool for seeing what you are commiting and selecting what not to commit, however it is terrible at insuring that everyone's computer has the same code.  I would recommend Git Bash for this.
+-------------------------------------------
+Git Bash (commands)
 
+Git Bash is a terminal version of Github Desktop.  
+> git pull origin master = updates your local files with the files on Github master branch
+
+Further reference:
+https://git-scm.com/docs
