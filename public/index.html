@@ -4,12 +4,13 @@
     <title>Smart City</title>
     <!--References to the public directory-->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
-    <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+
 </head>
 
-<body onload="refresh(1)">
+
+
+<!--
+<body onload="refresh(1)">-->
 
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
@@ -49,11 +50,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
+
                     <select id="issue_select" class="custom-select">
+
 
                         <option selected disabled value="all">Issue</i>
                         </option>
                         <option value="all">All Issues</option>
+
 						<option value="1">Pothole</option>
 						<option value="2">Traffic</option>
 						<option value="3">Tripping Hazard</option>
@@ -74,7 +78,7 @@
                 </div>
                 <div class="col-sm-3">
                     <select id="date_select" class="custom-select">
-                        <option disabled selected value="all">From Data: </i>
+                        <option disabled selected value="all">From Date: </i>
                         </option>
                         <option value="all">All Dates</option>
                     </select>
@@ -90,19 +94,44 @@
         </div>
     </div>
     <div id="map"></div>
-<!--This is code for the file that contains the database integration.-->
 
-	<object name = "database" type = "text/html" data = "smart_city/epics.html"></object>
+
 	
     <script>
     </script>
     <script type="text/javascript" src="smart_city/public/smart_city.js"></script>
     <!--Script for the map-->
 	<!-- <string name= "google_maps_key" templateMergeStrategy="perserve translatable="false"></string> -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>
+	<script type = text/javascript src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>
 </body>
 
-<!--This is code for a table that will list reports-->
+<!--This is code for a table that will list reports and database integration.-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
+    <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	
+	
+	<!--References for database integration-->
+	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
+    authDomain: "epics-smart-city.firebaseapp.com",
+    databaseURL: "https://epics-smart-city.firebaseio.com",
+    projectId: "epics-smart-city",
+    storageBucket: "epics-smart-city.appspot.com",
+    messagingSenderId: "498032615483"
+  };
+  firebase.initializeApp(config);
+</script>
+	<script src="fire.js"></script>
+
+
+
+
 <style>
 table, th, td {
     border: 3px solid black;
@@ -124,10 +153,16 @@ table, th, td {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}	
+
+}
+	
+	
+	
+	<!-- This next section of code sets up the report reviewing part of the website. A table full of data separated into catagories are filtered by filters in the first row that correspond to the data type. For example, in the issue column, it can be filtered by issue.  -->
+
 	</style> 
 	
-	</th> -->
+	</th>
 	<th style = "width:5%">
 	<div class="checkbox">
                             <label>
@@ -144,6 +179,8 @@ table, th, td {
                         <option style=value="3">In Progress</option>
 						<option style=value="4">Resolved</option>
                     </select>
+
+    <!-- <th style = "width:20%">Status</th> -->
     <!-- <th style = "width:10%">Priority</th> --> 
     <th style = "width:19%">
 	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn">--></button>
@@ -154,18 +191,26 @@ table, th, td {
                 <!-- <div class="col-sm-3"> -->
                     <select id="issue_select" class="custom-select">
 
+
+  
                         <option selected disabled value="all">Issue</i>
                         </option>
                         <option value="all">All Issues</option>
+
 						<option value="1">Pothole</option>
 						<option value="2">Traffic</option>
 						<option value="3">Tripping Hazard</option>
 						<option value="4">Other</option>
                     </select>
+
 	<th style = "width:19%">Location</th>
 	<!-- <input type="button" id="button" name="Locationbtn" value="Location" /th> -->
 	<th style = "width:19%%">Description</th>
-  </tr>
+	<!-- <th style = "width:20%">
+	<input type="button" id="button" name="Locationbtn" value="Location" /th> -->
+	<!-- <th style = "width:20%%">Description</th> -->
+
+  <!-- </tr>
   <tr>
     <td>Sample text1</td>
     <td>Sample text2</td> 
@@ -173,14 +218,91 @@ table, th, td {
 	<td>Sample text4</td>
 	<td>Sample text5</td>
 	<td>Sample text6</td>
+ -->
+	<!-- <td>Sample text6</td> -->
+	
+<!-- 	<thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead> -->
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Reported</td>
+                <td>System Architect</td>
+                <td>Pothole</td>
+                <td>61</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Resolved</td>
+                <td>Accountant</td>
+                <td>Traffic</td>
+                <td>63</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Pending Action</td>
+                <td>Junior Technical Author</td>
+                <td>Tripping Hazard</td>
+                <td>66</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>In Progress</td>
+                <td>Senior Javascript Developer</td>
+                <td>Other</td>
+                <td>22</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Resolved</td>
+                <td>Accountant</td>
+                <td>Traffic</td>
+                <td>33</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>In Progress</td>
+                <td>Integration Specialist</td>
+                <td>Pothole</td>
+                <td>61</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Reported</td>
+                <td>Sales Assistant</td>
+                <td>Tripping Hazard</td>
+                <td>59</td>
+                <td>$137,500</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Pending Action</td>
+                <td>Integration Specialist</td>
+                <td>Other</td>
+                <td>55</td>
+                <td>$327,900</td>
   </tr>
 </table>
 
 <p id = "dateBtn">
-<script src = "">
+<script src = "smart_city/public/smart_city.js">
 function dateButtonFunction()
 {
-
+	date_filter(); //variable on the other file is Pothole_data (array)
 	document.getElementByID("dateBtn").innerHTML = "Date [by newest]";
 	document.getElementByID("dateBtn").innerHTML = "Date [by oldest]";
 

@@ -11,7 +11,7 @@ var allPotholes = [
     {
         month: "05",
         year: "2017",
-        street: "Grant St",
+        Issue: "Grant St",
         latlong: "40.426586, -86.910383",
         sev: 2,
     },
@@ -19,14 +19,14 @@ var allPotholes = [
     {
         month: "05",
         year: "2017",
-        street: "Grant St",
+        Issue: "Grant St",
         latlong: "40.422635, -86.910374",
         sev: 2,
     },
     {
         month: "05",
         year: "2017",
-        street: "Grant St",
+        Issue: "Grant St",
         latlong: "40.420462, -86.910372",
         sev: 1,
     },
@@ -34,55 +34,55 @@ var allPotholes = [
         month: "06",
         year: "2017",
         latlong: "40.424004, -86.916770",
-        street: "W State St",
+        Issue: "W State St",
         sev: 3,
     },
     {
         month: "06",
         year: "2017",
-        street: "W State St",
+        Issue: "W State St",
         latlong: "40.424361, -86.922291",
         sev: 3,
     },
     {
         month: "06",
         year: "2017",
-        street: "W State St",
+        Issue: "W State St",
         latlong: "40.424163, -86.913964",
         sev: 3,
-    } //another street
+    } //another Issue
     ,
     {
         month: "06",
         year: "2017",
-        street: "Cherry Ln",
+        Issue: "Cherry Ln",
         latlong: "40.438788, -86.918136",
         sev: 3,
     },
     {
         month: "06",
         year: "2017",
-        street: "Cherry Ln",
+        Issue: "Cherry Ln",
         latlong: "40.438788, -86.922770",
         sev: 1,
     }, {
         month: "06",
         year: "2017",
-        street: "Cherry Ln",
+        Issue: "Cherry Ln",
         latlong: "40.438870, -86.927856",
         sev: 1,
     },
     {
         month: "06",
         year: "2017",
-        street: "Cherry Ln",
+        Issue: "Cherry Ln",
         latlong: "40.438919, -86.927234",
         sev: 1,
     },
     {
         month: "06",
         year: "2017",
-        street: "Cherry Ln",
+        Issue: "Cherry Ln",
         latlong: "40.438690, -86.937276",
         sev: 1,
     }
@@ -91,21 +91,21 @@ var allPotholes = [
     {
         month: "04",
         year: "2017",
-        street: "Lindenberg Rd",
+        Issue: "Lindenberg Rd",
         latlong: "40.445782, -86.914865",
         sev: 1,
     },
     {
         month: "03",
         year: "2017",
-        street: "Lindenberg Rd",
+        Issue: "Lindenberg Rd",
         latlong: "40.445912, -86.917869",
         sev: 2,
     },
     {
         month: "04",
         year: "2017",
-        street: "Lindenberg Rd",
+        Issue: "Lindenberg Rd",
         latlong: "40.446108, -86.921130",
         sev: 3,
     }
@@ -156,7 +156,7 @@ var allPotholes_DA = [
 
         latlong: "40.424363, -86.913134",
         sev: 2,
-    } //another street
+    } //another Issue
     ,
     {
         month: "06",
@@ -225,7 +225,7 @@ function refresh(x) {
     if (x == 1 && App_checkbox.checked == true && Data_A_checkbox.checked == false && All_Data_checkbox.checked == false) {
         removing_items_dropdowns();
         date_dropdown_creator(allPotholes);
-        street_dropdown_creator(allPotholes);
+        Issue_dropdown_creator(allPotholes);
         Potholes_array = pothole_object_generator(allPotholes);
         draw_routes(Potholes_array, Potholes_array.length);
         severity_dropdown_creator();
@@ -240,7 +240,7 @@ function refresh(x) {
         removing_items_dropdowns();
         var new_Array = joined_data(allPotholes, allPotholes_DA);
         date_dropdown_creator(new_Array);
-        street_dropdown_creator(allPotholes);
+        Issue_dropdown_creator(allPotholes);
         Potholes_array = pothole_object_generator(allPotholes);
         draw_routes(Potholes_array, Potholes_array.length);
         Global_Function_Count++;
@@ -269,7 +269,7 @@ function refresh(x) {
 function removing_items_dropdowns() { //removes all items in the dropdown menus
     var date_dropdown_from = document.querySelector("#date_select");
     var sev_dropdown = document.querySelector("#sev");
-    var street_dropdown = document.querySelector("#street_select");
+    var Issue_dropdown = document.querySelector("#Issue_select");
     var date_dropdown_to = document.querySelector("#up_to_date");
     var i;
 
@@ -282,8 +282,8 @@ function removing_items_dropdowns() { //removes all items in the dropdown menus
         sev_dropdown.remove(i);
         i--;
     }
-    for (i = 2; i < street_dropdown.length; i++) {
-        street_dropdown.remove(i);
+    for (i = 2; i < Issue_dropdown.length; i++) {
+        Issue_dropdown.remove(i);
         i--;
     }
 }
@@ -309,7 +309,7 @@ function joined_data(App_Data, Data_A_Data) { //joins the two datasets. Needed f
 //         refresh(1);
 //     }
 // } //failed
-// function street_name_generator(Pothole_data ){//failed function to retreive street names
+// function Issue_name_generator(Pothole_data ){//failed function to retreive Issue names
 //   var Pothole_dataPH =  JSON.parse(JSON.stringify(Pothole_data));
 //   var geocoder = new google.maps.Geocoder;
 //      for(var i = 0; i<Pothole_dataPH.length ;i++){
@@ -321,10 +321,10 @@ function joined_data(App_Data, Data_A_Data) { //joins the two datasets. Needed f
 
 //         if (status === 'OK') {
 //             if(results[0]){
-//             Pothole_dataPH[i].street = results[0].formatted_address.split(" ")[1]+" "+results[0].formatted_address.split(" ")[2];
+//             Pothole_dataPH[i].Issue = results[0].formatted_address.split(" ")[1]+" "+results[0].formatted_address.split(" ")[2];
 //             }
 //             else if(results[1]){
-//              Pothole_dataPH[i].street = results[1].formatted_address.split(" ")[0]+" "+results[1].formatted_address.split(" ")[1];
+//              Pothole_dataPH[i].Issue = results[1].formatted_address.split(" ")[0]+" "+results[1].formatted_address.split(" ")[1];
 //             }
 
 
@@ -340,8 +340,8 @@ function joined_data(App_Data, Data_A_Data) { //joins the two datasets. Needed f
 function render_map(location) {
     //getting the zoom
     var zoom = 15;
-    var street_value = document.querySelector("#street_select").value;
-    if (street_value == "all") {
+    var Issue_value = document.querySelector("#Issue_select").value;
+    if (Issue_value == "all") {
         zoom = 14;
     }
     // init map
@@ -398,25 +398,25 @@ function draw_routes(Potholes, length) {
 //generates the required pothole array of object for the draw function
 function pothole_object_generator(Pothole_data) {
     var Date_index = new Array(); //holds the the indexes of the potholes that match the date
-    var Severity_index = new Array(); //severity of the street
-    var Street_index = new Array();
-    var Street_count = new Array(); //lenght of this array is the ammount of objects in the potholes array . The value of of each field will determine the amount of potholes in this street. 
-    var Street_info = new Array();
+    var Severity_index = new Array(); //severity of the Issue
+    var Issue_index = new Array();
+    var Issue_count = new Array(); //lenght of this array is the ammount of objects in the potholes array . The value of of each field will determine the amount of potholes in this Issue. 
+    var Issue_info = new Array();
     var Potholes = new Array();
     var PotholesPH = new Array();
-    var Street_names = new Array();
+    var Issue_names = new Array();
     //calls for the sorting functions
 
     Date_index = date_filter(Pothole_data);
     if ((Global_Function_Count == 1 && All_Data_checkbox.checked == true)) {
         for (var i = 0; i < Pothole_data.length; i++) {
-            Street_index[i] = true;
+            Issue_index[i] = true;
         }
     } else {
-        Street_info = street_filter(Pothole_data);
-        Street_index = Street_info[0];
-        Street_count = Street_info[1];
-        Street_names = Street_info[2];
+        Issue_info = Issue_filter(Pothole_data);
+        Issue_index = Issue_info[0];
+        Issue_count = Issue_info[1];
+        Issue_names = Issue_info[2];
     }
 
     //
@@ -426,31 +426,31 @@ function pothole_object_generator(Pothole_data) {
     var sev_avg;
     //
     //creating the array of objects
-    var street_count;
+    var Issue_count;
 
     var waypoint_count;
     if (Global_Function_Count == 0) {
-        for (var i = 0; i < Street_count.length; i++) {
+        for (var i = 0; i < Issue_count.length; i++) {
             PotholesPH[i] = new Object();
             PotholesPH[i] = {
                 travelMode: google.maps.TravelMode.WALKING,
                 waypoints: []
             }
-            street_count = 0;
+            Issue_count = 0;
             waypoint_count = 0;
             sev_avg = 0;
             var waypnt;
             for (var j = 0; j < Pothole_data.length; j++) {
-                if (Street_index[j] == true && Date_index[j] != true && Street_names[i] == Pothole_data[j].street) {
-                    Street_count[i] = Street_count[i] - 1;
+                if (Issue_index[j] == true && Date_index[j] != true && Issue_names[i] == Pothole_data[j].Issue) {
+                    Issue_count[i] = Issue_count[i] - 1;
                 }
-                if (Street_index[j] == true && Date_index[j] == true && Street_names[i] == Pothole_data[j].street) {
+                if (Issue_index[j] == true && Date_index[j] == true && Issue_names[i] == Pothole_data[j].Issue) {
 
                     sev_avg = sev_avg + Pothole_data[j].sev;
 
-                    if (street_count == 0) {
+                    if (Issue_count == 0) {
                         PotholesPH[i].origin = new google.maps.LatLng(parseFloat(Pothole_data[j].latlong.split(',')[0]), parseFloat(Pothole_data[j].latlong.split(',')[1]));
-                    } else if (street_count == (Street_count[i] - 1)) {
+                    } else if (Issue_count == (Issue_count[i] - 1)) {
                         PotholesPH[i].destination = new google.maps.LatLng(parseFloat(Pothole_data[j].latlong.split(',')[0]), parseFloat(Pothole_data[j].latlong.split(',')[1]));
                     } else {
 
@@ -462,12 +462,12 @@ function pothole_object_generator(Pothole_data) {
                         waypoint_count++;
                     }
 
-                    street_count++;
+                    Issue_count++;
 
                 }
             }
 
-            PotholesPH[i].sev = Math.round(sev_avg / street_count);
+            PotholesPH[i].sev = Math.round(sev_avg / Issue_count);
 
         }
 
@@ -475,32 +475,32 @@ function pothole_object_generator(Pothole_data) {
         for (i = 0; i < PotholesPH.length; i++) {
             if (PotholesPH[i].origin == null) {
                 PotholesPH.splice(i, 1);
-                Street_names.splice(i, 1);
+                Issue_names.splice(i, 1);
                 i--;
             }
         }
-        Potholes = severity_filter(PotholesPH, Street_names);
+        Potholes = severity_filter(PotholesPH, Issue_names);
     }
 
-    var location = center_location(Pothole_data, Date_index, Street_index, Street_names);
+    var location = center_location(Pothole_data, Date_index, Issue_index, Issue_names);
     if (Global_Function_Count == 0) {
         render_map(location);
     }
     //function to draw the markers should go here
 
-    marker_creator(Pothole_data, Pothole_data.length, Date_index, Street_index, Street_names);
+    marker_creator(Pothole_data, Pothole_data.length, Date_index, Issue_index, Issue_names);
 
     //create new map
 
     return Potholes
 }
 
-function severity_filter(Pothole_Array, Street_names) {
+function severity_filter(Pothole_Array, Issue_names) {
     var sev_selected = document.querySelector("#sev").value;
     for (var i = 0; i < Pothole_Array.length; i++) {
         if (Pothole_Array[i].sev != sev_selected && sev_selected != "all") {
             Pothole_Array.splice(i, 1);
-            Street_names.splice(i, 1); //needs to be spliced to  avoid valid streets to appear in this filtering
+            Issue_names.splice(i, 1); //needs to be spliced to  avoid valid Issues to appear in this filtering
             i--; //important step. 
         }
     }
@@ -541,92 +541,92 @@ function date_filter(Pothole_data) {
     return Date_index
 }
 
-function street_filter(Pothole_data) {
+function Issue_filter(Pothole_data) {
     var Pothole_dataPH = new Object();
     Pothole_dataPH = JSON.parse(JSON.stringify(Pothole_data));
-    var Street_count = new Array();
-    var Street_index = new Array();
-    var Street_names = new Array();
-    var Street_info = new Array(); //holds street count and street index
+    var Issue_count = new Array();
+    var Issue_index = new Array();
+    var Issue_names = new Array();
+    var Issue_info = new Array(); //holds Issue count and Issue index
     var index_count = 0;
     var count = 0;
-    var street_selected = document.querySelector("#street_select").value;
+    var Issue_selected = document.querySelector("#Issue_select").value;
     for (var k = 0; k < Pothole_dataPH.length; k++) {
-        if (Pothole_dataPH[k].street == street_selected || street_selected == "all") {
-            Street_index[k] = true;
+        if (Pothole_dataPH[k].Issue == Issue_selected || Issue_selected == "all") {
+            Issue_index[k] = true;
         } else {
-            Street_index[k] = false;
+            Issue_index[k] = false;
         }
     }
     for (var i = 0; i < Pothole_dataPH.length; i++) {
-        //determining the contents of street count
+        //determining the contents of Issue count
         count = 0;
         for (var j = i; j < Pothole_dataPH.length; j++) {
-            if (Pothole_dataPH[i].street == Pothole_dataPH[j].street) {
+            if (Pothole_dataPH[i].Issue == Pothole_dataPH[j].Issue) {
 
                 if (j != i) {
                     count++;
-                    Pothole_dataPH[j].street = NaN;
+                    Pothole_dataPH[j].Issue = NaN;
                 }
             }
         }
         if (count != 0) {
             count++;
-            Street_names[index_count] = Pothole_dataPH[i].street;
-            Street_count[index_count] = count;
+            Issue_names[index_count] = Pothole_dataPH[i].Issue;
+            Issue_count[index_count] = count;
             index_count++;
 
         }
     }
-    var length_street_count = Street_count.length;
-    for (var k = 0; k < length_street_count; k++) {
-        if (Street_count[k] != Street_count[k]) {
-            Street_count.splice(k, 1);
-            Street_names.splice(k, 1);
+    var length_Issue_count = Issue_count.length;
+    for (var k = 0; k < length_Issue_count; k++) {
+        if (Issue_count[k] != Issue_count[k]) {
+            Issue_count.splice(k, 1);
+            Issue_names.splice(k, 1);
             k--;
 
         }
     }
 
-    Street_info[0] = Street_index;
-    Street_info[1] = Street_count;
-    Street_info[2] = Street_names;
-    return Street_info;
+    Issue_info[0] = Issue_index;
+    Issue_info[1] = Issue_count;
+    Issue_info[2] = Issue_names;
+    return Issue_info;
 }
 
-function street_dropdown_creator(Pothole_data) { //creates the dropdown options for the street dropdown
+function Issue_dropdown_creator(Pothole_data) { //creates the dropdown options for the Issue dropdown
     //hard copy
     var Pothole_dataPH;
     Pothole_dataPH = JSON.parse(JSON.stringify(Pothole_data));
 
-    var Streets = new Array();
+    var Issues = new Array();
     for (var i = 0; i < Pothole_data.length; i++) {
         for (var j = i; j < Pothole_data.length; j++) {
-            if (j != i && Pothole_dataPH[i].street == Pothole_dataPH[j].street) {
-                Pothole_dataPH[j].street = NaN;
+            if (j != i && Pothole_dataPH[i].Issue == Pothole_dataPH[j].Issue) {
+                Pothole_dataPH[j].Issue = NaN;
             }
         }
     }
 
-    var street_count = 0;
+    var Issue_count = 0;
 
     for (i = 0; i < Pothole_data.length; i++) {
 
-        if (Pothole_dataPH[i].street == Pothole_dataPH[i].street) {
-            Streets[street_count] = Pothole_dataPH[i].street;
-            street_count++;
+        if (Pothole_dataPH[i].Issue == Pothole_dataPH[i].Issue) {
+            Issues[Issue_count] = Pothole_dataPH[i].Issue;
+            Issue_count++;
         }
     }
 
-    var street_option;
-    var street_txt;
-    var street_dropdown = document.querySelector("#street_select");
+    var Issue_option;
+    var Issue_txt;
+    var Issue_dropdown = document.querySelector("#Issue_select");
     //creating the dropdown
-    for (i = 0; i < Streets.length; i++) {
-        street_option = document.createElement("option");
-        street_option.value = Streets[i];
-        street_option.textContent = Streets[i];
-        street_dropdown.appendChild(street_option);
+    for (i = 0; i < Issues.length; i++) {
+        Issue_option = document.createElement("option");
+        Issue_option.value = Issues[i];
+        Issue_option.textContent = Issues[i];
+        Issue_dropdown.appendChild(Issue_option);
 
     }
 }
@@ -729,20 +729,20 @@ function date_dropdown_creator(Pothole_data) {
     }
 }
 
-function marker_creator(Pothole_data, length, Date_filter, Street_filter, Street_names) {
-    var street_selected = false;
-    for (var i = 0; i < Street_names.length; i++) {
-        if (Pothole_data[length - 1].street == Street_names[i] && Street_names[i]!=undefined) {
-            street_selected = true;
+function marker_creator(Pothole_data, length, Date_filter, Issue_filter, Issue_names) {
+    var Issue_selected = false;
+    for (var i = 0; i < Issue_names.length; i++) {
+        if (Pothole_data[length - 1].Issue == Issue_names[i] && Issue_names[i]!=undefined) {
+            Issue_selected = true;
         }
     }
 
     var current_severity = document.querySelector("#sev").value
-    if (Street_filter[length - 1] == true && Date_filter[length - 1] == true && (street_selected || Pothole_data[length - 1].sev == current_severity || current_severity == "all")) {
+    if (Issue_filter[length - 1] == true && Date_filter[length - 1] == true && (Issue_selected || Pothole_data[length - 1].sev == current_severity || current_severity == "all")) {
         debugger;
         var icon;
         if (Pothole_data[length - 1].sev == 1) {
-            icon = "CustomMarkers/1.png";
+            icon = "/CustomMarkers/1.png";
         } else if (Pothole_data[length - 1].sev == 2) {
             icon = "CustomMarkers/5.png";//change to 2 if severity changes to 10 again
         } else if (Pothole_data[length - 1].sev == 3) {
@@ -771,32 +771,32 @@ function marker_creator(Pothole_data, length, Date_filter, Street_filter, Street
         var marker = new google.maps.Marker({
             position: latlong,
             map: map,
-            title: Pothole_data[length - 1].street,
+            title: Pothole_data[length - 1].Issue,
             icon: icon,
         });
     }
     length = length - 1;
     if (length != 0) {
-        marker_creator(Pothole_data, length, Date_filter, Street_filter, Street_names);
+        marker_creator(Pothole_data, length, Date_filter, Issue_filter, Issue_names);
     }
 }
 
 //center location
-function center_location(Pothole_data, Date_filter, Street_filter, Street_names) { //creates an avarage location for the potholes to center the map
+function center_location(Pothole_data, Date_filter, Issue_filter, Issue_names) { //creates an avarage location for the potholes to center the map
     var current_severity = document.querySelector("#sev").value;
     var count_location = 0;
     var lat = 0;
     var long = 0;
-    var street_selected = false;
+    var Issue_selected = false;
     for (var j = 0; j < Pothole_data.length; j++) {
-        for (var i = 0; i < Street_names.length; i++) {
-            if (Pothole_data[j].street == Street_names[i]) {
-                street_selected = true;
+        for (var i = 0; i < Issue_names.length; i++) {
+            if (Pothole_data[j].Issue == Issue_names[i]) {
+                Issue_selected = true;
             }
         }
     }
     for (var i = 0; i < Pothole_data.length; i++) {
-        if (Street_filter[i] == true && Date_filter[i] == true && (street_selected || Pothole_data[i].sev == current_severity || current_severity == "all")) {
+        if (Issue_filter[i] == true && Date_filter[i] == true && (Issue_selected || Pothole_data[i].sev == current_severity || current_severity == "all")) {
             lat += parseFloat(Pothole_data[i].latlong.split(',')[0]);
             long += parseFloat(Pothole_data[i].latlong.split(',')[1]);
             count_location++;
@@ -842,10 +842,10 @@ document.querySelector("body").addEventListener("click", function() {
     click_count = 0;
 }, false);
 
-//STREET
-var selectBox_street = document.querySelector("#street_select");
+//Issue
+var selectBox_Issue = document.querySelector("#Issue_select");
 var click_count1 = 0;
-selectBox_street.addEventListener("click", function() {
+selectBox_Issue.addEventListener("click", function() {
     click_count1++;
     click_count = 0;
     click_count2 = 0;
