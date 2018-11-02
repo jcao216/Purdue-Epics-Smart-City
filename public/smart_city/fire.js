@@ -29,15 +29,25 @@ async function readAllReports(callbackFunction){
 //callback function example
 function callback1(reportsObject){
 console.log(reportsObject)
-window.alert('Got to fire.js');
-	//this generates a table that will render objects from within the reportsObject object
-	document.createElement("TABLE");
-document.write(reportsObject.reportsObject[0].status);
+var reportArray; //this array will hold the order for the report list row
+//var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
+window.prompt("Got to fire.js"); 
+//window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
+var reportStatus = reportsObject['-LPYmmnAnweAeGyOTG-a']['status'];
+var reportDate = reportsObject['-LPYmmnAnweAeGyOTG-a']['date'];
+var reportIssue = reportsObject['-LPYmmnAnweAeGyOTG-a']['reportType'];
+var reportLocation = reportsObject['-LPYmmnAnweAeGyOTG-a']['location'];
+var reportPicture = reportsObject['-LPYmmnAnweAeGyOTG-a']['pictures'];
+var reportDescription = reportsObject['-LPYmmnAnweAeGyOTG-a']['description'];
+var reportArray = [reportStatus, reportDate, reportIssue, reportLocation, reportPicture, reportDescription];
+window.prompt(reportArray);
+//window.prompt((Object.keys(reportsObject).length));
+addTableElement(reportArray);
 }
-
+//NEED TO FIND A WAY TO RETRIEVE KEYS TO DICTIONARY AND PUT KEYS INTO ARRAY SO THAT IT WILL BE EASIER TO AUTOMATE RETREIVING ELEMENTS
 
 //Sample code for adding table elements automatically
-function myFunction() {
+function addTableElement() {
     var x = document.createElement("TABLE");
     x.setAttribute("id", "myTable");
     document.body.appendChild(x);

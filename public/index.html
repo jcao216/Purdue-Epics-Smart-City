@@ -2,13 +2,13 @@
 
 <head>
     <title>Smart City</title>
-	<script src = "jquery.js"></script>
+	<!--<script src = "jquery.js"></script>
 	<script> 
     $(document).ready(function(){
       $("#includedContent").load('smart_city/epics.html'); 
     });
 	
-    </script> 
+    </script> -->
 </head>
 
 <!--<body onload="refresh(1)">-->
@@ -173,12 +173,13 @@ table, th, td {
 	<th style = "width:20%%">Description</th>
 
   </tr>
-  <!--This is code for a table that will list reports and database integration.-->
-  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
+<!--This is code for a table that will list reports and database integration. -->
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
-<!--
+<body>
 <script>
   // Initialize Firebase
+  var alert = window.alert("Initialized Firebase");
   var config = {
     apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
     authDomain: "epics-smart-city.firebaseapp.com",
@@ -189,19 +190,20 @@ table, th, td {
   };
   firebase.initializeApp(config);
 </script>
-
-<script src="smart_city/fire.js"></script> -->
-
-	
-	<div id = "includedContent"></div>
-	<script>
-	window.alert("Sample Text");
+<script src="./smart_city/fire.js"></script>
+<!--
+</body>
+	<div class = "includedContent"></div>
+	<div class = "includedContent2"></div>
+	<script src = "//code.jquery.com/jquery-3.3.1.js"></script>
+	<script type = "text/javascript">
+	function includeHTMLfile() {
+			includedContent.load("smart_city/epics.html");
+			window.alert("Sample Text");
+		}
 	</script>
-<!--  	<script type = "html" src = "smart_city/epics.html"></script> 
-
-
-	
-
+	<!--<script type ="html" src = "smart_city\epics.html"></script>-->
+<!--
   <tr>
     <td>
 	<script src = "databaseIntegration.html"></script>
@@ -212,9 +214,9 @@ table, th, td {
 	<td>Sample text5</td>
 
 
-  </tr>-->
+  </tr>
 </table>
-
+-->
 <!-- <p id = "dateBtn">
 <script src = "smart_city/public/smart_city.js">
 function dateButtonFunction()
