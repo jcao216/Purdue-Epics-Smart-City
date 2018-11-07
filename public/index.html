@@ -2,13 +2,9 @@
 
 <head>
     <title>Smart City</title>
-	<!--<script src = "jquery.js"></script>
-	<script> 
-    $(document).ready(function(){
-      $("#includedContent").load('smart_city/epics.html'); 
-    });
-	
-    </script> -->
+	<script src = "jquery.js"></script>
+
+    <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid">
 </head>
 
 <!--<body onload="refresh(1)">-->
@@ -54,8 +50,7 @@
 
                     <select id="issue_select" class="custom-select">
 
-
-                        <option selected disabled value="all">Issue</i>
+                        <option selected disabled value="all" style="border:2px solid Black;" >Issue</i>
                         </option>
                         <option value="all">All Issues</option>
 
@@ -68,7 +63,7 @@
                 </div>
                 <div class="col-sm-3">
                     <select class="custom-select" id="status">
-                        <option selected disabled value="all">Status</i>
+                        <option selected disabled value="all" style="border:2px solid Black;">Status</i>
                         </option>
                         <option value="all">All Statuses</option>
                         <option style=value="1">Reported</option>
@@ -79,7 +74,7 @@
                 </div>
                 <div class="col-sm-3">
                     <select id="date_select" class="custom-select">
-                        <option disabled selected value="all">From Date: </i>
+                        <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
                         </option>
                         <option value="all">All Dates</option>
                     </select>
@@ -87,7 +82,7 @@
                 </div>
                 <div class="col-sm-3">
                     <select id="up_to_date" class="custom-select">
-                        <option disabled selected value="all">To Date: </i>
+                        <option disabled selected value="all" style="border:2px solid Black;">To Date: </i>
                         </option>
                     </select>
                 </div>
@@ -108,7 +103,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.4237, lng: -86.9212},
-          zoom: 15
+          zoom: 13
         });
       }
     </script>
@@ -145,9 +140,8 @@ table, th, td {
 }
 
 	</style> 
-	</th>
+	</th>-->
 
--->
 	<th style = "width:5%">
 	<div class="checkbox">
                             <label>
@@ -164,6 +158,7 @@ table, th, td {
                         <option style=value="3">In Progress</option>
 						<option style=value="4">Resolved</option>
                     </select>
+
 
 
     <th style = "width:20%">Status</th>
@@ -188,6 +183,7 @@ table, th, td {
 						<option value="3">Tripping Hazard</option>
 						<option value="4">Other</option>
                     </select>
+
 	<th style = "width:20%">
 	<input type="button" id="button" name="Locationbtn" value="Location" /th>
 	<th style = "width:20%%">Description</th>
@@ -307,7 +303,148 @@ table, th, td {
                 <td>55</td>
                 <td>$327,900</td>
   </tr>
+
 </table>
+<html>
+        <head>
+    <title></title>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
+        </head>
+        <body>
+    <section class="container">
+    
+        <h2 style="color:#34738f;" ><center>Data</center></h2>
+    
+        <center><input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter" />
+      
+      <!--This creates the dropdown options-->
+      <select type="search" class="select-table-filter" data-table="order-table"><center>
+
+        <option value="">All Issues</option>  
+        <option value="Pothole">Pothole</option>  
+        <option value="Tripping Hazard">Tripping Hazard</option>
+        <option value="Traffic Light">Traffic Light</option>
+        <option value="Other">Other</option>
+
+      <select>
+    
+        <table class="order-table" width = "1000" >
+            <thead>
+                <tr>
+                    <th >Street</th>
+                    <th>Issue</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>East Randall Mill Dr.</td>
+                    <td>Pothole</td>
+                    <td>10-1-18</td>
+                </tr>
+                <tr>
+                    <td>S. Mountainview St.</td>
+                    <td>Pothole</td>
+                    <td>4-2-18</td>
+                </tr>
+                <tr>
+                    <td>Bayberry Street</td>
+                    <td>Tripping Hazard</td>
+                    <td>3-20-18</td>
+                </tr>
+                <tr>
+                    <td>West Orchard Street</td>
+                    <td>Tripping Hazard</td>
+                    <td>3-25-18</td>
+                </tr>
+                <tr>
+                    <td>Oklahoma Street</td>
+                    <td>Traffic Light</td>
+                    <td>7-20-18</td>
+                </tr>
+                <tr>
+                    <td>East Buttonwood St.</td>
+                    <td>Traffic Light</td>
+                    <td>6-4-18</td>
+                </tr>
+                <tr>
+                    <td>East Buttonwood St.</td>
+                    <td>Other</td>
+                    <td>6-4-18</td>
+                </tr>
+            </tbody>
+        </table>
+<!--This is the filter script-->
+    <script>
+        (function(document) {
+            'use strict';
+        
+            var LightTableFilter = (function(Arr) {
+        
+                var _input;
+            var _select;
+        
+                function _onInputEvent(e) {
+                    _input = e.target;
+                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function(table) {
+                        Arr.forEach.call(table.tBodies, function(tbody) {
+                            Arr.forEach.call(tbody.rows, _filter);
+                        });
+                    });
+                }
+            
+                function _onSelectEvent(e) {
+                    _select = e.target;
+                    var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function(table) {
+                        Arr.forEach.call(table.tBodies, function(tbody) {
+                            Arr.forEach.call(tbody.rows, _filterSelect);
+                        });
+                    });
+                }
+        
+                function _filter(row) {
+              
+                    var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+        
+                }
+            
+                function _filterSelect(row) {
+             
+                    var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+                    row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+        
+                }
+        
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('light-table-filter');
+                        var selects = document.getElementsByClassName('select-table-filter');
+                        Arr.forEach.call(inputs, function(input) {
+                            input.oninput = _onInputEvent;
+                        });
+                        Arr.forEach.call(selects, function(select) {
+                 select.onchange  = _onSelectEvent;
+                        });
+                    }
+                };
+            })(Array.prototype);
+        
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                    LightTableFilter.init();
+                }
+            });
+        
+        })(document);
+     </script>
+
+    </section>
+    
+        </body>
+    </html>
 
 <!-- <p id = "dateBtn">
 <script src = "smart_city/public/smart_city.js">
