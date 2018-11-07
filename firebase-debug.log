@@ -54,3 +54,4 @@
 [debug] [2018-10-31T15:38:27.861Z] <<< HTTP RESPONSE 200
 [info] i  hosting[epics-smart-city-website]: Serving hosting files from: public
 [info] +  hosting[epics-smart-city-website]: Local server: http://localhost:5000
+
