@@ -86,7 +86,7 @@ function addTableElement(reportArray) {
 	//var pictureCell = document.createTextNode(reportArray['']);
 	var descriptionCell = document.createTextNode(reportArray[4]);
 	x.appendChild(statusCell);
-	x.appendChild(dateCell);
+	y.appendChild(dateCell);
 	z.appendChild(issueCell);
 	a1.appendChild(locationCell);
 	a2.appendChild(descriptionCell);
