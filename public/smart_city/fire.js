@@ -29,16 +29,42 @@ async function readAllReports(callbackFunction){
 //callback function example
 function callback1(reportsObject){
 console.log(reportsObject)
-window.alert('Got to fire.js');
-	//this generates a table that will render objects from within the reportsObject object
-	document.createElement("TABLE");
-document.write(reportsObject.reportsObject[0].status);
-}
 
+//var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
+window.prompt("Got to fire.js"); 
+//window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
+//-LQZd7yuBHtGW-EqSsTS
+var reportStatus = reportsObject['-LQZd7yuBHtGW-EqSsTS']['status'];
+var reportDate = reportsObject['-LQZd7yuBHtGW-EqSsTS']['timeStamp'];
+var reportIssue = reportsObject['-LQZd7yuBHtGW-EqSsTS']['type'];
+var reportLocation2 = reportsObject['-LQZd7yuBHtGW-EqSsTS']['longitude'];
+var reportLocation1 = reportsObject['-LQZd7yuBHtGW-EqSsTS']['latitude'];
+var reportPicture = reportsObject['-LQZd7yuBHtGW-EqSsTS']['encodedImage'];
+var reportDescription = reportsObject['-LQZd7yuBHtGW-EqSsTS']['description'];
+var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
+/**
+var reportStatus1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['status'];
+var reportDate1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['date'];
+var reportIssue1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['reportType'];
+var reportLocation1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['location'];
+var reportPicture1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['pictures'];
+var reportDescription1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['description'];
+var reportArray1 = [reportStatus1, reportDate1, reportIssue1, reportLocation1, reportPicture1, reportDescription1];**/
+window.prompt(reportArray);
+//window.prompt((Object.keys(reportsObject).length));
+addTableElement(reportArray);
+//addTableElement(reportArray1);
+}
+//NEED TO FIND A WAY TO RETRIEVE KEYS TO DICTIONARY AND PUT KEYS INTO ARRAY SO THAT IT WILL BE EASIER TO AUTOMATE RETREIVING ELEMENTS
 
 //Sample code for adding table elements automatically
-function myFunction() {
+function addTableElement(reportArray) {
     var x = document.createElement("TABLE");
+    var y = document.createElement("TABLE");
+    var z = document.createElement("TABLE");
+    var a1 = document.createElement("TABLE");
+	var a2 = document.createElement("TABLE");
+	/**
     x.setAttribute("id", "myTable");
     document.body.appendChild(x);
 
@@ -49,7 +75,27 @@ function myFunction() {
     var z = document.createElement("TD");
     var t = document.createTextNode("cell");
     z.appendChild(t);
-    document.getElementById("myTr").appendChild(z);
+    document.getElementById("myTr").appendChild(z);**/
+	//console.log(reportArray[0]);
+	//var newRow = newRow.insertRow(1);
+	//var newCell = newRow.insertCell(0);
+	var statusCell = document.createTextNode(reportArray[0]);
+	var dateCell = document.createTextNode(reportArray[1]);
+	var issueCell = document.createTextNode(reportArray[2]);
+	var locationCell = document.createTextNode(reportArray[3]);
+	//var pictureCell = document.createTextNode(reportArray['']);
+	var descriptionCell = document.createTextNode(reportArray[4]);
+	x.appendChild(statusCell);
+	x.appendChild(dateCell);
+	z.appendChild(issueCell);
+	a1.appendChild(locationCell);
+	a2.appendChild(descriptionCell);
+	document.body.appendChild(x);
+	document.body.appendChild(y);
+	document.body.appendChild(z);
+	document.body.appendChild(a1);
+	document.body.appendChild(a2);
+	//document.body.appendChild(x);
 }
 
 
