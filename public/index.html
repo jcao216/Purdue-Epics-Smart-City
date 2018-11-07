@@ -1,45 +1,16 @@
 <!DOCTYPE html>
 
-<!-- <div id="output"></div>
-<script src="node_modules/express/lib/express.js"></script> -->
-<!-- <script>
-  let people = ['geddy', 'neil', 'alex'],
-      html = ejs.render
-  // With jQuery:
-  $('#output').html(html);
-  // Vanilla JS:
-  document.getElementById('output').innerHTML = 'smart_city_homepage_temp.html';
-</script> -->
-
-<!-- <script>
-      'smart_city/smart_city_homepage_temp.html;
-</script>
-
-<html>
-	<div id = "main"></div>
-</html>
-
-<script src="">
-<script> -->
-
-
-
-
-<html>
-
 <head>
     <title>Smart City</title>
-    <!--References to the public directory-->
+	<script src = "jquery.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+    <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid">
 </head>
 
-<body onload="refresh(1)">
-
+<!--<body onload="refresh(1)">-->
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
+		<body background="https://upload.wikimedia.org/wikipedia/commons/0/07/Lafayette_skyline_from_West_Lafayette.png">
             <div class="col-sm-2">
                 <p>Purdue EPICS</p>
             </div>
@@ -76,27 +47,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    <select id="street_select" class="custom-select">
 
-                        <option selected disabled value="all">Street</i>
+                    <select id="issue_select" class="custom-select">
+
+                        <option selected disabled value="all" style="border:2px solid Black;" >Issue</i>
                         </option>
-                        <option value="all">All Streets</option>
+                        <option value="all">All Issues</option>
+
+						<option value="1">Pothole</option>
+						<option value="2">Traffic</option>
+						<option value="3">Tripping Hazard</option>
+						<option value="4">Other</option>
                     </select>
 
                 </div>
                 <div class="col-sm-3">
-                    <select class="custom-select" id="sev">
-                        <option selected disabled value="all">Severity</i>
+                    <select class="custom-select" id="status">
+                        <option selected disabled value="all" style="border:2px solid Black;">Status</i>
                         </option>
-                        <option value="all">All Severities</option>
-                        <option style="background: #8cf792" value="1"> Minor</option>
-                        <option style="background: #defc58" value="2">Moderate</option>
-                        <option style="background: #8e0101  " value="3">Severe</option>
+                        <option value="all">All Statuses</option>
+                        <option style=value="1">Reported</option>
+                        <option style=value="2">Pending Action</option>
+                        <option style=value="3">In Progress</option>
+						<option style=value="4">Resolved</option>
                     </select>
                 </div>
                 <div class="col-sm-3">
                     <select id="date_select" class="custom-select">
-                        <option disabled selected value="all">From Data: </i>
+                        <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
                         </option>
                         <option value="all">All Dates</option>
                     </select>
@@ -104,7 +82,7 @@
                 </div>
                 <div class="col-sm-3">
                     <select id="up_to_date" class="custom-select">
-                        <option disabled selected value="all">To Date: </i>
+                        <option disabled selected value="all" style="border:2px solid Black;">To Date: </i>
                         </option>
                     </select>
                 </div>
@@ -113,81 +91,369 @@
     </div>
     <div id="map"></div>
 
+
+	
     <script>
     </script>
-    <script type="text/javascript" src="smart_city/public/smart_city.js"></script>
+    <!--<script type="text/javascript" src="smart_city/public/smart_city.js"></script>-->
     <!--Script for the map-->
-<!--     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdOlsUiADWmvISughPQMBKuqmC-ufbnLg" async defer></script> -->
 	<!-- <string name= "google_maps_key" templateMergeStrategy="perserve translatable="false"></string> -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-S5SFeNnUO05E3jcugDrfB910L9_32M8" async defer></script>
-</body>
-
-</html>
-
-
-<!-- <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
- <!-- update the version number as needed -->
-<!--
- <script defer src="/__/firebase/5.4.2/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-<!--     <script defer src="/__/firebase/5.4.2/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.4.2/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.4.2/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.4.2/firebase-storage.js"></script> -->
-    <!-- initialize the SDK after all desired features are loaded -->
- <!--   <script defer src="/__/firebase/init.js"></script> -->
-<!--
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head> -->
-<!--
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p> -->
-<!--
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.4237, lng: -86.9212},
+          zoom: 13
+        });
+      }
     </script>
-  </body>
-</html> --->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo&callback=initMap"
+    async defer></script>
+	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>-->
+</body>
+<br></br>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
+    <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<style>
+table, th, td {
+    border: 6px solid black;
+}
+</style>
+<table style="width:100%">
+  <tr>
+<!-- 	<th style = "width = 2%">	
+ 	<style>
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+	</style> 
+	</th>-->
+
+	<th style = "width:5%">
+	<div class="checkbox">
+                            <label>
+                                <input checked="true" id="App_check" type="checkbox"
+                            </label>
+                        </div>
+    <th style = "width:19%">
+	<select class="custom-select" id="status">
+                        <option selected disabled value="all">Status</i>
+                        </option>
+                        <option value="all">All Statuses</option>
+                        <option style=value="1">Reported</option>
+                        <option style=value="2">Pending Action</option>
+                        <option style=value="3">In Progress</option>
+						<option style=value="4">Resolved</option>
+                    </select>
+
+
+
+    <th style = "width:20%">Status</th>
+
+    <!-- <th style = "width:10%">Priority</th> --> 
+
+    <th style = "width:19%">
+	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn">--></button>
+
+	<!-- <input type="button" id="button" name="Datebtn" value="Date" /th> -->
+	<th style = "width:19%">
+	<!-- <div class="container"> -->
+            <!-- <div class="row"> -->
+                <!-- <div class="col-sm-3"> -->
+                    <select id="issue_select" class="custom-select">
+                        <option selected disabled value="all">Issue</i>
+                        </option>
+                        <option value="all">All Issues</option>
+
+						<option value="1">Pothole</option>
+						<option value="2">Traffic</option>
+						<option value="3">Tripping Hazard</option>
+						<option value="4">Other</option>
+                    </select>
+
+	<th style = "width:20%">
+	<input type="button" id="button" name="Locationbtn" value="Location" /th>
+	<th style = "width:20%%">Description</th>
+
+  </tr>
+<!--This is code for a table that will list reports and database integration. -->
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+<body>
+<script>
+  // Initialize Firebase
+  var alert = window.alert("Initialized Firebase");
+  var config = {
+    apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
+    authDomain: "epics-smart-city.firebaseapp.com",
+    databaseURL: "https://epics-smart-city.firebaseio.com",
+    projectId: "epics-smart-city",
+    storageBucket: "epics-smart-city.appspot.com",
+    messagingSenderId: "498032615483"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="./smart_city/fire.js"></script>
+<!--
+
+	<th style = "width:19%">Location</th>
+	<input type="button" id="button" name="Locationbtn" value="Location" /th>
+	<th style = "width:19%%">Description</th>-->
+	<!-- <th style = "width:20%">
+	<input type="button" id="button" name="Locationbtn" value="Location" /th> -->
+	<!-- <th style = "width:20%%">Description</th> -->
+
+  <!-- </tr>
+  <tr>
+    <td>Sample text1</td>
+    <td>Sample text2</td> 
+
+    <td>Sample text3</td>
+	<td>Sample text4</td>
+	<td>Sample text5</td>
+	<td>Sample text6</td>
+ -->
+	<!-- <td>Sample text6</td> -->
+	
+<!-- 	<thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead> -->
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Reported</td>
+                <td>System Architect</td>
+                <td>Pothole</td>
+                <td>61</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Resolved</td>
+                <td>Accountant</td>
+                <td>Traffic</td>
+                <td>63</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Pending Action</td>
+                <td>Junior Technical Author</td>
+                <td>Tripping Hazard</td>
+                <td>66</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>In Progress</td>
+                <td>Senior Javascript Developer</td>
+                <td>Other</td>
+                <td>22</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Resolved</td>
+                <td>Accountant</td>
+                <td>Traffic</td>
+                <td>33</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>In Progress</td>
+                <td>Integration Specialist</td>
+                <td>Pothole</td>
+                <td>61</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Reported</td>
+                <td>Sales Assistant</td>
+                <td>Tripping Hazard</td>
+                <td>59</td>
+                <td>$137,500</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Pending Action</td>
+                <td>Integration Specialist</td>
+                <td>Other</td>
+                <td>55</td>
+                <td>$327,900</td>
+  </tr>
+
+</table>
+<html>
+        <head>
+    <title></title>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
+        </head>
+        <body>
+    <section class="container">
+    
+        <h2 style="color:#34738f;" ><center>Data</center></h2>
+    
+        <center><input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter" />
+      
+      <!--This creates the dropdown options-->
+      <select type="search" class="select-table-filter" data-table="order-table"><center>
+
+        <option value="">All Issues</option>  
+        <option value="Pothole">Pothole</option>  
+        <option value="Tripping Hazard">Tripping Hazard</option>
+        <option value="Traffic Light">Traffic Light</option>
+        <option value="Other">Other</option>
+
+      <select>
+    
+        <table class="order-table" width = "1000" >
+            <thead>
+                <tr>
+                    <th >Street</th>
+                    <th>Issue</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>East Randall Mill Dr.</td>
+                    <td>Pothole</td>
+                    <td>10-1-18</td>
+                </tr>
+                <tr>
+                    <td>S. Mountainview St.</td>
+                    <td>Pothole</td>
+                    <td>4-2-18</td>
+                </tr>
+                <tr>
+                    <td>Bayberry Street</td>
+                    <td>Tripping Hazard</td>
+                    <td>3-20-18</td>
+                </tr>
+                <tr>
+                    <td>West Orchard Street</td>
+                    <td>Tripping Hazard</td>
+                    <td>3-25-18</td>
+                </tr>
+                <tr>
+                    <td>Oklahoma Street</td>
+                    <td>Traffic Light</td>
+                    <td>7-20-18</td>
+                </tr>
+                <tr>
+                    <td>East Buttonwood St.</td>
+                    <td>Traffic Light</td>
+                    <td>6-4-18</td>
+                </tr>
+                <tr>
+                    <td>East Buttonwood St.</td>
+                    <td>Other</td>
+                    <td>6-4-18</td>
+                </tr>
+            </tbody>
+        </table>
+<!--This is the filter script-->
+    <script>
+        (function(document) {
+            'use strict';
+        
+            var LightTableFilter = (function(Arr) {
+        
+                var _input;
+            var _select;
+        
+                function _onInputEvent(e) {
+                    _input = e.target;
+                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function(table) {
+                        Arr.forEach.call(table.tBodies, function(tbody) {
+                            Arr.forEach.call(tbody.rows, _filter);
+                        });
+                    });
+                }
+            
+                function _onSelectEvent(e) {
+                    _select = e.target;
+                    var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+                    Arr.forEach.call(tables, function(table) {
+                        Arr.forEach.call(table.tBodies, function(tbody) {
+                            Arr.forEach.call(tbody.rows, _filterSelect);
+                        });
+                    });
+                }
+        
+                function _filter(row) {
+              
+                    var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+        
+                }
+            
+                function _filterSelect(row) {
+             
+                    var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+                    row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+        
+                }
+        
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('light-table-filter');
+                        var selects = document.getElementsByClassName('select-table-filter');
+                        Arr.forEach.call(inputs, function(input) {
+                            input.oninput = _onInputEvent;
+                        });
+                        Arr.forEach.call(selects, function(select) {
+                 select.onchange  = _onSelectEvent;
+                        });
+                    }
+                };
+            })(Array.prototype);
+        
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                    LightTableFilter.init();
+                }
+            });
+        
+        })(document);
+     </script>
+
+    </section>
+    
+        </body>
+    </html>
+
+<!-- <p id = "dateBtn">
+<script src = "smart_city/public/smart_city.js">
+function dateButtonFunction()
+{
+	date_filter(); //variable on the other file is Pothole_data (array)
+	document.getElementByID("dateBtn").innerHTML = "Date [by newest]";
+	document.getElementByID("dateBtn").innerHTML = "Date [by oldest]";
+
+}
+</script> -->
+</html>

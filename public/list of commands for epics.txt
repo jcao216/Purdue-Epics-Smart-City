@@ -1,0 +1,61 @@
+List of useful commands for Github and Firebase:
+
+Pre-requisites:
+> Node.js is installed on your computer and can be run from Windows Command Prompt.
+> You have installed Github Desktop.
+> You have installed Git Bash.
+> Firebase CLI is installed on your computer.
+
+Firebase:
+
+> firebase serve = locally deploy website on your machine
+> firebase init = run this at the beginning in order to "tell" Firebase where the files you want to test are.
+-------------------------------------------
+DO NOT USE the "firebase deploy" command! 
+
+(Unless you are the design leader.)
+-------------------------------------------
+	
+After you have run this command, select the project you are in by hitting the up or down arrow key.  
+So in our case, hit enter on the "epics-smartcity" option when it is highlighted. 
+Then, firebase will ask for configuration.  
+Use up and down arrow keys and select the "Hosting" option using the space bar.  This will allow you to deploy the files locally (on your computer only).
+
+Once the database is running, also select the "Database" option.
+Hit enter to confirm your options.
+
+Hit enter again to choose the "public" folder as the default folder to run.
+
+Hit the "n" key and then enter to any of the other questions that appear.
+-------------------------------------------
+DO NOT ALLOW FIREBASE TO OVERWRITE ANY FILES! 
+(Warning in effect until further notice.)
+-------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Github: (terminology)
+ 
+> repository = consists of all of the files that are shown to you on Github
+> branch = literally what it sounds like; a branch off of the master branch (you can as many changes as you want in your own branch)
+
+-------------------------------------------
+ALWAYS MAKE A SEPARATE BRANCH IF YOU WANT TO MAKE CHANGES OR ADD NEW FEATURES!  It is much easier to delete bad branches than to try retrieve lost 
+work on the master branch.
+-------------------------------------------
+Github Desktop features
+
+> commit = saves the changes you made on your computer to your specific branch
+> pull request = asks the repository owner (usually design leader) that the feature or fix is ready to be put onto the master branch
+> fetch origin (button on Github Desktop) = (usually not necessary)
+> pull (usually indicated on Github Desktop) = updates your local files with the files on Github master branch (not to be confused with pull requests)
+> push origin (button on Github Desktop) = pushes the changes you previously commited to your branch online 
+
+Github Desktop is a good tool for seeing what you are commiting and selecting what not to commit, however it is terrible at insuring that everyone's computer has the same code.  I would recommend Git Bash for this.
+-------------------------------------------
+Git Bash (commands)
+
+Git Bash is a terminal version of Github Desktop.  
+> git pull origin master = updates your local files with the files on Github master branch
+
+Further reference:
+https://git-scm.com/docs
