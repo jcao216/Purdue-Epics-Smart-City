@@ -31,17 +31,22 @@ function callback1(reportsObject){
 console.log(reportsObject)
 
 //var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
-window.prompt("Got to fire.js"); 
+var keyArray = Object.keys(reportsObject);
+var keyArrayLength = Object.keys(reportsObject).length;
+//window.prompt(keyArrayLength); 
 //window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
-//-LQZd7yuBHtGW-EqSsTS
-var reportStatus = reportsObject['-LQZd7yuBHtGW-EqSsTS']['status'];
-var reportDate = reportsObject['-LQZd7yuBHtGW-EqSsTS']['timeStamp'];
-var reportIssue = reportsObject['-LQZd7yuBHtGW-EqSsTS']['type'];
-var reportLocation2 = reportsObject['-LQZd7yuBHtGW-EqSsTS']['longitude'];
-var reportLocation1 = reportsObject['-LQZd7yuBHtGW-EqSsTS']['latitude'];
-var reportPicture = reportsObject['-LQZd7yuBHtGW-EqSsTS']['encodedImage'];
-var reportDescription = reportsObject['-LQZd7yuBHtGW-EqSsTS']['description'];
-var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
+//-LQZd7yuBHtGW
+for (i = 0; i<= keyArrayLength; i = i + 1){
+	var reportStatus = reportsObject[keyArray[i]]['status'];
+	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
+	var reportIssue = reportsObject[keyArray[i]]['type'];
+	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
+	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
+	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
+	var reportDescription = reportsObject[keyArray[i]]['description'];
+	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
+	window.prompt(reportArray); 
+}
 /**
 var reportStatus1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['status'];
 var reportDate1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['date'];
