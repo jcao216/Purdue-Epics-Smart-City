@@ -3,14 +3,14 @@
 <head>
     <title>Smart City</title>
 	<script src = "jquery.js"></script>
-
     <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid">
 </head>
 
 <!--<body onload="refresh(1)">-->
+<!-- <body background="https://upload.wikimedia.org/wikipedia/commons/0/07/Lafayette_skyline_from_West_Lafayette.png"> -->
+<body>
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
-		<body background="https://upload.wikimedia.org/wikipedia/commons/0/07/Lafayette_skyline_from_West_Lafayette.png">
             <div class="col-sm-2">
                 <p>Purdue EPICS</p>
             </div>
@@ -44,6 +44,7 @@
             </div>
         </div>
         <!--<button onclick="change_mode()">Specific data</button>-->
+		<!----------------------------------
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -87,9 +88,9 @@
                     </select>
                 </div>
             </div>
-        </div>
+        </div> --------------->
     </div>
-    <div id="map"></div>
+    <div id="map" style = "width:100%" align = "center"></div>
 
 
 	
@@ -103,7 +104,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.4237, lng: -86.9212},
-          zoom: 13
+          zoom: 15
         });
       }
     </script>
@@ -141,7 +142,8 @@ table, th, td {
 
 	</style> 
 	</th>-->
-
+<!--
+	<This is the hardcoded category section.>
 	<th style = "width:5%">
 	<div class="checkbox">
                             <label>
@@ -164,15 +166,16 @@ table, th, td {
     <th style = "width:20%">Status</th>
 
     <!-- <th style = "width:10%">Priority</th> --> 
-
+<!--
     <th style = "width:19%">
 	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn">--></button>
 
 	<!-- <input type="button" id="button" name="Datebtn" value="Date" /th> -->
+	<!--
 	<th style = "width:19%">
 	<!-- <div class="container"> -->
             <!-- <div class="row"> -->
-                <!-- <div class="col-sm-3"> -->
+                <!-- <div class="col-sm-3">
                     <select id="issue_select" class="custom-select">
                         <option selected disabled value="all">Issue</i>
                         </option>
@@ -188,14 +191,14 @@ table, th, td {
 	<input type="button" id="button" name="Locationbtn" value="Location" /th>
 	<th style = "width:20%%">Description</th>
 
-  </tr>
+  </tr>-->
 <!--This is code for a table that will list reports and database integration. -->
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
 <body>
 <script>
   // Initialize Firebase
-  var alert = window.alert("Initialized Firebase");
+ // var alert = window.alert("Initialized Firebase");----------------
   var config = {
     apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
     authDomain: "epics-smart-city.firebaseapp.com",
@@ -230,6 +233,7 @@ table, th, td {
 	
 <!-- 	<thead>
             <tr>
+					<This is the hardcoded table>
                 <th></th>
                 <th>Name</th>
                 <th>Position</th>
@@ -238,6 +242,8 @@ table, th, td {
                 <th>Salary</th>
             </tr>
         </thead> -->
+		<!--
+
         <tbody>
             <tr>
                 <td></td>
@@ -305,6 +311,7 @@ table, th, td {
   </tr>
 
 </table>
+-->
 <html>
         <head>
     <title></title>
@@ -327,8 +334,9 @@ table, th, td {
         <option value="Other">Other</option>
 
       <select>
-    
-        <table class="order-table" width = "1000" >
+
+        <table class="order-table" width = "1000">
+		    <center>
             <thead>
                 <tr>
                     <th >Street</th>
@@ -373,7 +381,10 @@ table, th, td {
                     <td>6-4-18</td>
                 </tr>
             </tbody>
+
         </table>
+
+	
 <!--This is the filter script-->
     <script>
         (function(document) {
@@ -445,15 +456,4 @@ table, th, td {
     
         </body>
     </html>
-
-<!-- <p id = "dateBtn">
-<script src = "smart_city/public/smart_city.js">
-function dateButtonFunction()
-{
-	date_filter(); //variable on the other file is Pothole_data (array)
-	document.getElementByID("dateBtn").innerHTML = "Date [by newest]";
-	document.getElementByID("dateBtn").innerHTML = "Date [by oldest]";
-
-}
-</script> -->
 </html>

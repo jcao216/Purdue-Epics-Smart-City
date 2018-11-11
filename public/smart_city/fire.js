@@ -31,7 +31,7 @@ function callback1(reportsObject){
 console.log(reportsObject)
 
 //var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
-window.prompt("Got to fire.js"); 
+//window.prompt("Got to fire.js"); -------------------
 //window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
 //-LQZd7yuBHtGW-EqSsTS
 var reportStatus = reportsObject['-LQZd7yuBHtGW-EqSsTS']['status'];
@@ -50,7 +50,7 @@ var reportLocation1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['location'];
 var reportPicture1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['pictures'];
 var reportDescription1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['description'];
 var reportArray1 = [reportStatus1, reportDate1, reportIssue1, reportLocation1, reportPicture1, reportDescription1];**/
-window.prompt(reportArray);
+//window.prompt(reportArray);---------------------------
 //window.prompt((Object.keys(reportsObject).length));
 addTableElement(reportArray);
 //addTableElement(reportArray1);
