@@ -4,10 +4,12 @@
     <title>Smart City</title>
 	<!--<script src = "jquery.js"></script>-->
     <!-- <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid"> -->
+	<title></title>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
 </head>
 
 <!--<body onload="refresh(1)">-->
-
+	
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
@@ -90,8 +92,6 @@
                 </div>
             </div>
         </div> --------------->
-    
-
 	</div>
     <script>
       var map;
@@ -104,8 +104,6 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo&callback=initMap"
     async defer></script>
-	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>-->
-</body>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
     <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
@@ -135,11 +133,12 @@ table, th, td {
 
 	</style> 
 	</th>-->
+<div id="map" style = "width:100%"></div>
 <!--This is code for a table that will list reports and database integration. -->
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
-<div id="map" style = "width:100%"></div>
-<body>
+
+<!--<body>-->
 
 <script>
   // Initialize Firebase
@@ -153,9 +152,9 @@ table, th, td {
     messagingSenderId: "498032615483"
   };
   firebase.initializeApp(config);
-  window.alert("get to the end?")
+  window.alert("get to the end?");
 </script>
-<script src="./smart_city/fire.js"></script>
+<script src="/smart_city/fire.js"></script>
 <!--
 
 	<th style = "width:19%">Location</th>
@@ -259,11 +258,7 @@ table, th, td {
 </table>
 -->
 <html>
-        <head>
-    <title></title>
-    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
-        </head>
-        <body>
+<!--<body>-->
     <section class="container">
     
         <h2 style="color:#34738f;" ><center>Data</center></h2>
@@ -327,9 +322,7 @@ table, th, td {
                     <td>6-4-18</td>
                 </tr>
             </tbody>
-
         </table>
-
 	
 <!--This is the filter script-->
     <script>
@@ -397,9 +390,7 @@ table, th, td {
         
         })(document);
      </script>
-
-    </section>
-    
-        </body>
+    </section> 
+</body>
     </html>
 </html>

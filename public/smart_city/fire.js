@@ -47,6 +47,7 @@ for (i = 0; i<= keyArrayLength; i = i + 1){
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
 	window.prompt(reportArray); 
+	addTableElement(reportArray);
 }
 /**
 var reportStatus1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['status'];
@@ -58,7 +59,7 @@ var reportDescription1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['description'];
 var reportArray1 = [reportStatus1, reportDate1, reportIssue1, reportLocation1, reportPicture1, reportDescription1];**/
 window.prompt(reportArray);
 //window.prompt((Object.keys(reportsObject).length));
-addTableElement(reportArray);
+
 }
 //NEED TO FIND A WAY TO RETRIEVE KEYS TO DICTIONARY AND PUT KEYS INTO ARRAY SO THAT IT WILL BE EASIER TO AUTOMATE RETREIVING ELEMENTS
 
@@ -121,17 +122,22 @@ function addTableElement(reportArray) {
 	sample5.innerHTML = sampleText;
 	z1.appendChild(row);*/
 	//var table = document.getElementById("z1");
-	var createRow = ;
     var row = z1.insertRow(0);
 	
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";
-	document.body.appendChild(z1);
-
+	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+	var cell5 = row.insertCell(4);
+	var cell6 = row.insertCell(5);
 	
-	
+    cell1.innerHTML = reportArray[0];
+    cell2.innerHTML = reportArray[1];
+	cell3.innerHTML = reportArray[2];
+	cell4.innerHTML = reportArray[3];
+	cell5.innerHTML = reportArray[4];
+	cell5.innerHTML = reportArray[5];
+	document.body.appendChild(z1);	
 }
 
 
