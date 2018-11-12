@@ -65,7 +65,7 @@ window.prompt(reportArray);
 
 //Sample code for adding table elements automatically
 function addTableElement(reportArray) {
-    var x = document.createElement("TABLE");
+ /**   var x = document.createElement("TABLE");
     var y = document.createElement("TABLE");
     var z = document.createElement("TABLE");
     var a1 = document.createElement("TABLE");
@@ -81,7 +81,7 @@ function addTableElement(reportArray) {
     var z = document.createElement("TD");
     var t = document.createTextNode("cell");
     z.appendChild(t);
-    document.getElementById("myTr").appendChild(z);**/
+    document.getElementById("myTr").appendChild(z);
 	//console.log(reportArray[0]);
 	//var newRow = newRow.insertRow(1);
 	//var newCell = newRow.insertCell(0);
@@ -100,28 +100,10 @@ function addTableElement(reportArray) {
 	document.body.appendChild(y);
 	document.body.appendChild(z);
 	document.body.appendChild(a1);
-	document.body.appendChild(a2);
-	//document.body.appendChild(x);
+	document.body.appendChild(a2);**/
 	
 	
 	var z1 = document.createElement("TABLE");
-	
-
-/*	var row = z1.insertRow(0);
-	var sampleText = "Testing";
-	var sample0 = row.insertCell(0));
-	var sample1 = row.insertCell(1);
-	sample1.innerHTML = sampleText;
-	var sample2 = row.insertCell(2);
-	sample2.innerHTML = sampleText;
-	var sample3 = row.insertCell(3);
-	var sample4 = row.insertCell(4);
-	var sample5 = row.insertCell(5);
-	sample3.innerHTML = sampleText;
-	sample4.innerHTML = sampleText;
-	sample5.innerHTML = sampleText;
-	z1.appendChild(row);*/
-	//var table = document.getElementById("z1");
     var row = z1.insertRow(0);
 	
     var cell1 = row.insertCell(0);
