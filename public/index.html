@@ -135,61 +135,12 @@ table, th, td {
 
 	</style> 
 	</th>-->
-<!--
-	<This is the hardcoded category section.>
-	<th style = "width:5%">
-	<div class="checkbox">
-                            <label>
-                                <input checked="true" id="App_check" type="checkbox"
-                            </label>
-                        </div>
-    <th style = "width:19%">
-	<select class="custom-select" id="status">
-                        <option selected disabled value="all">Status</i>
-                        </option>
-                        <option value="all">All Statuses</option>
-                        <option style=value="1">Reported</option>
-                        <option style=value="2">Pending Action</option>
-                        <option style=value="3">In Progress</option>
-						<option style=value="4">Resolved</option>
-                    </select>
-
-
-
-    <th style = "width:20%">Status</th>
-
-    <!-- <th style = "width:10%">Priority</th> --> 
-<!--
-    <th style = "width:19%">
-	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn"></button>-->
-
-	<!-- <input type="button" id="button" name="Datebtn" value="Date" /th> -->
-	<!--
-	<th style = "width:19%">
-	<!-- <div class="container"> -->
-            <!-- <div class="row"> -->
-                <!-- <div class="col-sm-3">
-                    <select id="issue_select" class="custom-select">
-                        <option selected disabled value="all">Issue</i>
-                        </option>
-                        <option value="all">All Issues</option>
-
-						<option value="1">Pothole</option>
-						<option value="2">Traffic</option>
-						<option value="3">Tripping Hazard</option>
-						<option value="4">Other</option>
-                    </select>
-
-	<th style = "width:20%">
-	<input type="button" id="button" name="Locationbtn" value="Location" /th>
-	<th style = "width:20%%">Description</th>
-
-  </tr>-->
 <!--This is code for a table that will list reports and database integration. -->
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+<div id="map" style = "width:100%"></div>
 <body>
-	<div id="map" style = "width:100%"></div>
+
 <script>
   // Initialize Firebase
   window.alert("Initialized Firebase");
