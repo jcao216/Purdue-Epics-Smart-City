@@ -32,14 +32,12 @@ function callback1(reportsObject){
 console.log(reportsObject)
 
 //var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
-
-//window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
-//-LQZd7yuBHtGW-EqSsTS
-
-var keylength = Object.keys(reportsObject).length;
 var keyArray = Object.keys(reportsObject);
-for (i = 0; i <= keylength;i += 1)
-{
+var keyArrayLength = Object.keys(reportsObject).length;
+//window.prompt(keyArrayLength); 
+//window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
+//-LQZd7yuBHtGW
+for (i = 0; i<= keyArrayLength; i = i + 1){
 	var reportStatus = reportsObject[keyArray[i]]['status'];
 	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
 	var reportIssue = reportsObject[keyArray[i]]['type'];
@@ -48,20 +46,19 @@ for (i = 0; i <= keylength;i += 1)
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
-	/**
-	var reportStatus1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['status'];
-	var reportDate1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['date'];
-	var reportIssue1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['reportType'];
-	var reportLocation1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['location'];
-	var reportPicture1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['pictures'];
-	var reportDescription1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['description'];
-	var reportArray1 = [reportStatus1, reportDate1, reportIssue1, reportLocation1, reportPicture1, reportDescription1];**/
-	window.prompt(reportArray);
-	//window.prompt((Object.keys(reportsObject).length));
-	
-	//addTableElement(reportArray);
+	window.prompt(reportArray); 
 }
-//addTableElement(reportArray1);
+/**
+var reportStatus1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['status'];
+var reportDate1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['date'];
+var reportIssue1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['reportType'];
+var reportLocation1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['location'];
+var reportPicture1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['pictures'];
+var reportDescription1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['description'];
+var reportArray1 = [reportStatus1, reportDate1, reportIssue1, reportLocation1, reportPicture1, reportDescription1];**/
+window.prompt(reportArray);
+//window.prompt((Object.keys(reportsObject).length));
+addTableElement(reportArray);
 }
 //NEED TO FIND A WAY TO RETRIEVE KEYS TO DICTIONARY AND PUT KEYS INTO ARRAY SO THAT IT WILL BE EASIER TO AUTOMATE RETREIVING ELEMENTS
 
