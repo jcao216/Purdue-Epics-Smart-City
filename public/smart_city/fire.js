@@ -5,6 +5,7 @@ var image = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBAP
 
 var database = firebase.database();
 var listReports = "did not update";
+window.alert("Got to fire.js");
 console.log(database);
 removeReport("-LOsKCzLPInoj9fBx25v")
 
@@ -31,28 +32,35 @@ function callback1(reportsObject){
 console.log(reportsObject)
 
 //var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
-//window.prompt("Got to fire.js"); -------------------
+
 //window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
 //-LQZd7yuBHtGW-EqSsTS
-var reportStatus = reportsObject['-LQZd7yuBHtGW-EqSsTS']['status'];
-var reportDate = reportsObject['-LQZd7yuBHtGW-EqSsTS']['timeStamp'];
-var reportIssue = reportsObject['-LQZd7yuBHtGW-EqSsTS']['type'];
-var reportLocation2 = reportsObject['-LQZd7yuBHtGW-EqSsTS']['longitude'];
-var reportLocation1 = reportsObject['-LQZd7yuBHtGW-EqSsTS']['latitude'];
-var reportPicture = reportsObject['-LQZd7yuBHtGW-EqSsTS']['encodedImage'];
-var reportDescription = reportsObject['-LQZd7yuBHtGW-EqSsTS']['description'];
-var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
-/**
-var reportStatus1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['status'];
-var reportDate1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['date'];
-var reportIssue1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['reportType'];
-var reportLocation1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['location'];
-var reportPicture1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['pictures'];
-var reportDescription1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['description'];
-var reportArray1 = [reportStatus1, reportDate1, reportIssue1, reportLocation1, reportPicture1, reportDescription1];**/
-//window.prompt(reportArray);---------------------------
-//window.prompt((Object.keys(reportsObject).length));
-addTableElement(reportArray);
+
+var keylength = Object.keys(reportsObject).length;
+var keyArray = Object.keys(reportsObject);
+for (i = 0; i <= keylength;i += 1)
+{
+	var reportStatus = reportsObject[keyArray[i]]['status'];
+	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
+	var reportIssue = reportsObject[keyArray[i]]['type'];
+	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
+	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
+	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
+	var reportDescription = reportsObject[keyArray[i]]['description'];
+	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
+	/**
+	var reportStatus1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['status'];
+	var reportDate1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['date'];
+	var reportIssue1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['reportType'];
+	var reportLocation1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['location'];
+	var reportPicture1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['pictures'];
+	var reportDescription1 = reportsObject['-LPYmnccHnL4dFQ8sG3O']['description'];
+	var reportArray1 = [reportStatus1, reportDate1, reportIssue1, reportLocation1, reportPicture1, reportDescription1];**/
+	window.prompt(reportArray);
+	//window.prompt((Object.keys(reportsObject).length));
+	
+	//addTableElement(reportArray);
+}
 //addTableElement(reportArray1);
 }
 //NEED TO FIND A WAY TO RETRIEVE KEYS TO DICTIONARY AND PUT KEYS INTO ARRAY SO THAT IT WILL BE EASIER TO AUTOMATE RETREIVING ELEMENTS
@@ -86,7 +94,7 @@ function addTableElement(reportArray) {
 	//var pictureCell = document.createTextNode(reportArray['']);
 	var descriptionCell = document.createTextNode(reportArray[4]);
 	x.appendChild(statusCell);
-	x.appendChild(dateCell);
+	y.appendChild(dateCell);
 	z.appendChild(issueCell);
 	a1.appendChild(locationCell);
 	a2.appendChild(descriptionCell);
@@ -96,6 +104,37 @@ function addTableElement(reportArray) {
 	document.body.appendChild(a1);
 	document.body.appendChild(a2);
 	//document.body.appendChild(x);
+	
+	
+	var z1 = document.createElement("TABLE");
+	
+
+/*	var row = z1.insertRow(0);
+	var sampleText = "Testing";
+	var sample0 = row.insertCell(0));
+	var sample1 = row.insertCell(1);
+	sample1.innerHTML = sampleText;
+	var sample2 = row.insertCell(2);
+	sample2.innerHTML = sampleText;
+	var sample3 = row.insertCell(3);
+	var sample4 = row.insertCell(4);
+	var sample5 = row.insertCell(5);
+	sample3.innerHTML = sampleText;
+	sample4.innerHTML = sampleText;
+	sample5.innerHTML = sampleText;
+	z1.appendChild(row);*/
+	//var table = document.getElementById("z1");
+	var createRow = ;
+    var row = z1.insertRow(0);
+	
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "NEW CELL1";
+    cell2.innerHTML = "NEW CELL2";
+	document.body.appendChild(z1);
+
+	
+	
 }
 
 

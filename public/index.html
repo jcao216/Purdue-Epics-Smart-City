@@ -2,12 +2,12 @@
 
 <head>
     <title>Smart City</title>
-	<script src = "jquery.js"></script>
-    <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid">
+	<!--<script src = "jquery.js"></script>-->
+    <!-- <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid"> -->
 </head>
 
 <!--<body onload="refresh(1)">-->
-<!-- <body background="https://upload.wikimedia.org/wikipedia/commons/0/07/Lafayette_skyline_from_West_Lafayette.png"> -->
+
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="row">
@@ -43,6 +43,7 @@
                 </div>
             </div>
         </div>
+
         <!--<button onclick="change_mode()">Specific data</button>-->
 		<!----------------------------------
         <div class="container">
@@ -89,16 +90,9 @@
                 </div>
             </div>
         </div> --------------->
-    </div>
-    <div id="map" style = "width:100%" align = "center"></div>
+    
 
-
-	
-    <script>
-    </script>
-    <!--<script type="text/javascript" src="smart_city/public/smart_city.js"></script>-->
-    <!--Script for the map-->
-	<!-- <string name= "google_maps_key" templateMergeStrategy="perserve translatable="false"></string> -->
+	</div>
     <script>
       var map;
       function initMap() {
@@ -112,7 +106,6 @@
     async defer></script>
 	<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo" async defer></script>-->
 </body>
-<br></br>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
     <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
@@ -168,7 +161,7 @@ table, th, td {
     <!-- <th style = "width:10%">Priority</th> --> 
 <!--
     <th style = "width:19%">
-	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn">--></button>
+	<button onclick = "dateButtonFunction()">Date<!--<p id = "dateBtn"></button>-->
 
 	<!-- <input type="button" id="button" name="Datebtn" value="Date" /th> -->
 	<!--
@@ -196,9 +189,10 @@ table, th, td {
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
 <body>
+	<div id="map" style = "width:100%"></div>
 <script>
   // Initialize Firebase
- // var alert = window.alert("Initialized Firebase");----------------
+  window.alert("Initialized Firebase");
   var config = {
     apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
     authDomain: "epics-smart-city.firebaseapp.com",
@@ -208,6 +202,7 @@ table, th, td {
     messagingSenderId: "498032615483"
   };
   firebase.initializeApp(config);
+  window.alert("get to the end?")
 </script>
 <script src="./smart_city/fire.js"></script>
 <!--
