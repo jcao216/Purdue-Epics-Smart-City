@@ -118,7 +118,8 @@ function addTableElement(reportArray) {
 	cell3.innerHTML = reportArray[2];
 	cell4.innerHTML = reportArray[3];
 	cell5.innerHTML = reportArray[4];
-	cell5.innerHTML = reportArray[5];
+	cell5.innerHTML = window.btoa(reportArray[5]);
+	cell6.innerHTML = reportArray[6];
 	document.body.appendChild(z1);	
 }
 
