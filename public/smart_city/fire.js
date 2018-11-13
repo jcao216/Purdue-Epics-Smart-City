@@ -32,10 +32,10 @@ console.log(reportsObject)
 //var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
 var keyArray = Object.keys(reportsObject);
 var keyArrayLength = Object.keys(reportsObject).length;
-//window.prompt(keyArrayLength); 
+window.prompt(keyArray);
 //window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
 //-LQZd7yuBHtGW
-for (i = 0; i<= keyArrayLength; i = i + 1){
+for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportStatus = reportsObject[keyArray[i]]['status'];
 	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
 	var reportIssue = reportsObject[keyArray[i]]['type'];
@@ -44,51 +44,23 @@ for (i = 0; i<= keyArrayLength; i = i + 1){
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
-	window.prompt(reportArray); 
+ 
 	addTableElement(reportArray);
 }
+
 //window.prompt((Object.keys(reportsObject).length));
 }
 
 //Code to add elements into a table format
 function addTableElement(reportArray) {
- /**   var x = document.createElement("TABLE");
-    var y = document.createElement("TABLE");
-    var z = document.createElement("TABLE");
-    var a1 = document.createElement("TABLE");
-	var a2 = document.createElement("TABLE");
-	/**
-    x.setAttribute("id", "myTable");
-    document.body.appendChild(x);
 
-    var y = document.createElement("TR");
-    y.setAttribute("id", "myTr");
-    document.getElementById("myTable").appendChild(y);
+	var img = document.createElement("IMG");
+	window.prompt(reportArray);
+	window.prompt(reportArray[5]);
+	img.setAttribute("src", "data:image/jpeg;base64," + reportArray[5]);
+	img.setAttribute("width", "10");
+	img.setAttribute("height", "228");
 
-    var z = document.createElement("TD");
-    var t = document.createTextNode("cell");
-    z.appendChild(t);
-    document.getElementById("myTr").appendChild(z);
-	//console.log(reportArray[0]);
-	//var newRow = newRow.insertRow(1);
-	//var newCell = newRow.insertCell(0);
-	var statusCell = document.createTextNode(reportArray[0]);
-	var dateCell = document.createTextNode(reportArray[1]);
-	var issueCell = document.createTextNode(reportArray[2]);
-	var locationCell = document.createTextNode(reportArray[3]);
-	//var pictureCell = document.createTextNode(reportArray['']);
-	var descriptionCell = document.createTextNode(reportArray[4]);
-	x.appendChild(statusCell);
-	y.appendChild(dateCell);
-	z.appendChild(issueCell);
-	a1.appendChild(locationCell);
-	a2.appendChild(descriptionCell);
-	document.body.appendChild(x);
-	document.body.appendChild(y);
-	document.body.appendChild(z);
-	document.body.appendChild(a1);
-	document.body.appendChild(a2);**/
-	
 	
 	var z1 = document.createElement("TABLE");
     var row = z1.insertRow(0);
@@ -99,18 +71,25 @@ function addTableElement(reportArray) {
 	var cell4 = row.insertCell(3);
 	var cell5 = row.insertCell(4);
 	var cell6 = row.insertCell(5);
+	var cell7 = row.insertCell(6);
 	
     cell1.innerHTML = reportArray[0];
     cell2.innerHTML = reportArray[1];
 	cell3.innerHTML = reportArray[2];
 	cell4.innerHTML = reportArray[3];
 	cell5.innerHTML = reportArray[4];
-	cell5.innerHTML = window.btoa(reportArray[5]);
-	cell6.innerHTML = reportArray[6];
+	
+	cell6.innerHTML = reportArray[5];
+	//cell6.body.appendChild(img);
+	cell7.innerHTML = reportArray[6];
 	document.body.appendChild(z1);	
 }
 
+//convert base 64 to image
+/**
+data:[<MIME-type>][;charset]
 
+**/
 
 
 //Creates a new report and addes it to the database
