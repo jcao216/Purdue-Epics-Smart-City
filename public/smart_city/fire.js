@@ -53,15 +53,6 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 
 //Code to add elements into a table format
 function addTableElement(reportArray) {
-
-	var img = document.createElement("IMG");
-	window.prompt(reportArray);
-	window.prompt(reportArray[5]);
-	img.setAttribute("src", "data:image/jpeg;base64," + reportArray[5]);
-	img.setAttribute("width", "10");
-	img.setAttribute("height", "228");
-
-	
 	var z1 = document.createElement("TABLE");
     var row = z1.insertRow(0);
 	
@@ -72,6 +63,13 @@ function addTableElement(reportArray) {
 	var cell5 = row.insertCell(4);
 	var cell6 = row.insertCell(5);
 	var cell7 = row.insertCell(6);
+	cell1.setAttribute("width", "10%");
+	cell2.setAttribute("width", "20%");
+	cell3.setAttribute("width", "10%");
+	cell4.setAttribute("width", "10%");
+	cell5.setAttribute("width", "10%");
+	cell6.setAttribute("width", "15%");
+	cell7.setAttribute("width", "25%");
 	
     cell1.innerHTML = reportArray[0];
     cell2.innerHTML = reportArray[1];
@@ -79,8 +77,13 @@ function addTableElement(reportArray) {
 	cell4.innerHTML = reportArray[3];
 	cell5.innerHTML = reportArray[4];
 	
-	cell6.innerHTML = reportArray[5];
-	//cell6.body.appendChild(img);
+	
+	var img = document.createElement("IMG");
+	console.log(reportArray[5]);
+	img.setAttribute("src", "data:image/jpg;base64," + reportArray[5]);
+	img.setAttribute("width", "10");
+	img.setAttribute("height", "140");
+	cell6.innerHTML = "<img src = \"data:image/jpg;base64," +reportArray[5] + "\"width = \"25\" height = \"80\">";
 	cell7.innerHTML = reportArray[6];
 	document.body.appendChild(z1);	
 }
