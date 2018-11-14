@@ -35,6 +35,31 @@ var keyArrayLength = Object.keys(reportsObject).length;
 window.prompt(keyArray);
 //window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
 //-LQZd7yuBHtGW
+var topOfTable = document.createElement("TABLE");
+var topRow = topOfTable.insertRow(0);
+var topCell1 = topRow.insertCell(0);
+var topCell2 = topRow.insertCell(1);
+var topCell3 = topRow.insertCell(2);
+var topCell4 = topRow.insertCell(3);
+var topCell5 = topRow.insertCell(4);
+var topCell6 = topRow.insertCell(5);
+var topCell7 = topRow.insertCell(6);
+topCell1.setAttribute("width", "10%");
+topCell2.setAttribute("width", "20%");
+topCell3.setAttribute("width", "10%");
+topCell4.setAttribute("width", "10%");
+topCell5.setAttribute("width", "10%");
+topCell6.setAttribute("width", "15%");
+topCell7.setAttribute("width", "25%");
+
+topCell1.innerHTML = "Status";
+topCell2.innerHTML = "Date/Time";
+topCell3.innerHTML = "Issue Type";
+topCell4.innerHTML = "Longitude";
+topCell5.innerHTML = "Latitude";
+topCell6.innerHTML = "Image?";
+topCell7.innerHTML = "Description";
+//document.appendChild(topOfTable);
 for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportStatus = reportsObject[keyArray[i]]['status'];
 	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
@@ -79,11 +104,18 @@ function addTableElement(reportArray) {
 	
 	
 	var img = document.createElement("IMG");
-	console.log(reportArray[5]);
-	img.setAttribute("src", "data:image/jpg;base64," + reportArray[5]);
-	img.setAttribute("width", "10");
-	img.setAttribute("height", "140");
-	cell6.innerHTML = "<img src = \"data:image/jpg;base64," +reportArray[5] + "\"width = \"25\" height = \"80\">";
+	//console.log(reportArray[5]);
+	if (reportArray[5] == 'no image')
+	{
+		cell6.innerHTML = "no image";
+	}
+	else
+	{
+		img.setAttribute("src", "data:image/jpg;base64," + reportArray[5]);
+		img.setAttribute("width", "10");
+		img.setAttribute("height", "140");
+		cell6.innerHTML = "<img src = \"data:image/jpg;base64," +reportArray[5] + "\"width = \"25\" height = \"80\">";
+	}
 	cell7.innerHTML = reportArray[6];
 	document.body.appendChild(z1);	
 }
