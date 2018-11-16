@@ -104,6 +104,7 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI685XJbwcb3ISHaWynoEG6SwLPaU0fSo&callback=initMap"
     async defer></script>
+	<div id="map" style = "width:100%"></div>
 
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
@@ -134,8 +135,9 @@ table, th, td {
     messagingSenderId: "498032615483"
   };
   firebase.initializeApp(config);
+
 </script>
-<script src="./smart_city/fire.js"></script>
+
 
 <html>
 <!--<body>-->
@@ -166,41 +168,7 @@ table, th, td {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>East Randall Mill Dr.</td>
-                    <td>Pothole</td>
-                    <td>10-1-18</td>
-                </tr>
-                <tr>
-                    <td>S. Mountainview St.</td>
-                    <td>Pothole</td>
-                    <td>4-2-18</td>
-                </tr>
-                <tr>
-                    <td>Bayberry Street</td>
-                    <td>Tripping Hazard</td>
-                    <td>3-20-18</td>
-                </tr>
-                <tr>
-                    <td>West Orchard Street</td>
-                    <td>Tripping Hazard</td>
-                    <td>3-25-18</td>
-                </tr>
-                <tr>
-                    <td>Oklahoma Street</td>
-                    <td>Traffic Light</td>
-                    <td>7-20-18</td>
-                </tr>
-                <tr>
-                    <td>East Buttonwood St.</td>
-                    <td>Traffic Light</td>
-                    <td>6-4-18</td>
-                </tr>
-                <tr>
-                    <td>East Buttonwood St.</td>
-                    <td>Other</td>
-                    <td>6-4-18</td>
-                </tr>
+				<script src="./smart_city/fire.js"></script>
             </tbody>
         </table>
 	
@@ -271,7 +239,7 @@ table, th, td {
         })(document);
      </script>
     </section>
-<div id="map" style = "width:100%"></div>	
+	
 </body>
     </html>
 
