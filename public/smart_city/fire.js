@@ -60,13 +60,16 @@ topCell5.innerHTML = "Latitude";
 topCell6.innerHTML = "Image?";
 topCell7.innerHTML = "Description";
 //document.appendChild(topOfTable);
+	var mapOutput = new google.maps.Map(document.getElementById('map'), {
+	  zoom: 5
+	});
 for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportStatus = reportsObject[keyArray[i]]['status'];
 	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
 	var reportIssue = reportsObject[keyArray[i]]['type'];
 	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-	initMap(reportLocation1,reportLocation2);
+	initMap(reportLocation1,reportLocation2, mapOutput);
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
@@ -157,10 +160,14 @@ function removeReport(reportKey) {
 }
 
 
-function initMap(reportLocation1,reportLocation2) {
+function initMap(reportLocation1,reportLocation2, map) {
+	var myLatLng = {lat: reportLocation1, lng: reportLocation2};
+
 	window.prompt("got to initMap");
+
 	var marker = new google.maps.Marker({
-    position: {reportLocation1, reportLocation2},
+    position: myLatLng,
     map: map,
   });
+  marker.setMap(map);
 }
