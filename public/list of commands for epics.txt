@@ -2,7 +2,7 @@ List of useful commands for Github and Firebase:
 
 Pre-requisites:
 > Node.js is installed on your computer and can be run from Windows Command Prompt.
-> You have installed Github Desktop.
+> You have installed Github Desktop. (You don't have to if you don't want to.  It is just easier to see the changes you have made in each file.)
 > You have installed Git Bash.
 > Firebase CLI is installed on your computer.
 
@@ -14,6 +14,7 @@ Firebase:
 DO NOT USE the "firebase deploy" command! 
 
 (Unless you are the design leader.)
+> firebase deploy = deploys all of your work to Firebase servers so that you can use the given project URL (seen on the console) to run your code
 -------------------------------------------
 	
 After you have run this command, select the project you are in by hitting the up or down arrow key.  
@@ -29,7 +30,6 @@ Hit enter again to choose the "public" folder as the default folder to run.
 Hit the "n" key and then enter to any of the other questions that appear.
 -------------------------------------------
 DO NOT ALLOW FIREBASE TO OVERWRITE ANY FILES! 
-(Warning in effect until further notice.)
 -------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -39,12 +39,12 @@ Github: (terminology)
 > branch = literally what it sounds like; a branch off of the master branch (you can as many changes as you want in your own branch)
 
 -------------------------------------------
-ALWAYS MAKE A SEPARATE BRANCH IF YOU WANT TO MAKE CHANGES OR ADD NEW FEATURES!  It is much easier to delete bad branches than to try retrieve lost 
-work on the master branch.
+ALWAYS MAKE A SEPARATE BRANCH IF YOU WANT TO MAKE CHANGES OR ADD NEW FEATURES!  
+It is much easier to delete bad branches than to try retrieve lost work on the master branch.
 -------------------------------------------
 Github Desktop features
 
-> commit = saves the changes you made on your computer to your specific branch
+> commit (and then push) = saves the changes you made on your computer to your specific branch
 > pull request = asks the repository owner (usually design leader) that the feature or fix is ready to be put onto the master branch
 > fetch origin (button on Github Desktop) = (usually not necessary)
 > pull (usually indicated on Github Desktop) = updates your local files with the files on Github master branch (not to be confused with pull requests)
