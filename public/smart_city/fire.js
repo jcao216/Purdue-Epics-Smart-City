@@ -41,6 +41,7 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportIssue = reportsObject[keyArray[i]]['type'];
 	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
+	initMap(reportLocation1,reportLocation2);
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
@@ -121,4 +122,13 @@ function writeNewReport(reportId, pictures, reportType, description,lat,long) {
 function removeReport(reportKey) {
   var newPostKey = firebase.database().ref().child('reports').child(reportKey).remove();
   return firebase.database().ref();
+}
+
+
+function initMap(reportLocation1,reportLocation2) {
+	window.prompt("got to initMap");
+	var marker = new google.maps.Marker({
+    position: {reportLocation1, reportLocation2},
+    map: map,
+  });
 }
