@@ -92,20 +92,21 @@
             </div>
         </div>
 	</div>
+	<div id="map" ></div>
+
     <script>
       var map;
-      function initMap() {
+      function initMap1() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.4237, lng: -86.9212},
           zoom: 15
         });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBihD89o_xPKDluUdJagMwtuGIdq6GeqxQ&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVijZeP94Xzz6rLyJQH7ztYMtxx7-eKcs&callback=initMap1"
     async defer></script>
-	<div id="map" style = "width:100%"></div>
 
-	
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
     <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -138,13 +139,11 @@ table, th, td {
 </script>
 
 
-<html>
-<!--<body>-->
     <section class="container">
     
-        <h2 style="color:#34738f;" ><center>Data</center></h2>
+        <h2 style="color:#34738f;" ><center>Reports</center></h2>
     
-        <center><input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter" />
+        <center><input type="text" id="myInput" class="light-table-filter" onkeyup="filteringAlgorithm()" data-table="order-table" placeholder="Filter" />
       
       <!--This creates the dropdown options-->
       <select type="search" class="select-table-filter" data-table="order-table"><center>
@@ -238,8 +237,6 @@ table, th, td {
         })(document);
      </script>
     </section>
-	
 </body>
-    </html>
 
 </html>

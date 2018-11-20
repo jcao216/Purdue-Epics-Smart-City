@@ -35,6 +35,7 @@ var keyArrayLength = Object.keys(reportsObject).length;
 //window.prompt(keyArray);
 //window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
 //-LQZd7yuBHtGW
+/**
 var topOfTable = document.createElement("TABLE");
 var topRow = topOfTable.insertRow(0);
 var topCell1 = topRow.insertCell(0);
@@ -43,14 +44,14 @@ var topCell3 = topRow.insertCell(2);
 var topCell4 = topRow.insertCell(3);
 var topCell5 = topRow.insertCell(4);
 var topCell6 = topRow.insertCell(5);
-var topCell7 = topRow.insertCell(6);/**
+var topCell7 = topRow.insertCell(6);**//**
 topCell1.setAttribute("width", "5%");
 topCell2.setAttribute("width", "30.5%");
 topCell3.setAttribute("width", "10%");
 topCell4.setAttribute("width", "10%");
 topCell5.setAttribute("width", "10%");
 topCell6.setAttribute("width", "15%");
-topCell7.setAttribute("width", "25%");**/
+topCell7.setAttribute("width", "25%");
 
 topCell1.innerHTML = "Status";
 topCell2.innerHTML = "Date/Time";
@@ -59,25 +60,27 @@ topCell4.innerHTML = "Longitude";
 topCell5.innerHTML = "Latitude";
 topCell6.innerHTML = "Image?";
 topCell7.innerHTML = "Description";
-document.body.appendChild(topOfTable);
+document.body.appendChild(topOfTable);**/
 	var mapOutput = new google.maps.Map(document.getElementById('map'), {
 	  zoom: 5
 	});
 var tableObj = document.createElement("TABLE");
+tableObj.setAttribute('id','ourTable');
 for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportStatus = reportsObject[keyArray[i]]['status'];
 	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
 	var reportIssue = reportsObject[keyArray[i]]['type'];
 	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-	initMap(reportLocation1,reportLocation2, mapOutput);
+	//initMap(reportLocation1,reportLocation2, mapOutput);
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
  
 	addTableElement(reportArray,tableObj, i);
 }
-document.body.appendChild(tableObj);	
+document.body.appendChild(tableObj);
+//filteringAlgorithm();	
 //window.prompt((Object.keys(reportsObject).length));
 }
 
@@ -125,11 +128,36 @@ function addTableElement(reportArray, z1, rowNum) {
 
 }
 
-//convert base 64 to image
-/**
-data:[<MIME-type>][;charset]
+function filteringAlgorithm(columnToLookIn) {
+  var input, filter, table, tr, td, i;
+  //window.prompt("Got to filtering");
+ // input = "Pothole";
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("ourTable");
+  tr = table.getElementsByTagName("tr");
+  //window.prompt(tr[0].getElementsByTagName("td")[0]);
+ for(col = 0; col <=6; col = col + 1)
+ {
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[columnToLookIn];
+	//window.prompt(td);
+    if (td) {
+		  //window.prompt("Got to first");
 
-**/
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		    //window.prompt("Got to second");
+
+        tr[i].style.display = "";
+      } else {
+		  		   // window.prompt("Got to third");
+
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+ }
+}
 
 
 //Creates a new report and addes it to the database
@@ -162,7 +190,7 @@ function removeReport(reportKey) {
 
 
 function initMap(reportLocation1,reportLocation2, map) {
-	var myLatLng = {lat: reportLocation1, lng: reportLocation2};
+	var myLatLng = {lat: parseFloat(reportLocation1), lng: parseFloat(reportLocation2)};
 	//window.prompt("got to initMap");
 	var marker = new google.maps.Marker({
     position: myLatLng,
