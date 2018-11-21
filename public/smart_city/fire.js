@@ -137,8 +137,7 @@ function filteringAlgorithm(columnToLookIn) {
   table = document.getElementById("ourTable");
   tr = table.getElementsByTagName("tr");
   //window.prompt(tr[0].getElementsByTagName("td")[0]);
- for(col = 0; col <=6; col = col + 1)
- {
+
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[columnToLookIn];
 	//window.prompt(td);
@@ -156,8 +155,8 @@ function filteringAlgorithm(columnToLookIn) {
       }
     }       
   }
- }
 }
+
 
 
 //Creates a new report and addes it to the database
