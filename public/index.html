@@ -182,6 +182,7 @@ table, th, td {
 	
 <!--This is the filter script-->
 <script>
+//this function looks for the filter that the user selects
 function absorbInput()  {
 window.alert("absorbed input");
 var c0 = document.getElementById("status").value;
@@ -189,28 +190,28 @@ var c1 = document.getElementById("date_select").value;
 var c2 = document.getElementById("issue_select").value;
 var inputArray = [c0,c1,c2];
 window.alert(inputArray);
-var statusResult = c0.options[c0.selectedIndex].text;
+//var statusResult = c0.options[c0.selectedIndex].text;
 
-if ((inputArray[0] == all) && (inputArray[1] == all) && (inputArray[2] == all)) //no filter was chosen at all
+if ((c0 == all) && (c1 == all) && (c2 == all)) //no filter was chosen at all
 {
 	window.prompt("No filter chosen");
 }
-else if ((inputArray[0] != all) && (inputArray[1] == all) && (inputArray[2] == all)) //the status filter is active
+else if ((c0 != all) && (c1 == all) && (c2 == all)) //the status filter is active
 {
 	window.prompt("filter1 chosen");
 }
-else if ((inputArray[0] == all) && (inputArray[1] != all) && (inputArray[2] == all)) //date filter is now active
+else if ((c0 == all) && (c1 != all) && (c2 == all)) //date filter is now active
 {
 	window.prompt("filter2 chosen");
 }
-else if ((inputArray[0] == all) && (inputArray[1] == all) && (inputArray[2] != all)) //issue filter is now active
+else if ((c0 == all) && (c1 == all) && (c2 != all)) //issue filter is now active
 {
 	window.prompt("filter3 chosen");
 }
 }
 
 
-
+//this function actually filters the table and hides the rows that do no match the filter criteria
 
 function filteringAlgorithm(columnNum) {
 window.prompt("Got to filtering");
