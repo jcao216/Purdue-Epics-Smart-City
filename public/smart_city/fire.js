@@ -32,9 +32,10 @@ console.log(reportsObject)
 //var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
 var keyArray = Object.keys(reportsObject);
 var keyArrayLength = Object.keys(reportsObject).length;
-window.prompt(keyArray);
+//window.prompt(keyArray);
 //window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
 //-LQZd7yuBHtGW
+/**
 var topOfTable = document.createElement("TABLE");
 var topRow = topOfTable.insertRow(0);
 var topCell1 = topRow.insertCell(0);
@@ -43,9 +44,9 @@ var topCell3 = topRow.insertCell(2);
 var topCell4 = topRow.insertCell(3);
 var topCell5 = topRow.insertCell(4);
 var topCell6 = topRow.insertCell(5);
-var topCell7 = topRow.insertCell(6);
-topCell1.setAttribute("width", "10%");
-topCell2.setAttribute("width", "20%");
+var topCell7 = topRow.insertCell(6);**//**
+topCell1.setAttribute("width", "5%");
+topCell2.setAttribute("width", "30.5%");
 topCell3.setAttribute("width", "10%");
 topCell4.setAttribute("width", "10%");
 topCell5.setAttribute("width", "10%");
@@ -59,28 +60,34 @@ topCell4.innerHTML = "Longitude";
 topCell5.innerHTML = "Latitude";
 topCell6.innerHTML = "Image?";
 topCell7.innerHTML = "Description";
-//document.appendChild(topOfTable);
+document.body.appendChild(topOfTable);**/
+	var mapOutput = new google.maps.Map(document.getElementById('map'), {
+	  zoom: 5
+	});
+var tableObj = document.createElement("TABLE");
+tableObj.setAttribute('id','ourTable');
 for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportStatus = reportsObject[keyArray[i]]['status'];
 	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
 	var reportIssue = reportsObject[keyArray[i]]['type'];
 	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-	initMap(reportLocation1,reportLocation2);
+	//initMap(reportLocation1,reportLocation2, mapOutput);
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
  
-	addTableElement(reportArray);
+	addTableElement(reportArray,tableObj, i);
 }
-
+document.body.appendChild(tableObj);
+//filteringAlgorithm();	
 //window.prompt((Object.keys(reportsObject).length));
 }
 
 //Code to add elements into a table format
-function addTableElement(reportArray) {
-	var z1 = document.createElement("TABLE");
-    var row = z1.insertRow(0);
+function addTableElement(reportArray, z1, rowNum) {
+	//var z1 = document.createElement("TABLE");
+    var row = z1.insertRow(rowNum);
 	
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -89,8 +96,8 @@ function addTableElement(reportArray) {
 	var cell5 = row.insertCell(4);
 	var cell6 = row.insertCell(5);
 	var cell7 = row.insertCell(6);
-	cell1.setAttribute("width", "10%");
-	cell2.setAttribute("width", "20%");
+	cell1.setAttribute("width", "8%");
+	cell2.setAttribute("width", "12%");
 	cell3.setAttribute("width", "10%");
 	cell4.setAttribute("width", "10%");
 	cell5.setAttribute("width", "10%");
@@ -118,14 +125,38 @@ function addTableElement(reportArray) {
 		cell6.innerHTML = "<img src = \"data:image/jpg;base64," +reportArray[5] + "\"width = \"25\" height = \"80\">";
 	}
 	cell7.innerHTML = reportArray[6];
-	document.body.appendChild(z1);	
+
 }
 
-//convert base 64 to image
-/**
-data:[<MIME-type>][;charset]
+function filteringAlgorithm(columnToLookIn) {
+  var input, filter, table, tr, td, i;
+  //window.prompt("Got to filtering");
+ // input = "Pothole";
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("ourTable");
+  tr = table.getElementsByTagName("tr");
+  //window.prompt(tr[0].getElementsByTagName("td")[0]);
 
-**/
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[columnToLookIn];
+	//window.prompt(td);
+    if (td) {
+		  //window.prompt("Got to first");
+
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		    //window.prompt("Got to second");
+
+        tr[i].style.display = "";
+      } else {
+		  		   // window.prompt("Got to third");
+
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
 
 
 //Creates a new report and addes it to the database
@@ -157,10 +188,12 @@ function removeReport(reportKey) {
 }
 
 
-function initMap(reportLocation1,reportLocation2) {
-	window.prompt("got to initMap");
+function initMap(reportLocation1,reportLocation2, map) {
+	var myLatLng = {lat: parseFloat(reportLocation1), lng: parseFloat(reportLocation2)};
+	//window.prompt("got to initMap");
 	var marker = new google.maps.Marker({
-    position: {reportLocation1, reportLocation2},
+    position: myLatLng,
     map: map,
   });
+  marker.setMap(map);
 }
