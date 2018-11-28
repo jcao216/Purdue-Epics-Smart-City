@@ -11,7 +11,7 @@
 <!--<body onload="refresh(1)">-->
 	
 <body>
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid" style = "background-color:#CFB53B">
         <div class="row">
             <div class="col-sm-2">
                 <p>Purdue EPICS</p>
@@ -51,61 +51,40 @@
             <div class="row">
                 <div class="col-sm-3">
 
-                    <select id="issue_select" class="custom-select">
 
-                        <option selected disabled value="all" style="border:2px solid Black;" >Issue</i>
-                        </option>
-                        <option value="all">All Issues</option>
-
-						<option value="1">Pothole</option>
-						<option value="2">Traffic</option>
-						<option value="3">Tripping Hazard</option>
-						<option value="4">Other</option>
-                    </select>
 
                 </div>
                 <div class="col-sm-3">
-                    <select class="custom-select" id="status">
-                        <option selected disabled value="all" style="border:2px solid Black;">Status</i>
-                        </option>
-                        <option value="all">All Statuses</option>
-                        <option style=value="1">Reported</option>
-                        <option style=value="2">Pending Action</option>
-                        <option style=value="3">In Progress</option>
-						<option style=value="4">Resolved</option>
-                    </select>
-                </div>
-                <div class="col-sm-3">
-                    <select id="date_select" class="custom-select">
-                        <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
-                        </option>
-                        <option value="all">All Dates</option>
-                    </select>
 
                 </div>
                 <div class="col-sm-3">
-                    <select id="up_to_date" class="custom-select">
-                        <option disabled selected value="all" style="border:2px solid Black;">To Date: </i>
-                        </option>
-                    </select>
+
+
+                </div>
+                <div class="col-sm-3">
+                    <!-- <select id="up_to_date" class="custom-select"> -->
+                        <!-- <option disabled selected value="all" style="border:2px solid Black;">To Date: </i> -->
+                        <!-- </option> -->
+                    <!-- </select> -->
                 </div>
             </div>
         </div>
 	</div>
+	<div id="map" ></div>
+
     <script>
       var map;
-      function initMap() {
+      function initMap1() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.4237, lng: -86.9212},
           zoom: 15
         });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBihD89o_xPKDluUdJagMwtuGIdq6GeqxQ&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVijZeP94Xzz6rLyJQH7ztYMtxx7-eKcs&callback=initMap1"
     async defer></script>
-	<div id="map" style = "width:100%"></div>
 
-	
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
     <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -124,7 +103,7 @@ table, th, td {
 
 <script>
   // Initialize Firebase
-  window.alert("Initialized Firebase");
+
   var config = {
     apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
     authDomain: "epics-smart-city.firebaseapp.com",
@@ -138,33 +117,63 @@ table, th, td {
 </script>
 
 
-<html>
-<!--<body>-->
     <section class="container">
     
-        <h2 style="color:#34738f;" ><center>Data</center></h2>
+        <h2 style="color:#34738f;" ><center>Reports</center></h2>
     
-        <center><input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter" />
+        <center><input type="text"  class="light-table-filter" onkeyup="filteringAlgorithm()" data-table="order-table" placeholder="Filter"></input>
       
       <!--This creates the dropdown options-->
-      <select type="search" class="select-table-filter" data-table="order-table"><center>
+      <!-- <select type="search" class="select-table-filter" data-table="order-table"><center> -->
 
-        <option value="">All Issues</option>  
-        <option value="Pothole">Pothole</option>  
-        <option value="Tripping Hazard">Tripping Hazard</option>
-        <option value="Traffic Light">Traffic Light</option>
-        <option value="Other">Other</option>
-
-      <select>
+        <!-- <option value="">All Issues</option>   -->
+        <!-- <option value="Pothole">Pothole</option>   -->
+        <!-- <option value="Tripping Hazard">Tripping Hazard</option> -->
+        <!-- <option value="Traffic Light">Traffic Light</option> -->
+        <!-- <option value="Other">Other</option> -->
+<!--Reference link: https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript -->
+<!-- https://www.w3schools.com/jsref/event_onchange.asp -->
+      <!-- <select> -->
 
         <table class="order-table" width = "1000">
 		    <center>
             <thead>
-                <tr>
-                    <th >Street</th>
-                    <th>Issue</th>
-                    <th>Date</th>
+                <tr id = "filterOptions">
+                    <th>
+                    <select class="custom-select" id="status" onchange=absorbInput()> <!--status filter -->
+                        <option selected disabled value="all" style="border:2px solid Black;">Status</option>
+                        <option value="all" select = "selected">All Statuses</option>
+						<option style=value="1" select = "selected">Submitted</option>
+                        <option style=value="2" select = "selected">Pending Action</option>
+                        <option style=value="3" select = "selected">In Progress</option>
+						<option style=value="4" select = "selected">Resolved</option>
+                    </select>
+					</th>
+                    <th><!--Date filter-->
+                    <select id="date_select" class="custom-select" onchange=absorbInput()>
+                        <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
+                        </option>
+                        <option value="all">All Dates</option>
+						<option style=value="1">By newest</option>
+						<option style=value="2">By oldest</option>
+                    </select>
+					</th>
+					<th> <!--Issue filter-->
+                    <select id="issue_select" class="custom-select" onchange=absorbInput()>
+                        <option selected disabled value="all" style="border:2px solid Black;" >Issue</i></option>
+                        <option value="all">All Issues</option>
+						<option value="1">Pothole</option>
+						<option value="2">Traffic</option>
+						<option value="3">Tripping Hazard</option>
+						<option value="4">Other</option>
+                    </select>					
+					</th>
+					<th>Location1</th>
+					<th>Location2</th>
+					<th>Image</th>
+					<th>Description</th>
                 </tr>
+
             </thead>
             <tbody>
 				<script src="./smart_city/fire.js"></script>
@@ -172,74 +181,92 @@ table, th, td {
         </table>
 	
 <!--This is the filter script-->
-    <script>
-        (function(document) {
-            'use strict';
-        
-            var LightTableFilter = (function(Arr) {
-        
-                var _input;
-            var _select;
-        
-                function _onInputEvent(e) {
-                    _input = e.target;
-                    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-                    Arr.forEach.call(tables, function(table) {
-                        Arr.forEach.call(table.tBodies, function(tbody) {
-                            Arr.forEach.call(tbody.rows, _filter);
-                        });
-                    });
-                }
-            
-                function _onSelectEvent(e) {
-                    _select = e.target;
-                    var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
-                    Arr.forEach.call(tables, function(table) {
-                        Arr.forEach.call(table.tBodies, function(tbody) {
-                            Arr.forEach.call(tbody.rows, _filterSelect);
-                        });
-                    });
-                }
-        
-                function _filter(row) {
-              
-                    var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-        
-                }
-            
-                function _filterSelect(row) {
-             
-                    var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
-                    row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
-        
-                }
-        
-                return {
-                    init: function() {
-                        var inputs = document.getElementsByClassName('light-table-filter');
-                        var selects = document.getElementsByClassName('select-table-filter');
-                        Arr.forEach.call(inputs, function(input) {
-                            input.oninput = _onInputEvent;
-                        });
-                        Arr.forEach.call(selects, function(select) {
-                 select.onchange  = _onSelectEvent;
-                        });
-                    }
-                };
-            })(Array.prototype);
-        
-            document.addEventListener('readystatechange', function() {
-                if (document.readyState === 'complete') {
-                    LightTableFilter.init();
-                }
-            });
-        
-        })(document);
-     </script>
+<script>
+//this function looks for the filter that the user selects
+function absorbInput()  {
+window.alert("absorbed input");
+var c0 = document.getElementById("status").value;
+var c1 = document.getElementById("date_select").value;
+var c2 = document.getElementById("issue_select").value;
+var inputArray = [c0,c1,c2];
+window.alert(inputArray);
+//var statusResult = c0.options[c0.selectedIndex].text;
+
+if ((c0 == all) && (c1 == all) && (c2 == all)) //no filter was chosen at all
+{
+	window.prompt("No filter chosen");
+}
+else if ((c0 != all) && (c1 == all) && (c2 == all)) //the status filter is active
+{
+	window.prompt("filter1 chosen");
+}
+else if ((c0 == all) && (c1 != all) && (c2 == all)) //date filter is now active
+{
+	window.prompt("filter2 chosen");
+}
+else if ((c0 == all) && (c1 == all) && (c2 != all)) //issue filter is now active
+{
+	window.prompt("filter3 chosen");
+}
+}
+
+
+//this function actually filters the table and hides the rows that do no match the filter criteria
+
+function filteringAlgorithm(columnNum) {
+window.prompt("Got to filtering");
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("ourTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[columnNum];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+
+
+
+<!-- function filteringAlgorithm(filterInput,columnToLookIn) { -->
+  <!-- var input, filter, table, tr, td, i; -->
+  <!--  -->
+ <!-- // input = "Pothole"; -->
+  <!-- input = filterInput; -->
+  <!-- filter = input.value.toUpperCase(); -->
+  <!-- table = document.getElementById("ourTable"); -->
+  <!-- tr = table.getElementsByTagName("tr"); -->
+  <!-- //window.prompt(tr[0].getElementsByTagName("td")[0]); -->
+
+  <!-- for (i = 0; i < tr.length; i++) { -->
+    <!-- td = tr[i].getElementsByTagName("td")[columnToLookIn]; -->
+	<!-- //window.prompt(td); -->
+    <!-- if (td) { -->
+		  <!-- //window.prompt("Got to first"); -->
+
+      <!-- if (td.innerHTML.toUpperCase().indexOf(filter) > -1) { -->
+		    <!-- //window.prompt("Got to second"); -->
+
+        <!-- tr[i].style.display = ""; -->
+      <!-- } else { -->
+		  		   <!-- // window.prompt("Got to third"); -->
+
+        <!-- tr[i].style.display = "none"; -->
+      <!-- } -->
+    <!-- }        -->
+  <!-- } -->
+<!-- } -->
+</script>
     </section>
-	
 </body>
-    </html>
 
 </html>
