@@ -61,9 +61,6 @@ topCell5.innerHTML = "Latitude";
 topCell6.innerHTML = "Image?";
 topCell7.innerHTML = "Description";
 document.body.appendChild(topOfTable);**/
-	/**var mapOutput = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 5
-	});**/
 var tableObj = document.createElement("TABLE");
 tableObj.setAttribute('id','ourTable');
 for (i = 0; i< keyArrayLength; i = i + 1){
@@ -72,7 +69,7 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportIssue = reportsObject[keyArray[i]]['type'];
 	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-	//initMap(reportLocation1,reportLocation2, mapOutput);
+	//initMap(reportLocation1,reportLocation2); //error with implementing markers on map
 	//var returnedAddress = geocodeFunction(reportLocation1,reportLocation2);
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
@@ -86,6 +83,7 @@ document.body.appendChild(tableObj);
 }
 
 //Code to add elements into a table format
+//all cell elements are stored in reportArray
 function addTableElement(reportArray, z1, rowNum) {
 	//var z1 = document.createElement("TABLE");
     var row = z1.insertRow(rowNum);
@@ -189,14 +187,15 @@ function removeReport(reportKey) {
 }
 
 
-function initMap(reportLocation1,reportLocation2, map) {
-	var myLatLng = {lat: Number(reportLocation1), lng: Number(reportLocation2)};
-	window.prompt("got to initMap");
+function initMap(reportLocation1,reportLocation2) {
+	var myLatLng = {lat: parseFloat(reportLocation1), lng: parseFloat(reportLocation2)};
+	console.log(myLatLng);
+	var mapAlt = new google.maps.Map(document.getElementById("map"));
 	var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
+      position: myLatLng,
+      //map: map,
   });
-  marker.setMap(map);
+  marker.setMap(mapAlt);
 }
 /**
 function geocodeFunction() {
