@@ -72,17 +72,19 @@
 	</div>
 	<div id="map" ></div>
 
-    <script>
-      var map;
-      function initMap1() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.4237, lng: -86.9212},
-          zoom: 15
-        });
-      }
-    </script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVijZeP94Xzz6rLyJQH7ztYMtxx7-eKcs&callback=initMap1" -->
-    async defer></script>
+    <!-- <script> -->
+      <!-- var map; -->
+      <!-- function initMap1() { -->
+        <!-- map = new google.maps.Map(document.getElementById('map'), { -->
+          <!-- center: {lat: 40.4237, lng: -86.9212}, -->
+          <!-- zoom: 15 -->
+        <!-- }); -->
+      <!-- } -->
+    <!-- </script> -->
+
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVijZeP94Xzz6rLyJQH7ztYMtxx7-eKcs&callback=initMap1" -->
+    <!-- ></script> -->
+
 
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
@@ -143,7 +145,7 @@ table, th, td {
                     <select class="custom-select" id="status" onchange=absorbInput()> <!--status filter -->
                         <option selected disabled value="all" style="border:2px solid Black;">Status</option>
                         <option value="all" select = "selected">All Statuses</option>
-						<option style=value="1" select = "selected">Submitted</option>
+						<option style=value="1" select = "selected">submitted</option>
                         <option style=value="2" select = "selected">Pending Action</option>
                         <option style=value="3" select = "selected">In Progress</option>
 						<option style=value="4" select = "selected">Resolved</option>
@@ -213,7 +215,7 @@ function initMap() {
     * The callback parameter executes the initMap() function
     -->
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBihD89o_xPKDluUdJagMwtuGIdq6GeqxQ&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVijZeP94Xzz6rLyJQH7ztYMtxx7-eKcs&callback=initMap">
     </script>
   </body>
 </html>		
@@ -228,50 +230,73 @@ var c2 = document.getElementById("issue_select").value;
 var inputArray = [c0,c1,c2];
 window.alert(inputArray);
 //var statusResult = c0.options[c0.selectedIndex].text;
-
-if ((c0 == all) && (c1 == all) && (c2 == all)) //no filter was chosen at all
+if ((c0 == "all") && (c1 == "all") && (c2 == "all")) //no filter was chosen at all
 {
 	window.prompt("No filter chosen");
 }
-else if ((c0 != all) && (c1 == all) && (c2 == all)) //the status filter is active
+else if ((c0 != "all") && (c1 == "all") && (c2 == "all")) //the status filter is active
 {
 	window.prompt("filter1 chosen");
+	dateFilteringAlgorithm(c0,0);
 }
-else if ((c0 == all) && (c1 != all) && (c2 == all)) //date filter is now active
+else if ((c0 == "all") && (c1 != "all") && (c2 == "all")) //date filter is now active
 {
 	window.prompt("filter2 chosen");
+	filteringAlgorithm(c1,1);
 }
-else if ((c0 == all) && (c1 == all) && (c2 != all)) //issue filter is now active
+else if ((c0 == "all") && (c1 == "all") && (c2 != "all")) //issue filter is now active
 {
 	window.prompt("filter3 chosen");
+	filteringAlgorithm(c2,2);
+}
+else
+{
+	window.prompt("Please use one filter at a time.");
 }
 }
 
 
 //this function actually filters the table and hides the rows that do no match the filter criteria
 
-function filteringAlgorithm(columnNum) {
+function filteringAlgorithm(inVar, columnNum) {
 window.prompt("Got to filtering");
   // Declare variables 
   var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
+  //input = document.getElementById("myInput");
+  input = inVar;
+  window.alert(input);
   filter = input.value.toUpperCase();
   table = document.getElementById("ourTable");
+  window.alert(table);
   tr = table.getElementsByTagName("tr");
-
+  
+//document.getElementById("ourTable").rows[0].cells[1].innerHTML; <= retrieves text from inside a specific row and column
+//document.getElementById("ourTable").rows[i].cells[columnNum].innerHTML;
   // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[columnNum];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+  for (i = 0; i < tbody.length; i++) {
+    window.alert("in for loop");
+    td = tr[i].getElementsByTagName("tr")[columnNum];
+    if (tr) {
+      if (tbody.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	    window.alert("Inside first.");
         tr[i].style.display = "";
       } else {
+		window.alert("Inside second.");
         tr[i].style.display = "none";
+		//document.getElementById("ourTable").rows[i].style.display = "none"; <= line to implement?
       }
     } 
+	else {
+	  window.alert("inside outermost else");
+	}
   }
 }
+function dateFilteringAlgorithm(input,columnNumber)
+{
+var table = document.getElementById("ourTable");
+tr = table.getElementsByTagName("tr");
 
+}
 
 
 <!-- function filteringAlgorithm(filterInput,columnToLookIn) { -->
