@@ -3,7 +3,6 @@ var image = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBAP
 
 var database = firebase.database();
 var listReports = "did not update";
-window.alert("Got to fire.js");
 console.log(database);
 removeReport("-LOsKCzLPInoj9fBx25v")
 
@@ -71,6 +70,7 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
 	//initMap(reportLocation1,reportLocation2); //error with implementing markers on map
 	//var returnedAddress = geocodeFunction(reportLocation1,reportLocation2);
+	var marker = new google.maps.Marker({position: new google.maps.LatLng(reportLocation1, reportLocation2), map: map});
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
@@ -127,34 +127,34 @@ function addTableElement(reportArray, z1, rowNum) {
 
 }
 
-function filteringAlgorithm(columnToLookIn) {
-  var input, filter, table, tr, td, i;
+// function filteringAlgorithm(columnToLookIn) {
+  // var input, filter, table, tr, td, i;
   //window.prompt("Got to filtering");
- // input = "Pothole";
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("ourTable");
-  tr = table.getElementsByTagName("tr");
+ input = "Pothole";
+  // input = document.getElementById("myInput");
+  // filter = input.value.toUpperCase();
+  // table = document.getElementById("ourTable");
+  // tr = table.getElementsByTagName("tr");
   //window.prompt(tr[0].getElementsByTagName("td")[0]);
 
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[columnToLookIn];
+  // for (i = 0; i < tr.length; i++) {
+    // td = tr[i].getElementsByTagName("td")[columnToLookIn];
 	//window.prompt(td);
-    if (td) {
-		  window.prompt("Got to first");
+    // if (td) {
+		  // window.prompt("Got to first");
 
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		    window.prompt("Got to second");
+      // if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		    // window.prompt("Got to second");
 
-        tr[i].style.display = "";
-      } else {
-		  		   window.prompt("Got to third");
+        // tr[i].style.display = "";
+      // } else {
+		  		   // window.prompt("Got to third");
 
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+        // tr[i].style.display = "none";
+      // }
+    // }       
+  // }
+// }
 
 
 
