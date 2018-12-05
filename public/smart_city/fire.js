@@ -61,9 +61,6 @@ topCell5.innerHTML = "Latitude";
 topCell6.innerHTML = "Image?";
 topCell7.innerHTML = "Description";
 document.body.appendChild(topOfTable);**/
-	var mapOutput = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 5
-	});
 var tableObj = document.createElement("TABLE");
 tableObj.setAttribute('id','ourTable');
 for (i = 0; i< keyArrayLength; i = i + 1){
@@ -72,7 +69,8 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportIssue = reportsObject[keyArray[i]]['type'];
 	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-	//initMap(reportLocation1,reportLocation2, mapOutput);
+	//initMap(reportLocation1,reportLocation2); //error with implementing markers on map
+	//var returnedAddress = geocodeFunction(reportLocation1,reportLocation2);
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
@@ -85,6 +83,7 @@ document.body.appendChild(tableObj);
 }
 
 //Code to add elements into a table format
+//all cell elements are stored in reportArray
 function addTableElement(reportArray, z1, rowNum) {
 	//var z1 = document.createElement("TABLE");
     var row = z1.insertRow(rowNum);
@@ -142,14 +141,14 @@ function filteringAlgorithm(columnToLookIn) {
     td = tr[i].getElementsByTagName("td")[columnToLookIn];
 	//window.prompt(td);
     if (td) {
-		  //window.prompt("Got to first");
+		  window.prompt("Got to first");
 
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		    //window.prompt("Got to second");
+		    window.prompt("Got to second");
 
         tr[i].style.display = "";
       } else {
-		  		   // window.prompt("Got to third");
+		  		   window.prompt("Got to third");
 
         tr[i].style.display = "none";
       }
@@ -188,12 +187,19 @@ function removeReport(reportKey) {
 }
 
 
-function initMap(reportLocation1,reportLocation2, map) {
+function initMap(reportLocation1,reportLocation2) {
 	var myLatLng = {lat: parseFloat(reportLocation1), lng: parseFloat(reportLocation2)};
-	//window.prompt("got to initMap");
+	console.log(myLatLng);
+	var mapAlt = new google.maps.Map(document.getElementById("map"));
 	var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
+      position: myLatLng,
+      //map: map,
   });
-  marker.setMap(map);
+  marker.setMap(mapAlt);
 }
+/**
+function geocodeFunction() {
+	
+	
+	
+}**/
