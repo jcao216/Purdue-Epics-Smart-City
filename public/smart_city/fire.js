@@ -70,6 +70,7 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
 	//initMap(reportLocation1,reportLocation2); //error with implementing markers on map
 	//var returnedAddress = geocodeFunction(reportLocation1,reportLocation2);
+	var marker = new google.maps.Marker({position: new google.maps.LatLng(reportLocation1, reportLocation2), map: map});
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
