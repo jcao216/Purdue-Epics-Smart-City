@@ -121,7 +121,7 @@ table, th, td {
     
         <h2 style="color:#34738f;" ><center>Reports</center></h2>
     
-        <center><input type="text"  class="light-table-filter" onkeyup="filteringAlgorithm()" data-table="order-table" placeholder="Filter"></input>
+        <!-- <center><input type="text"  class="light-table-filter" onkeyup="filteringAlgorithm()" data-table="order-table" placeholder="Filter"></input> -->
       
       <!--This creates the dropdown options-->
       <!-- <select type="search" class="select-table-filter" data-table="order-table"><center> -->
@@ -139,7 +139,7 @@ table, th, td {
 		    <center>
             <thead>
                 <tr id = "filterOptions">
-                    <th>
+                    <th width = "9%">
                     <select class="custom-select" id="status" onchange=absorbInput()> <!--status filter -->
                         <option selected disabled value="all" style="border:2px solid Black;">Status</option>
                         <option value="all" select = "selected">All Statuses</option>
@@ -149,7 +149,7 @@ table, th, td {
 						<option style=value="resolved" select = "selected">Resolved</option>
                     </select>
 					</th>
-                    <th><!--Date filter-->
+                    <th width = "12%"><!--Date filter-->
                     <select id="date_select" class="custom-select" onchange=absorbInput()>
                         <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
                         </option>
@@ -158,7 +158,7 @@ table, th, td {
 						<option style=value="by_oldest">By oldest</option>
                     </select>
 					</th>
-					<th> <!--Issue filter-->
+					<th width = "10%"> <!--Issue filter-->
                     <select id="issue_select" class="custom-select" onchange=absorbInput()>
                         <option selected disabled value="all" style="border:2px solid Black;" >Issue</i></option>
                         <option value="all">All Issues</option>
@@ -168,10 +168,10 @@ table, th, td {
 						<option value="Other">Other</option>
                     </select>					
 					</th>
-					<th>Location1</th>
-					<th>Location2</th>
-					<th>Image</th>
-					<th>Description</th>
+					<th width = "10%">Location1</th>
+					<th width = "10%">Location2</th>
+					<th width = "14%">Image</th>
+					<th width = "25%">Description</th>
                 </tr>
 
             </thead>
