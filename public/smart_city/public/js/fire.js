@@ -3,6 +3,7 @@ var image = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBAP
 
 var database = firebase.database();
 var listReports = "did not update";
+console.log('hellooo')
 console.log(database);
 removeReport("-LOsKCzLPInoj9fBx25v")
 
@@ -61,7 +62,16 @@ topCell6.innerHTML = "Image?";
 topCell7.innerHTML = "Description";
 document.body.appendChild(topOfTable);**/
 var tableObj = document.createElement("TABLE");
-tableObj.setAttribute('id','ourTable');
+//create header
+var header = tableObj.createTHead();
+var body = document.createElement('tbody');
+tableObj.appendChild(body);
+
+tableObj.setAttribute('id','mainTable');
+tableObj.setAttribute('class', 'table  table-hover table-bordered');
+var header_array = ['Index', 'Status', 'Time Stamp', 'Type', 'Image', 'Description'];
+marker_creator(reportsObject, keyArray, keyArrayLength);
+addTableElement(header_array, tableObj, 0, header, body);
 for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportStatus = reportsObject[keyArray[i]]['status'];
 	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
@@ -70,12 +80,12 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
 	//initMap(reportLocation1,reportLocation2); //error with implementing markers on map
 	//var returnedAddress = geocodeFunction(reportLocation1,reportLocation2);
-	var marker = new google.maps.Marker({position: new google.maps.LatLng(reportLocation1, reportLocation2), map: map});
+	//var marker = new google.maps.Marker({position: new google.maps.LatLng(reportLocation1, reportLocation2), map: map});
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
-	var reportArray = [reportStatus, reportDate, reportIssue, reportLocation1,reportLocation2, reportPicture, reportDescription]; //this array will hold the order for the report list row
+	var reportArray = [i+1,reportStatus, reportDate, reportIssue, reportPicture, reportDescription]; //this array will hold the order for the report list row
  
-	addTableElement(reportArray,tableObj, i);
+	addTableElement(reportArray,tableObj, i+1, header, body);
 }
 document.body.appendChild(tableObj);
 //filteringAlgorithm();	
@@ -84,46 +94,71 @@ document.body.appendChild(tableObj);
 
 //Code to add elements into a table format
 //all cell elements are stored in reportArray
-function addTableElement(reportArray, z1, rowNum) {
+function addTableElement(reportArray, z1, rowNum, header, body) {
 	//var z1 = document.createElement("TABLE");
-    var row = z1.insertRow(rowNum);
-	
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-	var cell3 = row.insertCell(2);
-	var cell4 = row.insertCell(3);
-	var cell5 = row.insertCell(4);
-	var cell6 = row.insertCell(5);
-	var cell7 = row.insertCell(6);
+	if (rowNum == 0){
+		var row = header.insertRow(rowNum);
+	}
+	else{
+		var row = body.insertRow(rowNum-1);
+	}
+    
+	var cell0 = row.insertCell(0);
+    var cell1 = row.insertCell(1);
+    var cell2 = row.insertCell(2);
+	var cell3 = row.insertCell(3);
+
+	var cell6 = row.insertCell(4);
+	var cell7 = row.insertCell(5);
+	cell0.setAttribute("width", "3%");
 	cell1.setAttribute("width", "8%");
 	cell2.setAttribute("width", "12%");
 	cell3.setAttribute("width", "10%");
-	cell4.setAttribute("width", "10%");
-	cell5.setAttribute("width", "10%");
+
 	cell6.setAttribute("width", "15%");
 	cell7.setAttribute("width", "25%");
 	
-    cell1.innerHTML = reportArray[0];
-    cell2.innerHTML = reportArray[1];
-	cell3.innerHTML = reportArray[2];
-	cell4.innerHTML = reportArray[3];
-	cell5.innerHTML = reportArray[4];
+	cell0.innerHTML = reportArray[0];
+    cell1.innerHTML = reportArray[1];
+    cell2.innerHTML = reportArray[2];
+	cell3.innerHTML = reportArray[3];
+
 	
 	
 	var img = document.createElement("IMG");
 	//console.log(reportArray[5]);
-	if (reportArray[5] == 'no image')
-	{
-		cell6.innerHTML = "no image";
+	if (rowNum == 0){
+		cell6.innerHTML = "Image";
 	}
-	else
-	{
-		img.setAttribute("src", "data:image/jpg;base64," + reportArray[5]);
-		img.setAttribute("width", "10");
-		img.setAttribute("height", "140");
-		cell6.innerHTML = "<img src = \"data:image/jpg;base64," +reportArray[5] + "\"width = \"25\" height = \"80\">";
+	else{
+		if (reportArray[4] == 'no image')
+		{
+			cell6.innerHTML = "no image";
+		}
+		else
+		{
+			img.setAttribute("src", "data:image/jpg;base64," + reportArray[4]);
+			img.setAttribute("width", "100");
+			img.setAttribute("height", "80");
+			img.setAttribute("id", "myImg");
+			img.setAttribute("alt", "");
+			cell6.appendChild(img)
+			//cell6.innerHTML = "<img id='myImg' alt='Snow'  src = \"data:image/jpg;base64," +reportArray[4] + "\"width = \"100\" height = \"80\">";
+			var modal = document.getElementById("myModal");
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+			img.onclick = function(){
+				modal.style.display = "block";
+				modalImg.src = this.src;
+				captionText.innerHTML = this.alt;
+			}
+			var span = document.getElementsByClassName("close")[0];
+			span.onclick = function(){
+				modal.style.display = "none";
+			}
+		}
 	}
-	cell7.innerHTML = reportArray[6];
+	cell7.innerHTML = reportArray[5];
 
 }
 
@@ -203,3 +238,42 @@ function geocodeFunction() {
 	
 	
 }**/
+function marker_creator(Pothole_data, key_array, length) {
+    var markers = [];
+    var streets = [];
+    var testing = length;
+    var contentString = "HAHA";
+    //var map = new google.maps.Map(document.getElementById("map"));
+    
+    for(var i = 0; i < testing; i++)
+    {
+    	var latlong = {
+	        lat: parseFloat(Pothole_data[key_array[i]]['latitude']),
+	        lng: parseFloat(Pothole_data[key_array[i]]['longitude']),
+	    }
+	    
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(latlong),
+            map: map,
+            label: {text: (i+1).toString()},
+            clickable: true
+        });
+        
+        (function(marker, i)
+        {
+            google.maps.event.addListener(marker,'click', function() {
+                infowindow = new google.maps.InfoWindow({content: contentString+i.toString()});
+                infowindow.open(map, marker);
+            })
+        })(marker,i);
+       	
+//        var infowindow = new google.maps.InfoWindow({
+//                            content: contentString+i.toString()
+//                        });
+//        marker.addListener('click', function() {
+//                            infowindow.open(map, marker);
+//                        });
+
+    }
+
+}
