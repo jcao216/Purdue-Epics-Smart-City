@@ -111,31 +111,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <div class="col-sm-8">
                 <h1 class="h1">West Lafayette <i class="fa fa-map" aria-hidden="true"></i> Smart City</h1>
             </div>
-            <!--
-            <div class="col-sm-2">
-                <div class="container">
-                    <div class="row">
-                        <div class="checkbox">
-                            <label>
-                                <input checked="true" id="App_check" type="checkbox" value="">App Data
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="checkbox">
-                            <label>
-                                <input id="Data_A_check" type="checkbox" value="">Data Analysis Data
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="checkbox">
-                            <label>
-                                <input id="All_Data" type="checkbox" value="">All Data
-                            </label>
-                        </div>
-                    </div>
-                </div> -->
+            
             </div>
             <div class="container">
             <div class="row" width=100%>
@@ -189,7 +165,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
         </div>
         </div>
 
-        <!--<button onclick="change_mode()">Specific data</button>-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -205,10 +180,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
                 </div>
                 <div class="col-sm-3">
-                    <!-- <select id="up_to_date" class="custom-select"> -->
-                        <!-- <option disabled selected value="all" style="border:2px solid Black;">To Date: </i> -->
-                        <!-- </option> -->
-                    <!-- </select> -->
+    
                 </div>
             </div>
         </div>
@@ -266,64 +238,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
     
         <h2 style="color:#34738f;" ><center>Reports</center></h2>
     
-        <!-- <center><input type="text"  class="light-table-filter" onkeyup="filteringAlgorithm()" data-table="order-table" placeholder="Filter"></input> -->
-      
-      <!--This creates the dropdown options-->
-      <!-- <select type="search" class="select-table-filter" data-table="order-table"><center> -->
-
-        <!-- <option value="">All Issues</option>   -->
-        <!-- <option value="Pothole">Pothole</option>   -->
-        <!-- <option value="Tripping Hazard">Tripping Hazard</option> -->
-        <!-- <option value="Traffic Light">Traffic Light</option> -->
-        <!-- <option value="Other">Other</option> -->
-<!--Reference link: https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript -->
-<!-- https://www.w3schools.com/jsref/event_onchange.asp -->
-      <!-- <select> -->
-<!--
-        <table class="order-table" width = "1000">
-		    <center>
-            <thead>
-                <tr id = "filterOptions">
-                    <th width = "9%">
-                    <select class="custom-select" id="status" onchange=absorbInput()> 
-                        <option selected disabled value="all" style="border:2px solid Black;">Status</option>
-                        <option value="all" select = "selected">All Statuses</option>
-						<option style=value="submitted" select = "selected">submitted</option>
-                        <option style=value="pending_action" select = "selected">Pending Action</option>
-                        <option style=value="in_progress" select = "selected">In Progress</option>
-						<option style=value="resolved" select = "selected">Resolved</option>
-                    </select>
-					</th>
-                    <th width = "12%">
-                    <select id="date_select" class="custom-select" onchange=absorbInput()>
-                        <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
-                        </option>
-                        <option value="all">All Dates</option>
-						<option style=value="by_newest">By newest</option>
-						<option style=value="by_oldest">By oldest</option>
-                    </select>
-					</th>
-					<th width = "10%"> 
-                    <select id="issue_select" class="custom-select" onchange=absorbInput()>
-                        <option selected disabled value="all" style="border:2px solid Black;" >Issue</i></option>
-                        <option value="all">All Issues</option>
-						<option value="Pothole">Pothole</option>
-						<option value="Traffic">Traffic</option>
-						<option value="Tripping Hazard">Tripping Hazard</option>
-						<option value="Other">Other</option>
-                    </select>					
-					</th>
-					<th width = "10%">Location1</th>
-					<th width = "10%">Location2</th>
-					<th width = "14%">Image</th>
-					<th width = "25%">Description</th>
-                </tr>
-
-            </thead>
-            <tbody>
-				
-            </tbody>
-        </table> -->
 	
 <script src="./smart_city/public/js/fire.js"></script>
 <!--This is the filter script-->
@@ -420,5 +334,8 @@ tr = table.getElementsByTagName("tr");
     <img class="modal-content" id="img01">
     <div id="caption"></div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </body>
 

@@ -27,40 +27,13 @@ async function readAllReports(callbackFunction){
 
 //callback function example
 function callback1(reportsObject){
-console.log(reportsObject)
+console.log(reportsObject.description)
 
 //var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
 var keyArray = Object.keys(reportsObject);
 var keyArrayLength = Object.keys(reportsObject).length;
-//window.prompt(keyArray);
-//window.prompt(reportsObject['-LPYmmnAnweAeGyOTG-a']['status']);
-//-LQZd7yuBHtGW
-/**
-var topOfTable = document.createElement("TABLE");
-var topRow = topOfTable.insertRow(0);
-var topCell1 = topRow.insertCell(0);
-var topCell2 = topRow.insertCell(1);
-var topCell3 = topRow.insertCell(2);
-var topCell4 = topRow.insertCell(3);
-var topCell5 = topRow.insertCell(4);
-var topCell6 = topRow.insertCell(5);
-var topCell7 = topRow.insertCell(6);**//**
-topCell1.setAttribute("width", "5%");
-topCell2.setAttribute("width", "30.5%");
-topCell3.setAttribute("width", "10%");
-topCell4.setAttribute("width", "10%");
-topCell5.setAttribute("width", "10%");
-topCell6.setAttribute("width", "15%");
-topCell7.setAttribute("width", "25%");
-
-topCell1.innerHTML = "Status";
-topCell2.innerHTML = "Date/Time";
-topCell3.innerHTML = "Issue Type";
-topCell4.innerHTML = "Longitude";
-topCell5.innerHTML = "Latitude";
-topCell6.innerHTML = "Image?";
-topCell7.innerHTML = "Description";
-document.body.appendChild(topOfTable);**/
+console.log("Hi")
+//console.log(keyArray["description"])
 var tableObj = document.createElement("TABLE");
 //create header
 var header = tableObj.createTHead();
@@ -78,9 +51,6 @@ for (i = 0; i< keyArrayLength; i = i + 1){
 	var reportIssue = reportsObject[keyArray[i]]['type'];
 	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
 	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-	//initMap(reportLocation1,reportLocation2); //error with implementing markers on map
-	//var returnedAddress = geocodeFunction(reportLocation1,reportLocation2);
-	//var marker = new google.maps.Marker({position: new google.maps.LatLng(reportLocation1, reportLocation2), map: map});
 	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
 	var reportDescription = reportsObject[keyArray[i]]['description'];
 	var reportArray = [i+1,reportStatus, reportDate, reportIssue, reportPicture, reportDescription]; //this array will hold the order for the report list row
@@ -104,8 +74,8 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 	}
     
 	var cell0 = row.insertCell(0);
-    var cell1 = row.insertCell(1);
-    var cell2 = row.insertCell(2);
+  var cell1 = row.insertCell(1);
+  var cell2 = row.insertCell(2);
 	var cell3 = row.insertCell(3);
 
 	var cell6 = row.insertCell(4);
@@ -119,8 +89,13 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 	cell7.setAttribute("width", "25%");
 	
 	cell0.innerHTML = reportArray[0];
-    cell1.innerHTML = reportArray[1];
-    cell2.innerHTML = reportArray[2];
+	if (reportArray[1] == "Status") {
+		cell1.innerHTML = reportArray[1]
+	}
+	else {
+		cell1.innerHTML = '<div class = "dropdown"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown button</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#" id ="action-1">Another action</a><a class="dropdown-item" href="#">Something else here</a></div></div>'
+	}
+  cell2.innerHTML = reportArray[2];
 	cell3.innerHTML = reportArray[3];
 
 	
@@ -161,35 +136,7 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 	cell7.innerHTML = reportArray[5];
 
 }
-
-// function filteringAlgorithm(columnToLookIn) {
-  // var input, filter, table, tr, td, i;
-  //window.prompt("Got to filtering");
  input = "Pothole";
-  // input = document.getElementById("myInput");
-  // filter = input.value.toUpperCase();
-  // table = document.getElementById("ourTable");
-  // tr = table.getElementsByTagName("tr");
-  //window.prompt(tr[0].getElementsByTagName("td")[0]);
-
-  // for (i = 0; i < tr.length; i++) {
-    // td = tr[i].getElementsByTagName("td")[columnToLookIn];
-	//window.prompt(td);
-    // if (td) {
-		  // window.prompt("Got to first");
-
-      // if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-		    // window.prompt("Got to second");
-
-        // tr[i].style.display = "";
-      // } else {
-		  		   // window.prompt("Got to third");
-
-        // tr[i].style.display = "none";
-      // }
-    // }       
-  // }
-// }
 
 
 
@@ -266,14 +213,24 @@ function marker_creator(Pothole_data, key_array, length) {
                 infowindow.open(map, marker);
             })
         })(marker,i);
-       	
-//        var infowindow = new google.maps.InfoWindow({
-//                            content: contentString+i.toString()
-//                        });
-//        marker.addListener('click', function() {
-//                            infowindow.open(map, marker);
-//                        });
 
-    }
+		}
+		// $(document).ready(function(){
+		// 	$(".dropdown").on("show.bs.dropdown", function(event){
+		// 		var x = $(event.relatedTarget).text(); // Get the button text
+		// 		alert("You clicked on: " + x);
+		// 	});
+		// });
+		$( document ).ready(function() {
+			$('.dropdown').each(function (key, dropdown) {
+					var $dropdown = $(dropdown);
+					$dropdown.find('.dropdown-menu a').on('click', function () {
+							$dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
+							var x = window.prompt("sometext","defaultText");
+							console.log(x)
+
+					});
+			});
+	});
 
 }
