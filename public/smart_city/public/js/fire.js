@@ -3,81 +3,71 @@ var image = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEBAP
 
 var database = firebase.database();
 var listReports = "did not update";
-console.log('hellooo')
-console.log(database);
-removeReport("-LOsKCzLPInoj9fBx25v")
-
-//writeNewReport(1,image,"traffic","thisisadescription", 44.7,-90.1)
-
-console.log(readAllReports(callback1));
-// console.log(snapshot.val())
+(readAllReports(callback1));
+var keys = []
 
 //Reads All the reports on the database Expects a callback function as argument
-async function readAllReports(callbackFunction){
-  var reports = firebase.database().ref('reports');
-  reports.once('value').then(function(snapshot) {
-    //console.log(snapshot.val());
-     listReports = snapshot.val();
-     console.log("Reports are read")
-     callbackFunction(snapshot.val());
-  });
-  var snapshot = await reports.once("value")
-  return(snapshot.val());
+async function readAllReports(callbackFunction) {
+	var reports = firebase.database().ref('reports');
+	reports.once('value').then(function (snapshot) {
+		listReports = snapshot.val();
+		console.log("Reports are read")
+		callbackFunction(snapshot.val());
+	});
+	var snapshot = await reports.once("value")
+	keys = (Object.keys(snapshot.val()))
+	return (snapshot.val());
 }
 
 //callback function example
-function callback1(reportsObject){
-console.log(reportsObject.description)
+function callback1(reportsObject) {
+	console.log(reportsObject)
 
-//var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
-var keyArray = Object.keys(reportsObject);
-var keyArrayLength = Object.keys(reportsObject).length;
-console.log("Hi")
-//console.log(keyArray["description"])
-var tableObj = document.createElement("TABLE");
-//create header
-var header = tableObj.createTHead();
-var body = document.createElement('tbody');
-tableObj.appendChild(body);
+	//var keyArray[] = [, 'asdfasdfasdf']; //this array will hold the keys for reportsObject (dictionary data type)
+	var keyArray = Object.keys(reportsObject);
+	var keyArrayLength = Object.keys(reportsObject).length;
+	var tableObj = document.createElement("TABLE");
+	//create header
+	var header = tableObj.createTHead();
+	var body = document.createElement('tbody');
+	tableObj.appendChild(body);
 
-tableObj.setAttribute('id','mainTable');
-tableObj.setAttribute('class', 'table  table-hover table-bordered');
-var header_array = ['Index', 'Status', 'Time Stamp', 'Type', 'Image', 'Description'];
-marker_creator(reportsObject, keyArray, keyArrayLength);
-addTableElement(header_array, tableObj, 0, header, body);
-for (i = 0; i< keyArrayLength; i = i + 1){
-	var reportStatus = reportsObject[keyArray[i]]['status'];
-	var reportDate = reportsObject[keyArray[i]]['timeStamp'];
-	var reportIssue = reportsObject[keyArray[i]]['type'];
-	var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
-	var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-	var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
-	var reportDescription = reportsObject[keyArray[i]]['description'];
-	var reportArray = [i+1,reportStatus, reportDate, reportIssue, reportPicture, reportDescription]; //this array will hold the order for the report list row
- 
-	addTableElement(reportArray,tableObj, i+1, header, body);
-}
-document.body.appendChild(tableObj);
-//filteringAlgorithm();	
-//window.prompt((Object.keys(reportsObject).length));
+	tableObj.setAttribute('id', 'mainTable');
+	tableObj.setAttribute('class', 'table  table-hover table-bordered');
+	var header_array = ['Index', 'Status', 'Time Stamp', 'Type', 'Image', 'Description'];
+	marker_creator(reportsObject, keyArray, keyArrayLength);
+	addTableElement(header_array, tableObj, 0, header, body);
+	for (i = 0; i < keyArrayLength; i = i + 1) {
+		var reportStatus = reportsObject[keyArray[i]]['status'];
+		var reportDate = reportsObject[keyArray[i]]['timeStamp'];
+		var reportIssue = reportsObject[keyArray[i]]['type'];
+		var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
+		var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
+		var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
+		var reportDescription = reportsObject[keyArray[i]]['description'];
+		var k = keyArray[i]
+		var reportArray = [i + 1, reportStatus, reportDate, reportIssue, reportPicture, reportDescription, k]; //this array will hold the order for the report list row
+
+		addTableElement(reportArray, tableObj, i + 1, header, body);
+	}
+	document.body.appendChild(tableObj);
 }
 
 //Code to add elements into a table format
 //all cell elements are stored in reportArray
 function addTableElement(reportArray, z1, rowNum, header, body) {
 	//var z1 = document.createElement("TABLE");
-	if (rowNum == 0){
+	if (rowNum == 0) {
 		var row = header.insertRow(rowNum);
 	}
-	else{
-		var row = body.insertRow(rowNum-1);
+	else {
+		var row = body.insertRow(rowNum - 1);
 	}
-    
-	var cell0 = row.insertCell(0);
-  var cell1 = row.insertCell(1);
-  var cell2 = row.insertCell(2);
-	var cell3 = row.insertCell(3);
 
+	var cell0 = row.insertCell(0);
+	var cell1 = row.insertCell(1);
+	var cell2 = row.insertCell(2);
+	var cell3 = row.insertCell(3);
 	var cell6 = row.insertCell(4);
 	var cell7 = row.insertCell(5);
 	cell0.setAttribute("width", "3%");
@@ -87,31 +77,28 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 
 	cell6.setAttribute("width", "15%");
 	cell7.setAttribute("width", "25%");
-	
+
 	cell0.innerHTML = reportArray[0];
 	if (reportArray[1] == "Status") {
 		cell1.innerHTML = reportArray[1]
 	}
 	else {
-		cell1.innerHTML = '<div class = "dropdown"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown button</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">Action</a><a class="dropdown-item" href="#" id ="action-1">Another action</a><a class="dropdown-item" href="#">Something else here</a></div></div>'
+		cell1.innerHTML = '<div class = "dropdown"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">In Progress</a><a class="dropdown-item" href="#" id ="action-1">Almost Done</a><a class="dropdown-item" href="#">Completed</a></div></div>'
 	}
-  cell2.innerHTML = reportArray[2];
+	cell2.innerHTML = reportArray[2];
 	cell3.innerHTML = reportArray[3];
 
-	
-	
+
+
 	var img = document.createElement("IMG");
-	//console.log(reportArray[5]);
-	if (rowNum == 0){
+	if (rowNum == 0) {
 		cell6.innerHTML = "Image";
 	}
-	else{
-		if (reportArray[4] == 'no image')
-		{
+	else {
+		if (reportArray[4] == 'no image') {
 			cell6.innerHTML = "no image";
 		}
-		else
-		{
+		else {
 			img.setAttribute("src", "data:image/jpg;base64," + reportArray[4]);
 			img.setAttribute("width", "100");
 			img.setAttribute("height", "80");
@@ -122,13 +109,13 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 			var modal = document.getElementById("myModal");
 			var modalImg = document.getElementById("img01");
 			var captionText = document.getElementById("caption");
-			img.onclick = function(){
+			img.onclick = function () {
 				modal.style.display = "block";
 				modalImg.src = this.src;
 				captionText.innerHTML = this.alt;
 			}
 			var span = document.getElementsByClassName("close")[0];
-			span.onclick = function(){
+			span.onclick = function () {
 				modal.style.display = "none";
 			}
 		}
@@ -136,48 +123,47 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 	cell7.innerHTML = reportArray[5];
 
 }
- input = "Pothole";
+input = "Pothole";
 
 
 
 //Creates a new report and addes it to the database
-function writeNewReport(reportId, pictures, reportType, description,lat,long) {
-  // A report entry.
-  var postData = {
-    reportId: reportId,
-    reportType: reportType,
-    location: [lat,long],
-    description:description,
-    pictures: pictures
-  };
+function writeNewReport(reportId, pictures, reportType, description, lat, long) {
+	// A report entry.
+	var postData = {
+		reportId: reportId,
+		reportType: reportType,
+		location: [lat, long],
+		description: description,
+		pictures: pictures
+	};
 
-  // Get a key for a new report.
-  var newPostKey = firebase.database().ref().child('reports').push().key;
+	// Get a key for a new report.
+	var newPostKey = firebase.database().ref().child('reports').push().key;
 
-  // Write the new post's data simultaneously in the posts list and the user's post list.
-  var updates = {};
-  updates['/reports/' + newPostKey] = postData;
+	// Write the new post's data simultaneously in the posts list and the user's post list.
+	var updates = {};
+	updates['/reports/' + newPostKey] = postData;
 
-  return firebase.database().ref().update(updates);
+	return firebase.database().ref().update(updates);
 }
 
 //Remove a key given a ReportKey
 //ReportKey is the Idnetifier of every report
 function removeReport(reportKey) {
-  var newPostKey = firebase.database().ref().child('reports').child(reportKey).remove();
-  return firebase.database().ref();
+	var newPostKey = firebase.database().ref().child('reports').child(reportKey).remove();
+	return firebase.database().ref();
 }
 
 
-function initMap(reportLocation1,reportLocation2) {
-	var myLatLng = {lat: parseFloat(reportLocation1), lng: parseFloat(reportLocation2)};
-	console.log(myLatLng);
+function initMap(reportLocation1, reportLocation2) {
+	var myLatLng = { lat: parseFloat(reportLocation1), lng: parseFloat(reportLocation2) };
 	var mapAlt = new google.maps.Map(document.getElementById("map"));
 	var marker = new google.maps.Marker({
-      position: myLatLng,
-      //map: map,
-  });
-  marker.setMap(mapAlt);
+		position: myLatLng,
+		//map: map,
+	});
+	marker.setMap(mapAlt);
 }
 /**
 function geocodeFunction() {
@@ -186,51 +172,43 @@ function geocodeFunction() {
 	
 }**/
 function marker_creator(Pothole_data, key_array, length) {
-    var markers = [];
-    var streets = [];
-    var testing = length;
-    var contentString = "HAHA";
-    //var map = new google.maps.Map(document.getElementById("map"));
-    
-    for(var i = 0; i < testing; i++)
-    {
-    	var latlong = {
-	        lat: parseFloat(Pothole_data[key_array[i]]['latitude']),
-	        lng: parseFloat(Pothole_data[key_array[i]]['longitude']),
-	    }
-	    
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(latlong),
-            map: map,
-            label: {text: (i+1).toString()},
-            clickable: true
-        });
-        
-        (function(marker, i)
-        {
-            google.maps.event.addListener(marker,'click', function() {
-                infowindow = new google.maps.InfoWindow({content: contentString+i.toString()});
-                infowindow.open(map, marker);
-            })
-        })(marker,i);
+	var markers = [];
+	var streets = [];
+	var testing = length;
+	var contentString = "HAHA";
+	//var map = new google.maps.Map(document.getElementById("map"));
 
+	for (var i = 0; i < testing; i++) {
+		var latlong = {
+			lat: parseFloat(Pothole_data[key_array[i]]['latitude']),
+			lng: parseFloat(Pothole_data[key_array[i]]['longitude']),
 		}
-		// $(document).ready(function(){
-		// 	$(".dropdown").on("show.bs.dropdown", function(event){
-		// 		var x = $(event.relatedTarget).text(); // Get the button text
-		// 		alert("You clicked on: " + x);
-		// 	});
-		// });
-		$( document ).ready(function() {
-			$('.dropdown').each(function (key, dropdown) {
-					var $dropdown = $(dropdown);
-					$dropdown.find('.dropdown-menu a').on('click', function () {
-							$dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
-							var x = window.prompt("sometext","defaultText");
-							console.log(x)
 
-					});
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(latlong),
+			map: map,
+			label: { text: (i + 1).toString() },
+			clickable: true
+		});
+
+		(function (marker, i) {
+			google.maps.event.addListener(marker, 'click', function () {
+				infowindow = new google.maps.InfoWindow({ content: contentString + i.toString() });
+				infowindow.open(map, marker);
+			})
+		})(marker, i);
+
+	}
+	
+	//function to detect the change of value in dropdown menu on status bar
+	$(document).ready(function () {
+		$('.dropdown').each(function (key, dropdown) {
+			var $dropdown = $(dropdown);
+			$dropdown.find('.dropdown-menu a').on('click', function () {
+				$dropdown.find('button').text($(this).text()).append(' <span class="caret"></span>');
+				var x = window.prompt("sometext", "defaultText");
 			});
+		});
 	});
 
 }
