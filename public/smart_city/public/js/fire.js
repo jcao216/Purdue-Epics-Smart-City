@@ -8,14 +8,14 @@ var keys = []
 
 //Reads All the reports on the database Expects a callback function as argument
 async function readAllReports(callbackFunction) {
-	var reports = firebase.database().ref('reports');
+	var reports = firebase.database().ref('potholes');
+	console.log(reports);
 	reports.once('value').then(function (snapshot) {
 		listReports = snapshot.val();
-		console.log("Reports are read")
 		callbackFunction(snapshot.val());
 	});
-	var snapshot = await reports.once("value")
-	keys = (Object.keys(snapshot.val()))
+	var snapshot = await reports.once("value");
+	keys = (Object.keys(snapshot.val()));
 	return (snapshot.val());
 }
 
@@ -39,12 +39,16 @@ function callback1(reportsObject) {
 	addTableElement(header_array, tableObj, 0, header, body);
 	for (i = 0; i < keyArrayLength; i = i + 1) {
 		var reportStatus = reportsObject[keyArray[i]]['status'];
+		//var reportStatus = "In Progress";
 		var reportDate = reportsObject[keyArray[i]]['timeStamp'];
-		var reportIssue = reportsObject[keyArray[i]]['type'];
-		var reportLocation2 = reportsObject[keyArray[i]]['longitude'];
-		var reportLocation1 = reportsObject[keyArray[i]]['latitude'];
-		var reportPicture = reportsObject[keyArray[i]]['encodedImage'];
-		var reportDescription = reportsObject[keyArray[i]]['description'];
+		//var reportDate = "test";
+		//var reportIssue = reportsObject[keyArray[i]]['type'];
+		var reportIssue = "Pothole";
+		var reportLocation2 = reportsObject[keyArray[i]]['long'];
+		var reportLocation1 = reportsObject[keyArray[i]]['lat'];
+		var reportPicture = reportsObject[keyArray[i]]['img'];
+		//var reportDescription = reportsObject[keyArray[i]]['description'];
+		var reportDescription = "test";
 		var k = keyArray[i]
 		var reportArray = [i + 1, reportStatus, reportDate, reportIssue, reportPicture, reportDescription, k]; //this array will hold the order for the report list row
 
@@ -67,16 +71,16 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 	var cell0 = row.insertCell(0);
 	var cell1 = row.insertCell(1);
 	var cell2 = row.insertCell(2);
-	var cell3 = row.insertCell(3);
-	var cell6 = row.insertCell(4);
-	var cell7 = row.insertCell(5);
+	//var cell3 = row.insertCell(3);
+	var cell6 = row.insertCell(3);
+	//var cell7 = row.insertCell(5);
 	cell0.setAttribute("width", "3%");
 	cell1.setAttribute("width", "8%");
 	cell2.setAttribute("width", "12%");
-	cell3.setAttribute("width", "10%");
+	//cell3.setAttribute("width", "10%");
 
 	cell6.setAttribute("width", "15%");
-	cell7.setAttribute("width", "25%");
+	//cell7.setAttribute("width", "25%");
 
 	cell0.innerHTML = reportArray[0];
 	if (reportArray[1] == "Status") {
@@ -86,7 +90,7 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 		cell1.innerHTML = '<div class = "dropdown"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Status</button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">In Progress</a><a class="dropdown-item" href="#" id ="action-1">Almost Done</a><a class="dropdown-item" href="#">Completed</a></div></div>'
 	}
 	cell2.innerHTML = reportArray[2];
-	cell3.innerHTML = reportArray[3];
+	//cell3.innerHTML = reportArray[3];
 
 
 
@@ -120,7 +124,7 @@ function addTableElement(reportArray, z1, rowNum, header, body) {
 			}
 		}
 	}
-	cell7.innerHTML = reportArray[5];
+	//cell7.innerHTML = reportArray[5];
 
 }
 input = "Pothole";
@@ -180,9 +184,10 @@ function marker_creator(Pothole_data, key_array, length) {
 
 	for (var i = 0; i < testing; i++) {
 		var latlong = {
-			lat: parseFloat(Pothole_data[key_array[i]]['latitude']),
-			lng: parseFloat(Pothole_data[key_array[i]]['longitude']),
+			lat: parseFloat(Pothole_data[key_array[i]]['lat']),
+			lng: parseFloat(Pothole_data[key_array[i]]['long']),
 		}
+		console.log(latlong);
 
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(latlong),
