@@ -4,3 +4,12 @@ To get started, please look at the document called "list of commands for epics.t
 
 
 Happy coding!
+
+Launching Steps:
+
+1) go to SmartCityDirectory/public
+2) run "firebase init" 
+    a)type "y" for the first prompt 
+    b)Select first option on menu 
+    c)Select default options for all other promps (type nothing and hit enter)
+3)run "firebase serve" 4)open http://localhost:5000 in your browser
