@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Smart City casdfsdff</title>
+    <title>Smart City</title>
 	<!--<script src = "jquery.js"></script>-->
     <!-- <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid"> -->
 	<title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <style>
+<style>
 body {font-family: Arial, Helvetica, sans-serif;}
 
 #myImg {
@@ -17,6 +17,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 #myImg:hover {opacity: 0.7;}
+tr {
+  height: 100px;
+}
+td{
+  height: 100px;
+}
 
 /* The Modal (background) */
 .modal {
@@ -117,17 +123,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
             <div class="row" width=100%>
               <div class="col-sm-1">
               </div>
-              <div class="col-sm-2">
-                    <select class="custom-select" id="typeDrop">
-                        <option selected disabled value="all">Type</i>
-                        </option>
-                        <option  value="1">Pothole</option>
-                        <option  value="2">Traffic</option>
-                        <option  value="3">Tripping Hazard</option>
-                        <option = value="3">Other</option>
-                    </select>
-                </div>
-                <div class="col-sm-2">
+              
+                <div class="col-sm-3">
                     <select class="custom-select" id="statusDrop">
                         <option selected disabled value="all">Status</i>
                         </option>
@@ -155,7 +152,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                     </select>
 
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <select id="up_to_date" class="custom-select">
                         <option disabled selected value="all">To Date: </i>
                         </option>
