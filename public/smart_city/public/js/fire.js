@@ -6,6 +6,8 @@ var listReports = "did not update";
 (readAllReports(callback1));
 var keys = []
 
+var infoWindow;
+
 //Reads All the reports on the database Expects a callback function as argument
 async function readAllReports(callbackFunction) {
 	var reports = firebase.database().ref('potholes');
@@ -29,6 +31,9 @@ function callback1(reportsObject) {
 	var header = tableObj.createTHead();
 	var body = document.createElement('tbody');
 	tableObj.appendChild(body);
+	
+	infoWindow = new google.maps.InfoWindow();
+
 
 	tableObj.setAttribute('id', 'mainTable');
 	tableObj.setAttribute('class', 'table  table-hover table-bordered');
@@ -122,10 +127,12 @@ function addTableElement(reportArray, z1, rowNum, header, body, markers) {
 			
 
 			var markerDiv = create_marker_infoWindow(create_canvas(reportArray[4], pothole, "100%", "100%"), confidense);
+			marker.infoWindowContent = markerDiv;
 			(function (marker, i) {
 			google.maps.event.addListener(marker, 'click', function () {
-				infowindow = new google.maps.InfoWindow({ content: markerDiv});
-				infowindow.open(map, marker);
+				//infowindow = new google.maps.InfoWindow({ content: markerDiv});
+				infoWindow.setContent(marker.infoWindowContent);
+				infoWindow.open(map, marker);
 			})
 		})(marker, i);
 		}
@@ -202,7 +209,7 @@ function create_canvas(base64Img, pothole, width, height){
 			canvas.onclick = function () {
 				modal.style.display = "block";
 				modalImg.src = this.toDataURL();
-				captionText.innerHTML = this.alt;
+				captionText.innerHTML = "";
 			}
 			var span = document.getElementsByClassName("close")[0];
 			span.onclick = function () {
@@ -269,11 +276,27 @@ function marker_creator(Pothole_data, key_array, length) {
 		}
 		var confidense = parseFloat(Pothole_data[key_array[i]]['confidense']);
 		var RGB = confidense_to_RGB(confidense);
+		var icon = {
+			url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|' + RGB,
+			//size: new google.maps.Size(100,100)
+			labelOrigin: new google.maps.Point(10,10),
+			anchor: new google.maps.Point(10,10),
+
+
+		}
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(latlong),
 			map: map,
-			icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + RGB,
-			label: { text: (i + 1).toString() },
+			icon: icon,
+			//labelAnchor: {x:0, y:0},
+			label: { 
+				text: (i + 1).toString(),
+				fontSize: "8px",
+
+			},
+			
+
+
 			clickable: true
 		});
 		markers.push(marker);
