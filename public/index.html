@@ -5,12 +5,132 @@
 	<!--<script src = "jquery.js"></script>-->
     <!-- <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid"> -->
 	<title></title>
-    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+tr {
+  height: 100px;
+}
+td{
+  height: 100px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: auto;
+  max-width: 700px;
+  height:90%;
+  max-height: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+#myBtn {
+              display: none;
+              position: fixed;
+              bottom: 20px;
+              right: 30px;
+              z-index: 0;
+              font-size: 18px;
+              border: none;
+              outline: none;
+              background-color: red;
+              color: white;
+              cursor: pointer;
+              padding: 15px;
+              border-radius: 4px;
+            }
+            
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
 </head>
 
 <!--<body onload="refresh(1)">-->
 	
 <body>
+    <script src="./smart_city/public/js/backToTop.js"></script>
+    <button onclick="topFunction()" id="myBtn" title="Go To Top">TOP</button>
     <div class="jumbotron jumbotron-fluid" style = "background-color:#CFB53B">
         <div class="row">
             <div class="col-sm-2">
@@ -19,34 +139,51 @@
             <div class="col-sm-8">
                 <h1 class="h1">West Lafayette <i class="fa fa-map" aria-hidden="true"></i> Smart City</h1>
             </div>
-            <div class="col-sm-2">
-                <div class="container">
-                    <div class="row">
-                        <div class="checkbox">
-                            <label>
-                                <input checked="true" id="App_check" type="checkbox" value="">App Data
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="checkbox">
-                            <label>
-                                <input id="Data_A_check" type="checkbox" value="">Data Analysis Data
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="checkbox">
-                            <label>
-                                <input id="All_Data" type="checkbox" value="">All Data
-                            </label>
-                        </div>
-                    </div>
+            
+            </div>
+            <div class="container">
+            <div class="row" width=100%>
+              <div class="col-sm-1">
+              </div>
+              
+                <div class="col-sm-3">
+                    <select class="custom-select" id="statusDrop">
+                        <option selected disabled value="all">Status</i>
+                        </option>
+                        <option  value="1">Submitted</option>
+                        <option  value="2">Pending Action</option>
+                        <option  value="3">In Progress</option>
+                        <option = value="3">Resolved</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select id="street_select" class="custom-select">
+
+                        <option selected disabled value="all">Street</i>
+                        </option>
+                        <option value="all">All Streets</option>
+                    </select>
+
+                </div>
+                
+                <div class="col-sm-2">
+                    <select id="date_select" class="custom-select">
+                        <option disabled selected value="all">From Date </i>
+                        </option>
+                        <option value="all">All Dates</option>
+                    </select>
+
+                </div>
+                <div class="col-sm-3">
+                    <select id="up_to_date" class="custom-select">
+                        <option disabled selected value="all">To Date: </i>
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
+        </div>
 
-        <!--<button onclick="change_mode()">Specific data</button>-->
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -62,15 +199,14 @@
 
                 </div>
                 <div class="col-sm-3">
-                    <!-- <select id="up_to_date" class="custom-select"> -->
-                        <!-- <option disabled selected value="all" style="border:2px solid Black;">To Date: </i> -->
-                        <!-- </option> -->
-                    <!-- </select> -->
+    
                 </div>
             </div>
         </div>
 	</div>
 	<div id="map" ></div>
+
+  
 
     <script>
       var map;
@@ -79,41 +215,48 @@
           center: {lat: 40.4237, lng: -86.9212},
           zoom: 15
         });
+        
       }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVijZeP94Xzz6rLyJQH7ztYMtxx7-eKcs&callback=initMap1"
-    ></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJrhwlTG-VkMQh1H6x3YXAT7HnQjJXMgk&callback=initMap1"
+  type="text/javascript"></script>
 
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
-    <link rel="stylesheet" type="text/css" href="smart_city/public/smart_city.css"></link>
+    <link rel="stylesheet" type="text/css" href="smart_city/public/css/smart_city.css"></link>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 <style>
-table, th, td {
-    border: 6px solid black;
-}
+  thead{
+    font-weight: bold;
+    background-color: #879ab7;
+  }
 </style>
 <table style="width:100%">
 
-<!--This is code for a table that will list reports and database integration. -->
-<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 
-<!--<body>-->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
 
 <script>
-  // Initialize Firebase
-
-  var config = {
-    apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
-    authDomain: "epics-smart-city.firebaseapp.com",
-    databaseURL: "https://epics-smart-city.firebaseio.com",
-    projectId: "epics-smart-city",
-    storageBucket: "epics-smart-city.appspot.com",
-    messagingSenderId: "498032615483"
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCN7iuFSyEUezMF7kaqCFkiYeDrOTLB98I",
+    authDomain: "pothole-detector-72f29.firebaseapp.com",
+    databaseURL: "https://pothole-detector-72f29.firebaseio.com",
+    projectId: "pothole-detector-72f29",
+    storageBucket: "",
+    messagingSenderId: "998744176652",
+    appId: "1:998744176652:web:66a3cd89c1e303cee49629",
+    measurementId: "G-M9JLKPZN77"
   };
-  firebase.initializeApp(config);
-
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
 </script>
 
 
@@ -121,65 +264,8 @@ table, th, td {
     
         <h2 style="color:#34738f;" ><center>Reports</center></h2>
     
-        <!-- <center><input type="text"  class="light-table-filter" onkeyup="filteringAlgorithm()" data-table="order-table" placeholder="Filter"></input> -->
-      
-      <!--This creates the dropdown options-->
-      <!-- <select type="search" class="select-table-filter" data-table="order-table"><center> -->
-
-        <!-- <option value="">All Issues</option>   -->
-        <!-- <option value="Pothole">Pothole</option>   -->
-        <!-- <option value="Tripping Hazard">Tripping Hazard</option> -->
-        <!-- <option value="Traffic Light">Traffic Light</option> -->
-        <!-- <option value="Other">Other</option> -->
-<!--Reference link: https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript -->
-<!-- https://www.w3schools.com/jsref/event_onchange.asp -->
-      <!-- <select> -->
-
-        <table class="order-table" width = "1000">
-		    <center>
-            <thead>
-                <tr id = "filterOptions">
-                    <th width = "9%">
-                    <select class="custom-select" id="status" onchange=absorbInput()> <!--status filter -->
-                        <option selected disabled value="all" style="border:2px solid Black;">Status</option>
-                        <option value="all" select = "selected">All Statuses</option>
-						<option style=value="submitted" select = "selected">submitted</option>
-                        <option style=value="pending_action" select = "selected">Pending Action</option>
-                        <option style=value="in_progress" select = "selected">In Progress</option>
-						<option style=value="resolved" select = "selected">Resolved</option>
-                    </select>
-					</th>
-                    <th width = "12%"><!--Date filter-->
-                    <select id="date_select" class="custom-select" onchange=absorbInput()>
-                        <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
-                        </option>
-                        <option value="all">All Dates</option>
-						<option style=value="by_newest">By newest</option>
-						<option style=value="by_oldest">By oldest</option>
-                    </select>
-					</th>
-					<th width = "10%"> <!--Issue filter-->
-                    <select id="issue_select" class="custom-select" onchange=absorbInput()>
-                        <option selected disabled value="all" style="border:2px solid Black;" >Issue</i></option>
-                        <option value="all">All Issues</option>
-						<option value="Pothole">Pothole</option>
-						<option value="Traffic">Traffic</option>
-						<option value="Tripping Hazard">Tripping Hazard</option>
-						<option value="Other">Other</option>
-                    </select>					
-					</th>
-					<th width = "10%">Location1</th>
-					<th width = "10%">Location2</th>
-					<th width = "14%">Image</th>
-					<th width = "25%">Description</th>
-                </tr>
-
-            </thead>
-            <tbody>
-				<script src="./smart_city/fire.js"></script>
-            </tbody>
-        </table>
 	
+<script src="./smart_city/public/js/fire.js"></script>
 <!--This is the filter script-->
 <script>
 //this function looks for the filter that the user selects
@@ -214,11 +300,8 @@ else if ((c0 == "all") && (c1 == "all") && (c2 != "all")) //issue filter is now 
 else
 {
 	window.prompt("Please use one filter at a time.");
-
 }
 }
-
-
 //this function actually filters the table and hides the rows that do no match the filter criteria
 function filteringAlgorithm(inVar, columnNum) {
 //window.prompt("Got to filtering");
@@ -257,9 +340,7 @@ function dateFilteringAlgorithm(input,columnNumber)
 {
 var table = document.getElementById("ourTable");
 tr = table.getElementsByTagName("tr");
-
 }
-
 <!-- //restores table to original state if no filters are applied -->
 <!-- function restoreTable() { -->
   <!-- window.prompt("Restoring table"); -->
@@ -273,6 +354,14 @@ tr = table.getElementsByTagName("tr");
 <!-- } -->
 </script>
     </section>
+
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </body>
 
-</html>

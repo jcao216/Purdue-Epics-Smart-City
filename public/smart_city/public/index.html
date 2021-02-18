@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Smart City</title>
+	<!--<script src = "jquery.js"></script>-->
+    <!-- <div style="background-color:#D4AF37;"class="jumbotron jumbotron-fluid"> -->
+	<title></title>
+    <!-- <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet"> -->
+</head>
+
+<!--<body onload="refresh(1)">-->
+	
+<body>
+    <div class="jumbotron jumbotron-fluid" style = "background-color:#CFB53B">
+        <div class="row">
+            <div class="col-sm-2">
+                <p>Purdue EPICS</p>
+            </div>
+            <div class="col-sm-8">
+                <h1 class="h1">West Lafayette <i class="fa fa-map" aria-hidden="true"></i> Smart City</h1>
+            </div>
+            <div class="col-sm-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="checkbox">
+                            <label>
+                                <input checked="true" id="App_check" type="checkbox" value="">App Data
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkbox">
+                            <label>
+                                <input id="Data_A_check" type="checkbox" value="">Data Analysis Data
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkbox">
+                            <label>
+                                <input id="All_Data" type="checkbox" value="">All Data
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<button onclick="change_mode()">Specific data</button>-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+
+
+
+                </div>
+                <div class="col-sm-3">
+
+                </div>
+                <div class="col-sm-3">
+
+
+                </div>
+                <div class="col-sm-3">
+                    <!-- <select id="up_to_date" class="custom-select"> -->
+                        <!-- <option disabled selected value="all" style="border:2px solid Black;">To Date: </i> -->
+                        <!-- </option> -->
+                    <!-- </select> -->
+                </div>
+            </div>
+        </div>
+	</div>
+	<div id="map" ></div>
+
+    <script>
+      var map;
+      function initMap1() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.4237, lng: -86.9212},
+          zoom: 15
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVijZeP94Xzz6rLyJQH7ztYMtxx7-eKcs&callback=initMap1"
+    ></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"></link>
+    <link rel="stylesheet" type="text/css" href="css/smart_city.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<style>
+table, th, td {
+    border: 6px solid black;
+}
+</style>
+<table style="width:100%">
+
+<!--This is code for a table that will list reports and database integration. -->
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+
+<!--<body>-->
+
+<script>
+  // Initialize Firebase
+
+  var config = {
+    apiKey: "AIzaSyDcrzJHNR0lYSO4gWFapG75byPllpzlYSQ",
+    authDomain: "epics-smart-city.firebaseapp.com",
+    databaseURL: "https://epics-smart-city.firebaseio.com",
+    projectId: "epics-smart-city",
+    storageBucket: "epics-smart-city.appspot.com",
+    messagingSenderId: "498032615483"
+  };
+  firebase.initializeApp(config);
+
+</script>
+
+
+    <section class="container">
+    
+        <h2 style="color:#34738f;" ><center>Reports</center></h2>
+    
+        <!-- <center><input type="text"  class="light-table-filter" onkeyup="filteringAlgorithm()" data-table="order-table" placeholder="Filter"></input> -->
+      
+      <!--This creates the dropdown options-->
+      <!-- <select type="search" class="select-table-filter" data-table="order-table"><center> -->
+
+        <!-- <option value="">All Issues</option>   -->
+        <!-- <option value="Pothole">Pothole</option>   -->
+        <!-- <option value="Tripping Hazard">Tripping Hazard</option> -->
+        <!-- <option value="Traffic Light">Traffic Light</option> -->
+        <!-- <option value="Other">Other</option> -->
+<!--Reference link: https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript -->
+<!-- https://www.w3schools.com/jsref/event_onchange.asp -->
+      <!-- <select> -->
+
+        <table class="order-table" width = "1000">
+		    <center>
+            <thead>
+                <tr id = "filterOptions">
+                    <th width = "9%">
+                    <select class="custom-select" id="status" onchange=absorbInput()> <!--status filter -->
+                        <option selected disabled value="all" style="border:2px solid Black;">Status</option>
+                        <option value="all" select = "selected">All Statuses</option>
+						<option style=value="submitted" select = "selected">submitted</option>
+                        <option style=value="pending_action" select = "selected">Pending Action</option>
+                        <option style=value="in_progress" select = "selected">In Progress</option>
+						<option style=value="resolved" select = "selected">Resolved</option>
+                    </select>
+					</th>
+                    <th width = "12%"><!--Date filter-->
+                    <select id="date_select" class="custom-select" onchange=absorbInput()>
+                        <option disabled selected value="all" style="border:2px solid Black;">From Date: </i>
+                        </option>
+                        <option value="all">All Dates</option>
+						<option style=value="by_newest">By newest</option>
+						<option style=value="by_oldest">By oldest</option>
+                    </select>
+					</th>
+					<th width = "10%"> <!--Issue filter-->
+                    <select id="issue_select" class="custom-select" onchange=absorbInput()>
+                        <option selected disabled value="all" style="border:2px solid Black;" >Issue</i></option>
+                        <option value="all">All Issues</option>
+						<option value="Pothole">Pothole</option>
+						<option value="Traffic">Traffic</option>
+						<option value="Tripping Hazard">Tripping Hazard</option>
+						<option value="Other">Other</option>
+                    </select>					
+					</th>
+					<th width = "10%">Location1</th>
+					<th width = "10%">Location2</th>
+					<th width = "14%">Image</th>
+					<th width = "25%">Description</th>
+                </tr>
+
+            </thead>
+            <tbody>
+				<script src="js/fire.js"></script>
+            </tbody>
+        </table>
+	
+<!--This is the filter script-->
+<script>
+//this function looks for the filter that the user selects
+function absorbInput()  {
+//window.alert("absorbed input");
+var c0 = document.getElementById("status").value;
+var c1 = document.getElementById("date_select").value;
+var c2 = document.getElementById("issue_select").value;
+var inputArray = [c0,c1,c2];
+//window.alert(inputArray);
+//var statusResult = c0.options[c0.selectedIndex].text;
+if ((c0 == "all") && (c1 == "all") && (c2 == "all")) //no filter was chosen at all
+{
+	//window.prompt("No filter chosen");
+	filteringAlgorithm("all","-1");
+}
+else if ((c0 != "all") && (c1 == "all") && (c2 == "all")) //the status filter is active
+{
+	//window.prompt("filter1 chosen");
+	filteringAlgorithm(c0,0);
+}
+else if ((c0 == "all") && (c1 != "all") && (c2 == "all")) //date filter is now active
+{
+	//window.prompt("filter2 chosen");
+	filteringAlgorithm(c1,1);
+}
+else if ((c0 == "all") && (c1 == "all") && (c2 != "all")) //issue filter is now active
+{
+	//window.prompt("filter3 chosen");
+	filteringAlgorithm(c2,2);
+}
+else
+{
+	window.prompt("Please use one filter at a time.");
+
+}
+}
+
+
+//this function actually filters the table and hides the rows that do no match the filter criteria
+function filteringAlgorithm(inVar, columnNum) {
+//window.prompt("Got to filtering");
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  //input = document.getElementById("myInput");
+  input = inVar;
+  //window.alert(input);
+  //filter = input.value.toUpperCase();
+  
+  //window.alert("can it go to uppercase");
+  table = document.getElementById("ourTable");
+  //window.alert(table);
+  tbody = table.getElementsByTagName("tbody");
+  tr = table.getElementsByTagName("tr");
+  
+//document.getElementById("ourTable").rows[0].cells[1].innerHTML; <= retrieves text from inside a specific row and column
+//document.getElementById("ourTable").rows[i].cells[columnNum].innerHTML;
+  // Loop through all table rows, and hide those who don't match the search query'
+  //window.alert("does tbody exist?");
+  //window.alert(table.rows.length);
+  for (i = 0; i< table.rows.length; i++) {
+	if (table.rows[i].cells[columnNum].innerHTML != inVar && (columnNum >= 0)) { //not matching
+	  tr[i].style.display = "none";
+	}
+	else if ((table.rows[i].cells[columnNum].innerHTML == inVar) | (columnNum == "-1")) { //finds match
+	    for (i2 = 0; i2 < table.rows.length; i2++) {  //go through table to reappear
+			if (table.rows[i2].cells[columnNum].innerHTML == inVar) {
+			tr[i2].style.display = "";
+			}
+		}
+	}
+  }
+}
+function dateFilteringAlgorithm(input,columnNumber)
+{
+var table = document.getElementById("ourTable");
+tr = table.getElementsByTagName("tr");
+
+}
+
+<!-- //restores table to original state if no filters are applied -->
+<!-- function restoreTable() { -->
+  <!-- window.prompt("Restoring table"); -->
+  <!-- var table = document.getElementById("ourTable"); -->
+  <!-- tr = table.getElementsByTagName("tr"); -->
+	<!-- for (i3 = 0; i3 < table.rows.length; i3++) {  //go through table to reappear -->
+		<!-- if (table.rows[i3].style == "none") { -->
+		<!-- tr[i3].style.display = ""; -->
+		<!-- } -->
+	<!-- } -->
+<!-- } -->
+</script>
+    </section>
+</body>
+
+</html>
